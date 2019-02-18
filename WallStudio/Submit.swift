@@ -80,7 +80,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
         var catClass = PFObject(className: CATEGORIES_CLASS_NAME)
         catClass = categoriesArray[indexPath.row]
 
-        let imageFile = catClass[CATEGORIES_THUMB] as? PFFile
+        let imageFile = catClass[CATEGORIES_THUMB] as? PFFileObject
         imageFile?.getDataInBackground(block: { (data, error) in
             if error == nil {
                 if let imageData = data {
@@ -167,7 +167,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
 
             if wallImage.image != nil {
                 let imageData = UIImageJPEGRepresentation(wallImage.image!, 0.8)
-                let imageFile = PFFile(name: "wallp.jpg", data: imageData!)
+                let imageFile = PFFileObject(name: "wallp.jpg", data: imageData!)
                 wallClass[WALLPAPERS_IMAGE] = imageFile
             }
 

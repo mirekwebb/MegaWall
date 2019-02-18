@@ -95,7 +95,7 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         let catClass = categoriesArray[indexPath.row]
 
-        let imageFile = catClass[CATEGORIES_THUMB] as? PFFile
+        let imageFile = catClass[CATEGORIES_THUMB] as? PFFileObject
         imageFile?.getDataInBackground(block: { (data, error) in
             if error == nil {
                 if let imageData = data {

@@ -1,0 +1,44 @@
+PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - FBSDKCoreKit (4.40.0):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.40.0):
+    - FBSDKCoreKit
+  - GoogleMobileAds (7.8.0)
+  - Parse (1.17.2):
+    - Parse/Core (= 1.17.2)
+  - Parse/Core (1.17.2):
+    - Bolts/Tasks (~> 1.9)
+  - Parse/FacebookUtils (1.17.2):
+    - Bolts (~> 1.9)
+    - FBSDKLoginKit (~> 4.33)
+    - Parse/Core
+
+DEPENDENCIES:
+  - GoogleMobileAds
+  - Parse
+  - Parse/FacebookUtils
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bolts
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - GoogleMobileAds
+    - Parse
+
+SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
+  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
+  GoogleMobileAds: 0ed4d41b03fe768e2e2945df68707fd4ff97c179
+  Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+
+PODFILE CHECKSUM: a0845d0143ba25010e8c103d3553db61fa5be03e
+
+COCOAPODS: 1.5.3

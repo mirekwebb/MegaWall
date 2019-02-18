@@ -132,7 +132,7 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         var wallObj = PFObject(className: WALLPAPERS_CLASS_NAME)
         wallObj = wallsArray[indexPath.row]
 
-        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFile
+        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFileObject
         imageFile?.getDataInBackground(block: { (data, error) in
             if error == nil {
                 if let imageData = data {
@@ -162,7 +162,7 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
 
         selectedWallpaper = indexPath.row
 
-        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFile
+        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFileObject
         imageFile?.getDataInBackground(block: { (data, error) in
             if error == nil {
                 if let imageData = data {

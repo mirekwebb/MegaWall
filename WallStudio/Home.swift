@@ -6,8 +6,6 @@
 //  Copyright (c) 2017 Greenfield.com. All rights reserved.
 //
 
-
-
 import UIKit
 import Parse
 
@@ -22,7 +20,6 @@ class Home: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +119,7 @@ class Home: UIViewController {
         let categoriesClass = PFObject(className: CATEGORIES_CLASS_NAME)
         categoriesClass[CATEGORIES_NAME] = "MODIFY"
         let imageData = UIImageJPEGRepresentation(UIImage(named: "catIconDemo")!, 0.1)
-        let imageFile = PFFile(name: "thumb.jpg", data: imageData!)
+        let imageFile = PFFileObject(name: "thumb.jpg", data: imageData!)
         categoriesClass[CATEGORIES_THUMB] = imageFile
 
         categoriesClass.saveInBackground(block: { (succ, error) in
@@ -132,7 +129,7 @@ class Home: UIViewController {
                 wallClass[WALLPAPERS_CATEGORY] = "MODIFY"
                 wallClass[WALLPAPERS_IS_PENDING] = false
                 let imageData = UIImageJPEGRepresentation(UIImage(named: "bkg")!, 0.1)
-                let imageFile = PFFile(name: "image.jpg", data: imageData!)
+                let imageFile = PFFileObject(name: "image.jpg", data: imageData!)
                 wallClass[WALLPAPERS_IMAGE] = imageFile
                 wallClass.saveInBackground(block: { (succ, error) in
                     if error == nil {

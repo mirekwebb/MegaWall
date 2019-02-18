@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-import ParseFacebookUtilsV4
+//import 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
