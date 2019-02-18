@@ -6,11 +6,6 @@
 //  Copyright (c) 2017 Greenfield.com. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
-
-
 let CATEGORIES_CLASS_NAME = "Categories"
 let CATEGORIES_NAME = "name"
 let CATEGORIES_THUMB = "thumbnail"
