@@ -11,11 +11,11 @@ import Parse
 
 class Home: UIViewController {
 
-    @IBOutlet var buttons: [UIButton]!
-    @IBOutlet var containerView: UIView!
-    @IBOutlet var homebuttonsViews: [UIView]!
-    @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var touOutlet: UIButton!
+    @IBOutlet private var buttons: [UIButton]!
+    @IBOutlet private var containerView: UIView!
+    @IBOutlet private var homeButtonsViews: [UIView]!
+    @IBOutlet private weak var logoImage: UIImageView!
+    @IBOutlet private weak var termsOfUseButton: UIButton!
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
@@ -30,7 +30,7 @@ class Home: UIViewController {
             button.layer.cornerRadius = 3
         }
 
-        for aView in homebuttonsViews {
+        for aView in homeButtonsViews {
             aView.layer.cornerRadius = 12
         }
 
@@ -44,13 +44,13 @@ class Home: UIViewController {
     }
 
     // Browse Button
-    @IBAction func browseButt(_ sender: AnyObject) {
-        let catVC = storyboard?.instantiateViewController(withIdentifier: "Categories") as! Categories
-        navigationController?.pushViewController(catVC, animated: true)
+    @IBAction private func browseButtonPressed(_ sender: AnyObject) {
+        let categoriesViewController = storyboard?.instantiateViewController(withIdentifier: "Categories") as! Categories
+        navigationController?.pushViewController(categoriesViewController, animated: true)
     }
 
     // Submit Button
-    @IBAction func submitButt(_ sender: AnyObject) {
+    @IBAction private func submitButtonPressed(_ sender: AnyObject) {
         if PFUser.current() != nil {
             let subVC = storyboard?.instantiateViewController(withIdentifier: "SubmitWallpaper") as! SubmitWallpaper
             navigationController?.pushViewController(subVC, animated: true)
@@ -61,25 +61,25 @@ class Home: UIViewController {
                                           preferredStyle: .alert)
 
 
-            let ok = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
-                let aVC = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
-                self.present(aVC, animated: true, completion: nil)
+            let okAction = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
+                let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
+                self.present(loginViewController, animated: true, completion: nil)
             })
 
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
 
-            alert.addAction(ok)
-            alert.addAction(cancel)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
             present(alert, animated: true, completion: nil)
         }
     }
 
     // Favorites Button
-    @IBAction func favoritesButt(_ sender: Any) {
+    @IBAction private func favoritesButtonPressed(_ sender: Any) {
         if PFUser.current() != nil {
-            let aVC = storyboard?.instantiateViewController(withIdentifier: "WallGrid") as! WallGrid
-            aVC.isFavorites = true
-            navigationController?.pushViewController(aVC, animated: true)
+            let wallGridViewController = storyboard?.instantiateViewController(withIdentifier: "WallGrid") as! WallGrid
+            wallGridViewController.isFavorites = true
+            navigationController?.pushViewController(wallGridViewController, animated: true)
 
         } else {
             let alert = UIAlertController(title: APP_NAME,
@@ -87,33 +87,33 @@ class Home: UIViewController {
                                           preferredStyle: .alert)
 
 
-            let ok = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
-                let aVC = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
-                self.present(aVC, animated: true, completion: nil)
+            let okAction = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
+                let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
+                self.present(loginViewController, animated: true, completion: nil)
             })
 
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
 
-            alert.addAction(ok)
-            alert.addAction(cancel)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
             present(alert, animated: true, completion: nil)
         }
     }
 
     // Account Button
-    @IBAction func accountButt(_ sender: Any) {
+    @IBAction private func accountButtonPressed(_ sender: Any) {
         if PFUser.current() != nil {
-            let aVC = storyboard?.instantiateViewController(withIdentifier: "Account") as! Account
-            navigationController?.pushViewController(aVC, animated: true)
+            let accountViewController = storyboard?.instantiateViewController(withIdentifier: "Account") as! Account
+            navigationController?.pushViewController(accountViewController, animated: true)
         } else {
-            let aVC = storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
-            present(aVC, animated: true, completion: nil)
+            let loginViewController = storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
+            present(loginViewController, animated: true, completion: nil)
         }
     }
 
     // Create Class - Config Database
-    func createCategoriesAndWallpapersClasses() {
-        showHUD("Sync Database...")
+    private func createCategoriesAndWallpapersClasses() {
+        showHUD(with: "Sync Database...")
 
         // Create Categories
         let categoriesClass = PFObject(className: CATEGORIES_CLASS_NAME)
@@ -122,32 +122,34 @@ class Home: UIViewController {
         let imageFile = PFFileObject(name: "thumb.jpg", data: imageData!)
         categoriesClass[CATEGORIES_THUMB] = imageFile
 
-        categoriesClass.saveInBackground(block: { (succ, error) in
-            if error == nil {
-                // Create Wallpapers
-                let wallClass = PFObject(className: WALLPAPERS_CLASS_NAME)
-                wallClass[WALLPAPERS_CATEGORY] = "MODIFY"
-                wallClass[WALLPAPERS_IS_PENDING] = false
-                let imageData = UIImageJPEGRepresentation(UIImage(named: "bkg")!, 0.1)
-                let imageFile = PFFileObject(name: "image.jpg", data: imageData!)
-                wallClass[WALLPAPERS_IMAGE] = imageFile
-                wallClass.saveInBackground(block: { (succ, error) in
-                    if error == nil {
-                        self.simpleAlert(mess: "Congrats!...your app is setup correctly. Now add your own Data in your Dashboard.")
-                        self.hideHUD()
-                    }
-                })
-            } else {
-                self.simpleAlert(mess: "\(error!.localizedDescription)")
-                self.hideHUD()
+        categoriesClass.saveInBackground(block: { [weak self] (succ, error) in
+            guard error == nil else {
+                self?.hideHUD()
+                self?.showSimpleAlert(with: "\(error!.localizedDescription)")
+                return
             }
+
+            // Create Wallpapers
+            let wallClass = PFObject(className: WALLPAPERS_CLASS_NAME)
+            wallClass[WALLPAPERS_CATEGORY] = "MODIFY"
+            wallClass[WALLPAPERS_IS_PENDING] = false
+            let imageData = UIImageJPEGRepresentation(UIImage(named: "bkg")!, 0.1)
+            let imageFile = PFFileObject(name: "image.jpg", data: imageData!)
+            wallClass[WALLPAPERS_IMAGE] = imageFile
+
+            wallClass.saveInBackground(block: { [weak self] (succ, error) in
+                if error == nil {
+                    self?.showSimpleAlert(with: "Congrats!...your app is setup correctly. Now add your own Data in your Dashboard.")
+                    self?.hideHUD()
+                }
+            })
         })
     }
 
     // Terms & Condition Button
-    @IBAction func touButt(_ sender: AnyObject) {
-        let touVC = storyboard?.instantiateViewController(withIdentifier: "TermsOfUse") as! TermsOfUse
-        present(touVC, animated: true, completion: nil)
+    @IBAction func termsOfUseButtonPressed(_ sender: AnyObject) {
+        let termsOfUseViewController = storyboard?.instantiateViewController(withIdentifier: "TermsOfUse") as! TermsOfUse
+        present(termsOfUseViewController, animated: true, completion: nil)
     }
 
 }

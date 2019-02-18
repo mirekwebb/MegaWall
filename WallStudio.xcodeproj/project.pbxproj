@@ -12,7 +12,7 @@
 		72323EA01DDDFBD200A12460 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72323E9F1DDDFBD200A12460 /* StoreKit.framework */; };
 		72323EA21DDDFBD900A12460 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 72323EA11DDDFBD900A12460 /* libz.tbd */; };
 		72323EA41DDDFBDE00A12460 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 72323EA31DDDFBDE00A12460 /* libsqlite3.tbd */; };
-		725C277F1B70A36000168806 /* Terms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725C277E1B70A36000168806 /* Terms.swift */; };
+		725C277F1B70A36000168806 /* TermsOfUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725C277E1B70A36000168806 /* TermsOfUse.swift */; };
 		725C27811B70A39400168806 /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 725C27801B70A39400168806 /* terms.html */; };
 		725C27851B70B92300168806 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725C27841B70B92300168806 /* AdSupport.framework */; };
 		725C27871B70B92A00168806 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725C27861B70B92A00168806 /* AVFoundation.framework */; };
@@ -27,7 +27,6 @@
 		7292A8C71B6F73A1006BB1B9 /* WallGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292A8C61B6F73A1006BB1B9 /* WallGrid.swift */; };
 		7292A8CA1B6F73A1006BB1B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7292A8C81B6F73A1006BB1B9 /* Main.storyboard */; };
 		7292A8CC1B6F73A1006BB1B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7292A8CB1B6F73A1006BB1B9 /* Images.xcassets */; };
-		7292A8EB1B6F9C3C006BB1B9 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292A8EA1B6F9C3C006BB1B9 /* Configs.swift */; };
 		7292A8EE1B6FA34F006BB1B9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292A8ED1B6FA34F006BB1B9 /* Categories.swift */; };
 		7292A8F61B6FA3AD006BB1B9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7292A8F51B6FA3AD006BB1B9 /* AudioToolbox.framework */; };
 		7292A8F81B6FA3B1006BB1B9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7292A8F71B6FA3B1006BB1B9 /* CFNetwork.framework */; };
@@ -39,12 +38,13 @@
 		7292A9061B6FA3D0006BB1B9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7292A9051B6FA3D0006BB1B9 /* SystemConfiguration.framework */; };
 		72F9E06B1ECC39AA00E26DC2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E0691ECC39AA00E26DC2 /* Login.swift */; };
 		72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */; };
-		8C6D2D431F3DF5F5005CAF12 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D2D421F3DF5F5005CAF12 /* Helpers.swift */; };
-		8CE0EB6F1F1F4B1C001FC8E1 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CE0EB6A1F1F488C001FC8E1 /* Montserrat-Light.ttf */; };
-		8CE0EB701F1F4B1C001FC8E1 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CE0EB6B1F1F488C001FC8E1 /* Montserrat-Medium.ttf */; };
-		8CE0EB711F1F4B1C001FC8E1 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CE0EB6C1F1F488C001FC8E1 /* Montserrat-Regular.ttf */; };
-		8CE0EB721F1F4B1C001FC8E1 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CE0EB6D1F1F488C001FC8E1 /* Montserrat-Thin.ttf */; };
 		D8B8B3ED221B081E00C27166 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3EC221B081E00C27166 /* Podfile */; };
+		D8B8B3F9221B2A4A00C27166 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3F5221B2A4A00C27166 /* Montserrat-Thin.ttf */; };
+		D8B8B3FA221B2A4A00C27166 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3F6221B2A4A00C27166 /* Montserrat-Regular.ttf */; };
+		D8B8B3FB221B2A4A00C27166 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3F7221B2A4A00C27166 /* Montserrat-Light.ttf */; };
+		D8B8B3FC221B2A4A00C27166 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3F8221B2A4A00C27166 /* Montserrat-Medium.ttf */; };
+		D8B8B3FE221B2AC500C27166 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B8B3FD221B2AC500C27166 /* Globals.swift */; };
+		D8B8B401221B2B7900C27166 /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B8B400221B2B7900C27166 /* UIViewController + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,7 @@
 		72323E9F1DDDFBD200A12460 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		72323EA11DDDFBD900A12460 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		72323EA31DDDFBDE00A12460 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		725C277E1B70A36000168806 /* Terms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
+		725C277E1B70A36000168806 /* TermsOfUse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfUse.swift; sourceTree = "<group>"; };
 		725C27801B70A39400168806 /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
 		725C27841B70B92300168806 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		725C27861B70B92A00168806 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -71,7 +71,6 @@
 		7292A8C61B6F73A1006BB1B9 /* WallGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallGrid.swift; sourceTree = "<group>"; };
 		7292A8C91B6F73A1006BB1B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7292A8CB1B6F73A1006BB1B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7292A8EA1B6F9C3C006BB1B9 /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		7292A8ED1B6FA34F006BB1B9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		7292A8F51B6FA3AD006BB1B9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7292A8F71B6FA3B1006BB1B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -85,12 +84,13 @@
 		72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		853C1F6353D0080351EACED5 /* Pods_WallStudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallStudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3A46991F248F2200D13C5F /* WallStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WallStudio.entitlements; sourceTree = "<group>"; };
-		8C6D2D421F3DF5F5005CAF12 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		8CE0EB6A1F1F488C001FC8E1 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
-		8CE0EB6B1F1F488C001FC8E1 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
-		8CE0EB6C1F1F488C001FC8E1 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
-		8CE0EB6D1F1F488C001FC8E1 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		D8B8B3EC221B081E00C27166 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D8B8B3F5221B2A4A00C27166 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		D8B8B3F6221B2A4A00C27166 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		D8B8B3F7221B2A4A00C27166 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		D8B8B3F8221B2A4A00C27166 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		D8B8B3FD221B2AC500C27166 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		D8B8B400221B2B7900C27166 /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,10 +170,7 @@
 		7292A8C11B6F73A0006BB1B9 /* WallStudio */ = {
 			isa = PBXGroup;
 			children = (
-				8C3A46991F248F2200D13C5F /* WallStudio.entitlements */,
-				8CE0EB6E1F1F4893001FC8E1 /* Resources */,
 				7292A8C41B6F73A0006BB1B9 /* AppDelegate.swift */,
-				7292A8EA1B6F9C3C006BB1B9 /* Configs.swift */,
 				7292A8C81B6F73A1006BB1B9 /* Main.storyboard */,
 				72F9E06D1ECC39D900E26DC2 /* Login */,
 				72627E251B6FD8E300089695 /* Home.swift */,
@@ -181,9 +178,12 @@
 				7292A8C61B6F73A1006BB1B9 /* WallGrid.swift */,
 				72627E2E1B6FE1F300089695 /* Submit.swift */,
 				1391862D1F1CC24F0011EFC1 /* Account.swift */,
+				D8B8B3FF221B2B4200C27166 /* Extensions */,
+				D8B8B3F2221B29FF00C27166 /* Resources */,
 				7292A8CB1B6F73A1006BB1B9 /* Images.xcassets */,
 				7292A8C31B6F73A0006BB1B9 /* Info.plist */,
 				D8B8B3EC221B081E00C27166 /* Podfile */,
+				8C3A46991F248F2200D13C5F /* WallStudio.entitlements */,
 			);
 			path = WallStudio;
 			sourceTree = "<group>";
@@ -193,22 +193,46 @@
 			children = (
 				72F9E0691ECC39AA00E26DC2 /* Login.swift */,
 				72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */,
-				725C277E1B70A36000168806 /* Terms.swift */,
-				725C27801B70A39400168806 /* terms.html */,
+				725C277E1B70A36000168806 /* TermsOfUse.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
 		};
-		8CE0EB6E1F1F4893001FC8E1 /* Resources */ = {
+		D8B8B3F2221B29FF00C27166 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8C6D2D421F3DF5F5005CAF12 /* Helpers.swift */,
-				8CE0EB6A1F1F488C001FC8E1 /* Montserrat-Light.ttf */,
-				8CE0EB6B1F1F488C001FC8E1 /* Montserrat-Medium.ttf */,
-				8CE0EB6C1F1F488C001FC8E1 /* Montserrat-Regular.ttf */,
-				8CE0EB6D1F1F488C001FC8E1 /* Montserrat-Thin.ttf */,
+				D8B8B3FD221B2AC500C27166 /* Globals.swift */,
+				D8B8B3F4221B2A1E00C27166 /* Fonts */,
+				D8B8B402221B3EE700C27166 /* Terms */,
 			);
-			name = Resources;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D8B8B3F4221B2A1E00C27166 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8B3F7221B2A4A00C27166 /* Montserrat-Light.ttf */,
+				D8B8B3F8221B2A4A00C27166 /* Montserrat-Medium.ttf */,
+				D8B8B3F6221B2A4A00C27166 /* Montserrat-Regular.ttf */,
+				D8B8B3F5221B2A4A00C27166 /* Montserrat-Thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D8B8B3FF221B2B4200C27166 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D8B8B400221B2B7900C27166 /* UIViewController + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D8B8B402221B3EE700C27166 /* Terms */ = {
+			isa = PBXGroup;
+			children = (
+				725C27801B70A39400168806 /* terms.html */,
+			);
+			path = Terms;
 			sourceTree = "<group>";
 		};
 		F4B432326957F65DADAB9D56 /* Pods */ = {
@@ -296,14 +320,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CE0EB711F1F4B1C001FC8E1 /* Montserrat-Regular.ttf in Resources */,
-				8CE0EB6F1F1F4B1C001FC8E1 /* Montserrat-Light.ttf in Resources */,
+				D8B8B3FB221B2A4A00C27166 /* Montserrat-Light.ttf in Resources */,
+				D8B8B3FA221B2A4A00C27166 /* Montserrat-Regular.ttf in Resources */,
+				D8B8B3F9221B2A4A00C27166 /* Montserrat-Thin.ttf in Resources */,
 				D8B8B3ED221B081E00C27166 /* Podfile in Resources */,
-				8CE0EB701F1F4B1C001FC8E1 /* Montserrat-Medium.ttf in Resources */,
 				7292A8CA1B6F73A1006BB1B9 /* Main.storyboard in Resources */,
 				725C27811B70A39400168806 /* terms.html in Resources */,
+				D8B8B3FC221B2A4A00C27166 /* Montserrat-Medium.ttf in Resources */,
 				7292A8CC1B6F73A1006BB1B9 /* Images.xcassets in Resources */,
-				8CE0EB721F1F4B1C001FC8E1 /* Montserrat-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +344,6 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -359,16 +382,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7292A8EB1B6F9C3C006BB1B9 /* Configs.swift in Sources */,
 				1391862E1F1CC24F0011EFC1 /* Account.swift in Sources */,
 				7292A8C71B6F73A1006BB1B9 /* WallGrid.swift in Sources */,
 				7292A8EE1B6FA34F006BB1B9 /* Categories.swift in Sources */,
-				8C6D2D431F3DF5F5005CAF12 /* Helpers.swift in Sources */,
 				72627E2F1B6FE1F300089695 /* Submit.swift in Sources */,
-				725C277F1B70A36000168806 /* Terms.swift in Sources */,
+				725C277F1B70A36000168806 /* TermsOfUse.swift in Sources */,
 				7292A8C51B6F73A0006BB1B9 /* AppDelegate.swift in Sources */,
+				D8B8B3FE221B2AC500C27166 /* Globals.swift in Sources */,
 				72627E261B6FD8E300089695 /* Home.swift in Sources */,
 				72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */,
+				D8B8B401221B2B7900C27166 /* UIViewController + Extensions.swift in Sources */,
 				72F9E06B1ECC39AA00E26DC2 /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,12 +528,10 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/WallStudio/Facebook",
-					"$(PROJECT_DIR)/WallStudio/Parse",
 					"$(PROJECT_DIR)/WallStudio",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/WallStudio/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepiece.aniwallpapers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -539,7 +560,7 @@
 					"$(PROJECT_DIR)/WallStudio",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/WallStudio/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepiece.aniwallpapers;
 				PRODUCT_NAME = "$(TARGET_NAME)";

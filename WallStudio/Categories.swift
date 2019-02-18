@@ -16,16 +16,16 @@ class CatCell: UITableViewCell {
     @IBOutlet var catNameLabel: UILabel!
 }
 
-class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate, UISearchBarDelegate {
+class Categories: UIViewController {
 
-    @IBOutlet var catTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    @IBOutlet private var categoriesTableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var rightBarButtonItem: UIBarButtonItem!
 
-    var categoriesArray = [PFObject]()
+    private var categoriesArray = [PFObject]()
 
     // AdMob Banner View
-    var adMobBannerView = GADBannerView()
+    private var adMobBannerView = GADBannerView()
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
@@ -40,7 +40,7 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let backButton = UIButton(type: .custom)
         backButton.adjustsImageWhenHighlighted = false
         backButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        backButton.addTarget(self, action: #selector(backButton(_:)), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         backButton.setTitle("BACK", for: UIControlState.normal)
         backButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
@@ -58,8 +58,8 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
 
     // Categories
-    func queryCategories() {
-        showHUD("Loading...")
+    private func queryCategories() {
+        showHUD(with: "Loading...")
 
         let query = PFQuery(className: CATEGORIES_CLASS_NAME)
 
@@ -69,66 +69,24 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             query.whereKey(CATEGORIES_NAME, contains: searchStr)
         }
 
-        query.findObjectsInBackground { (objects, error) in
+        query.findObjectsInBackground { [weak self] (objects, error) in
+            guard let self = self else {
+                return
+            }
+
             if error == nil {
                 self.categoriesArray = objects!
+                self.categoriesTableView.reloadData()
                 self.hideHUD()
-                self.catTableView.reloadData()
             } else {
-                self.simpleAlert(mess: "\(error!.localizedDescription)")
                 self.hideHUD()
+                self.showSimpleAlert(with: "\(error!.localizedDescription)")
             }
         }
     }
 
-    // TableView Delegates
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoriesArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as! CatCell
-
-        let catClass = categoriesArray[indexPath.row]
-
-        let imageFile = catClass[CATEGORIES_THUMB] as? PFFileObject
-        imageFile?.getDataInBackground(block: { (data, error) in
-            if error == nil {
-                if let imageData = data {
-                    cell.catImage.image = UIImage(data: imageData)
-                }
-            }
-        })
-
-        cell.catImage.layer.cornerRadius = 10
-        cell.catNameLabel.text = "  \(catClass[CATEGORIES_NAME]!)"
-
-        cell.backgroundColor = UIColor.clear
-
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-
-    // Show Wallpapers
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var catClass = PFObject(className: CATEGORIES_CLASS_NAME)
-        catClass = categoriesArray[indexPath.row]
-
-        let wgVC = storyboard?.instantiateViewController(withIdentifier: "WallGrid") as! WallGrid
-        wgVC.categoryName = "\(catClass[CATEGORIES_NAME]!)"
-        wgVC.isFavorites = false
-        navigationController?.pushViewController(wgVC, animated: true)
-    }
-
     // SearchBar
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    private func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         searchBar.showsCancelButton = false
@@ -136,21 +94,17 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         queryCategories()
     }
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    private func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         queryCategories()
     }
 
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-    }
-
     // Back Button
-    @objc func backButton(_ sender: UIButton) {
+    @objc private func backButtonPressed(_ sender: UIButton) {
         _ = navigationController?.popViewController(animated: true)
     }
 
     // Refresh Button
-    @IBAction func refreshButt(_ sender: AnyObject) {
+    @IBAction private func refreshButtonPressed(_ sender: AnyObject) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
         searchBar.showsCancelButton = false
@@ -159,7 +113,7 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
 
     // AdMob Banners
-    func initAdMobBanner() {
+    private func initAdMobBanner() {
         adMobBannerView.adSize = GADAdSizeFromCGSize(CGSize(width: 320, height: 50))
         adMobBannerView.frame = CGRect(x: 0, y: self.view.frame.size.height, width: 320, height: 50)
         adMobBannerView.adUnitID = ADMOB_UNIT_ID
@@ -171,16 +125,8 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         adMobBannerView.load(request)
     }
 
-    // Hide the banner
-    func hideBanner(_ banner: UIView) {
-        UIView.beginAnimations("hideBanner", context: nil)
-        banner.frame = CGRect(x: 0, y: self.view.frame.size.height, width: banner.frame.size.width, height: banner.frame.size.height)
-        UIView.commitAnimations()
-        banner.isHidden = true
-    }
-
     // Show the banner
-    func showBanner(_ banner: UIView) {
+    private func showBanner(_ banner: UIView) {
         var bottomOffset: CGFloat = 0
 
         // iPhone X
@@ -199,6 +145,77 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         banner.isHidden = false
     }
 
+    // Hide the banner
+    private func hideBanner(_ banner: UIView) {
+        UIView.beginAnimations("hideBanner", context: nil)
+        banner.frame = CGRect(x: 0, y: self.view.frame.size.height, width: banner.frame.size.width, height: banner.frame.size.height)
+        UIView.commitAnimations()
+        banner.isHidden = true
+    }
+
+}
+
+extension Categories: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoriesArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as! CatCell
+
+        let catClass = categoriesArray[indexPath.row]
+
+        let imageFile = catClass[CATEGORIES_THUMB] as? PFFileObject
+        imageFile?.getDataInBackground(block: { (data, error) in
+            guard error == nil,
+                let imageData = data else {
+                    return
+            }
+            cell.catImage.image = UIImage(data: imageData)
+        })
+
+        cell.catImage.layer.cornerRadius = 10
+        cell.catNameLabel.text = "  \(catClass[CATEGORIES_NAME]!)"
+
+        cell.backgroundColor = UIColor.clear
+
+        return cell
+    }
+
+}
+
+extension Categories: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+
+    // Show Wallpapers
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var categoriesClass = PFObject(className: CATEGORIES_CLASS_NAME)
+        categoriesClass = categoriesArray[indexPath.row]
+
+        let wallGridViewController = storyboard?.instantiateViewController(withIdentifier: "WallGrid") as! WallGrid
+        wallGridViewController.categoryName = "\(categoriesClass[CATEGORIES_NAME]!)"
+        wallGridViewController.isFavorites = false
+        navigationController?.pushViewController(wallGridViewController, animated: true)
+    }
+}
+
+extension Categories: UISearchBarDelegate {
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+}
+
+extension Categories: GADBannerViewDelegate {
+
     // AdMob banner available
     func adViewDidReceiveAd(_ view: GADBannerView) {
         print("AdMob loaded!")
@@ -210,5 +227,4 @@ class Categories: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         print("AdMob Can't load ads right now, they'll be available later \n\(error)")
         hideBanner(adMobBannerView)
     }
-
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-//import 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
 
         // Setup Push Notifications
-        let notifTypes: UIUserNotificationType = [.alert, .badge, .sound]
-        let settings = UIUserNotificationSettings(types: notifTypes, categories: nil)
+        let notificationTypes: UIUserNotificationType = [.alert, .badge, .sound]
+        let settings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         application.applicationIconBadgeNumber = 0
@@ -42,27 +41,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.tintColor = UIColor.black
 
         // 3D Touch Functions
-        if #available(iOS 9.0, *) {
-
-            let shortcut1 = UIMutableApplicationShortcutItem(type: "share",
+        let shareShortcut = UIMutableApplicationShortcutItem(type: "share",
                                                              localizedTitle: "Share \(APP_NAME)",
                                                              localizedSubtitle: "",
                                                              icon: UIApplicationShortcutIcon(type: .share),
                                                              userInfo: nil
-            )
+        )
 
-            application.shortcutItems = [shortcut1]
-
-        } else {
-
-        }
+        application.shortcutItems = [shareShortcut]
 
         return true
     }
 
-
     // Handler for 3D Touch
-    @available(iOS 9.0, *)
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         switch shortcutItem.type {
 
@@ -123,22 +114,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
     }
 
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
     }
 
 }

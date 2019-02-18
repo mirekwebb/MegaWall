@@ -10,15 +10,15 @@ import UIKit
 import Parse
 //import ParseFacebookUtilsV4
 
-class Login: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
+class Login: UIViewController, UIAlertViewDelegate {
 
-    @IBOutlet var containerScrollView: UIScrollView!
-    @IBOutlet var usernameTxt: UITextField!
-    @IBOutlet var passwordTxt: UITextField!
-    @IBOutlet var loginViews: [UIView]!
-    @IBOutlet weak var loginOutlet: UIButton!
-    @IBOutlet var loginButtons: [UIButton]!
-    @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet private var containerScrollView: UIScrollView!
+    @IBOutlet private var usernameTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var loginViews: [UIView]!
+    @IBOutlet private weak var loginOutlet: UIButton!
+    @IBOutlet private var loginButtons: [UIButton]!
+    @IBOutlet private weak var logoImage: UIImageView!
 
     override func viewWillAppear(_ animated: Bool) {
         if PFUser.current() != nil {
@@ -34,8 +34,8 @@ class Login: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
 
         // Placeholder Color
         let color = UIColor.white
-        usernameTxt.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: color])
-        passwordTxt.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: color])
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: color])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: color])
 
         // Round Corners
         for aView in loginViews {
@@ -54,30 +54,32 @@ class Login: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
     }
 
     // Login Button
-    @IBAction func loginButt(_ sender: AnyObject) {
+    @IBAction private func loginButtonPressed(_ sender: AnyObject) {
         dismissKeyboard()
-        showHUD("Please wait...")
+        showHUD(with: "Please wait...")
 
-        PFUser.logInWithUsername(inBackground: usernameTxt.text!, password: passwordTxt.text!) { (user, error) -> Void in
-            if error == nil {
-                self.dismiss(animated: true, completion: nil)
-                self.hideHUD()
-            } else {
-                self.simpleAlert(mess: "\(error!.localizedDescription)")
-                self.hideHUD()
-            } }
+        PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) { [weak self] (user, error) -> Void in
+            guard let strongSelf = self,
+                error != nil else {
+                    self?.hideHUD()
+                    self?.dismiss(animated: true, completion: nil)
+                    return
+            }
+            strongSelf.showSimpleAlert(with: "\(error!.localizedDescription)")
+            strongSelf.hideHUD()
+        }
     }
 
     // Facebook Login Button
-    @IBAction func facebookButt(_ sender: Any) {
+    @IBAction private func facebookButt(_ sender: Any) {
 
         // Set permissions required from the facebook user account
         let permissions = ["public_profile", "email"]
-        showHUD("Please wait...")
+        showHUD(with: "Please wait...")
 
         PFFacebookUtils.logInInBackground(withReadPermissions: permissions) { (user, error) in
             if user == nil {
-                self.simpleAlert(mess: "Facebook login cancelled")
+                self.showSimpleAlert(with: "Facebook login cancelled")
 
             } else if (user!.isNew) {
                 print("new user signed with facebook")
@@ -91,64 +93,60 @@ class Login: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
             } }
     }
 
-    func getFBUserData() {
+    private func getFBUserData() {
+
         let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, picture.type(large)"])
         let connection = FBSDKGraphRequestConnection()
-        connection.add(graphRequest) { (connection, result, error) in
-            if error == nil {
-                let userData: [String: AnyObject] = result as! [String: AnyObject]
 
-                let name = userData["name"] as! String
-                let email = userData["email"] as! String
-                let currUser = PFUser.current()!
-                let nameArr = name.components(separatedBy: " ")
-                var username = String()
-                for word in nameArr {
-                    username.append(word.lowercased())
+        connection.add(graphRequest) { [weak self] (connection, result, error) in
+            guard error == nil else {
+                self?.showSimpleAlert(with: "\(error!.localizedDescription)")
+                return
+            }
+
+            let userData: [String: AnyObject] = result as! [String: AnyObject]
+
+            let name = userData["name"] as! String
+            let email = userData["email"] as! String
+            let currUser = PFUser.current()!
+            let nameArr = name.components(separatedBy: " ")
+            var username = String()
+
+            for word in nameArr {
+                username.append(word.lowercased())
+            }
+
+            currUser.username = username
+            currUser.email = email
+            currUser.saveInBackground(block: { [weak self] (succ, error) in
+                if error == nil {
+                    self?.dismiss(animated: false, completion: nil)
+                    self?.hideHUD()
                 }
-                currUser.username = username
-                currUser.email = email
-                currUser.saveInBackground(block: { (succ, error) in
-                    if error == nil {
-                        self.dismiss(animated: false, completion: nil)
-                        self.hideHUD()
-                    } })
-
-            } else {
-                self.simpleAlert(mess: "\(error!.localizedDescription)")
-            } }
+            })
+        }
         connection.start()
     }
 
     // SignUp Button
-    @IBAction func signupButt(_ sender: AnyObject) {
-        let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUp") as! SignUp
-        signupVC.modalTransitionStyle = .crossDissolve
-        present(signupVC, animated: true, completion: nil)
-    }
-
-    // TextField Delegates
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == usernameTxt { passwordTxt.becomeFirstResponder() }
-        if textField == passwordTxt {
-            passwordTxt.resignFirstResponder()
-            loginButt(self)
-        }
-        return true
+    @IBAction private func signupButtonPressed(_ sender: AnyObject) {
+        let signupViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUp") as! SignUp
+        signupViewController.modalTransitionStyle = .crossDissolve
+        present(signupViewController, animated: true, completion: nil)
     }
 
     // Dismiss Keyboard
-    @IBAction func tapToDismissKeyboard(_ sender: UITapGestureRecognizer) {
+    @IBAction private func tapToDismissKeyboard(_ sender: UITapGestureRecognizer) {
         dismissKeyboard()
     }
 
     private func dismissKeyboard() {
-        usernameTxt.resignFirstResponder()
-        passwordTxt.resignFirstResponder()
+        usernameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
 
     // Forgot Password?
-    @IBAction func forgotPasswButt(_ sender: AnyObject) {
+    @IBAction private func forgotPasswordButtonPressed(_ sender: AnyObject) {
         let alert = UIAlertController(title: APP_NAME,
                                       message: "Type your email address you used to register.",
                                       preferredStyle: .alert)
@@ -157,9 +155,9 @@ class Login: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
             let textField = alert.textFields!.first!
             let textString = textField.text!
 
-            PFUser.requestPasswordResetForEmail(inBackground: textString, block: { (succ, error) in
+            PFUser.requestPasswordResetForEmail(inBackground: textString, block: { [weak self] (succ, error) in
                 if error == nil {
-                    self.simpleAlert(mess: "You will receive an email shortly with a link to reset your password")
+                    self?.showSimpleAlert(with: "You will receive an email shortly with a link to reset your password")
                 }
             })
         })
@@ -177,8 +175,22 @@ class Login: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
     }
 
     // Dismiss Button
-    @IBAction func dismissButt(_ sender: Any) {
+    @IBAction private func dismissButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension Login: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        }
+        if textField == passwordTextField {
+            passwordTextField.resignFirstResponder()
+            loginButtonPressed(self)
+        }
+        return true
+    }
 }

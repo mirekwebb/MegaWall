@@ -9,10 +9,10 @@
 import UIKit
 import Parse
 
-class Account: UIViewController, UITextFieldDelegate {
+class Account: UIViewController {
 
-    @IBOutlet weak var usernametxt: UITextField!
-    @IBOutlet weak var emailTxt: UITextField!
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
@@ -24,20 +24,20 @@ class Account: UIViewController, UITextFieldDelegate {
         self.title = "Account".uppercased()
 
         // Back BarButton
-        let backButt = UIButton(type: .custom)
-        backButt.adjustsImageWhenHighlighted = false
-        backButt.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        backButt.addTarget(self, action: #selector(backButton), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButt)
-        backButt.setTitle("BACK", for: UIControlState.normal)
-        backButt.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
-        backButt.setTitleColor(UIColor.white, for: UIControlState.normal)
+        let backButton = UIButton(type: .custom)
+        backButton.adjustsImageWhenHighlighted = false
+        backButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        backButton.setTitle("BACK", for: UIControlState.normal)
+        backButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
+        backButton.setTitleColor(UIColor.white, for: UIControlState.normal)
 
         // Logout BarButton
         let logoutButton = UIButton(type: .custom)
         logoutButton.adjustsImageWhenHighlighted = false
         logoutButton.frame = CGRect(x: 0, y: 0, width: 58, height: 44)
-        logoutButton.addTarget(self, action: #selector(logoutButt), for: .touchUpInside)
+        logoutButton.addTarget(self, action: #selector(logoutButtonPressed), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: logoutButton)
         logoutButton.setTitle("LOGOUT", for: UIControlState.normal)
         logoutButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
@@ -45,53 +45,55 @@ class Account: UIViewController, UITextFieldDelegate {
 
         // User Data
         let currUser = PFUser.current()!
-        usernametxt.text = currUser.username!
-        emailTxt.text = currUser.email!
+        usernameTextField.text = currUser.username!
+        emailTextField.text = currUser.email!
 
-        usernametxt.layer.cornerRadius = 5
-        emailTxt.layer.cornerRadius = 5
+        usernameTextField.layer.cornerRadius = 5
+        emailTextField.layer.cornerRadius = 5
     }
 
     // Update Profile Button
-    @IBAction func updateProfileButt(_ sender: Any) {
-        if usernametxt.text == "" || emailTxt.text == "" {
-            self.simpleAlert(mess: "Please insert a Username and a valid Email address")
-
-        } else {
-            let currUser = PFUser.current()!
-            showHUD("Loading...")
-
-            usernametxt.resignFirstResponder()
-            emailTxt.resignFirstResponder()
-
-            currUser.username = usernametxt.text!
-            currUser.email = emailTxt.text!
-
-            currUser.saveInBackground(block: { (succ, error) in
-                if error == nil {
-                    self.hideHUD()
-                    self.simpleAlert(mess: "Profile updated")
-                } else {
-                    self.hideHUD()
-                    self.simpleAlert(mess: "\(error!.localizedDescription)")
-                }
-            })
+    @IBAction private func updateProfileButtonPressed(_ sender: Any) {
+        guard usernameTextField.text != "", emailTextField.text != "" else {
+            self.showSimpleAlert(with: "Please insert a Username and a valid Email address")
+            return
         }
+
+        let currentUser = PFUser.current()!
+        showHUD(with: "Loading...")
+
+        usernameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+
+        currentUser.username = usernameTextField.text!
+        currentUser.email = emailTextField.text!
+
+        currentUser.saveInBackground(block: { [weak self] (succ, error) in
+            guard let strongSelf = self, error == nil else {
+                self?.hideHUD()
+                self?.showSimpleAlert(with: "\(error!.localizedDescription)")
+                return
+            }
+            strongSelf.hideHUD()
+            strongSelf.showSimpleAlert(with: "Profile updated")
+        })
     }
 
     // Logout Button
-    @objc func logoutButt() {
+    @objc private func logoutButtonPressed() {
         let alert = UIAlertController(title: APP_NAME,
                                       message: "Are you sure you want to logout?",
                                       preferredStyle: .alert)
 
         let ok = UIAlertAction(title: "Logout", style: .default, handler: { (action) -> Void in
-            self.showHUD("Logging Out...")
+            self.showHUD(with: "Logging Out...")
 
             PFUser.logOutInBackground(block: { (error) in
-                if error == nil {
-                    _ = self.navigationController?.popViewController(animated: true)
+                guard error == nil else {
+                    self.hideHUD()
+                    return
                 }
+                _ = self.navigationController?.popViewController(animated: true)
                 self.hideHUD()
             })
         })
@@ -102,14 +104,19 @@ class Account: UIViewController, UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
     }
 
+    // Back Button
+    @objc func backButtonPressed() {
+        _ = navigationController?.popViewController(animated: true)
+    }
+
+}
+
+// MARK: UITextFieldDelegate
+
+extension Account: UITextFieldDelegate {
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-
-    // Back Button
-    @objc func backButton() {
-        _ = navigationController?.popViewController(animated: true)
-    }
-
 }

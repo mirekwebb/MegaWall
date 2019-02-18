@@ -1,5 +1,5 @@
 //
-//  Terms.swift
+//  TermsOfUse.swift
 //  WallStudio
 //
 //  Created by Greenfield
@@ -10,7 +10,7 @@ import UIKit
 
 class TermsOfUse: UIViewController {
 
-    @IBOutlet var webView: UIWebView!
+    @IBOutlet private var webView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class TermsOfUse: UIViewController {
     }
 
     // Dismiss Button
-    @IBAction func dismissButt(_ sender: AnyObject) {
+    @IBAction private func dismissButtonPressed(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
 

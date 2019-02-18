@@ -50,7 +50,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func queryCategories() {
-        showHUD("Sync Data...")
+        showHUD(with: "Sync Data...")
 
         let query = PFQuery(className: CATEGORIES_CLASS_NAME)
         query.findObjectsInBackground { (objects, error) in
@@ -59,7 +59,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
                 self.hideHUD()
                 self.catTableView.reloadData()
             } else {
-                self.simpleAlert(mess: "\(error!.localizedDescription)")
+                self.showSimpleAlert(with: "\(error!.localizedDescription)")
                 self.hideHUD()
             }
         }
@@ -155,11 +155,11 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
     // Submit
     @IBAction func submitButt(_ sender: AnyObject) {
         if catName == "" || wallImage.image == nil {
-            self.simpleAlert(mess: "Please select a Category and Upload a Wallpaper")
+            self.showSimpleAlert(with: "Please select a Category and Upload a Wallpaper")
             hideHUD()
 
         } else {
-            showHUD("Please wait...")
+            showHUD(with: "Please wait...")
 
             let wallClass = PFObject(className: WALLPAPERS_CLASS_NAME)
             wallClass[WALLPAPERS_CATEGORY] = catName
@@ -177,7 +177,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
                     self.hideHUD()
 
                 } else {
-                    self.simpleAlert(mess: "\(error!.localizedDescription)")
+                    self.showSimpleAlert(with: "\(error!.localizedDescription)")
                     self.hideHUD()
                 }
             })
@@ -201,7 +201,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
         if MFMailComposeViewController.canSendMail() {
             present(mailComposer, animated: true, completion: nil)
         } else {
-            self.simpleAlert(mess: "Your device cannot send emails. Please configure an email address into Settings -> Mail, Contacts, Calendars.")
+            self.showSimpleAlert(with: "Your device cannot send emails. Please configure an email address into Settings -> Mail, Contacts, Calendars.")
         }
     }
 
@@ -219,7 +219,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
             outputMessage = "Something went wrong with sending Mail, try again later."
         default: break }
 
-        simpleAlert(mess: outputMessage)
+        showSimpleAlert(with: outputMessage)
         dismiss(animated: false, completion: nil)
     }
 

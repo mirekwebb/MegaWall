@@ -17,22 +17,22 @@ class WallCell: UICollectionViewCell {
     @IBOutlet weak var likesLabel: UILabel!
 }
 
-class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MFMailComposeViewControllerDelegate, GADBannerViewDelegate {
+class WallGrid: UIViewController, MFMailComposeViewControllerDelegate {
 
-    @IBOutlet var wallCollView: UICollectionView!
-    @IBOutlet var imagePreviewView: UIView!
-    @IBOutlet var imgPrev: UIImageView!
-    @IBOutlet var timeLabel: UILabel!
-    @IBOutlet weak var likesLabelin: UILabel!
+    @IBOutlet private var wallCollectionView: UICollectionView!
+    @IBOutlet private var imagePreviewView: UIView!
+    @IBOutlet private var imagePreviewImageView: UIImageView!
+    @IBOutlet private var timeLabel: UILabel!
+    @IBOutlet private weak var likesLabel: UILabel!
 
     // AdMob Banners
-    var adMobBannerView = GADBannerView()
+    private var adMobBannerView = GADBannerView()
 
-    var wallsArray = [PFObject]()
+    private var wallsArray = [PFObject]()
     var categoryName = String()
-    var selectedWallpaper = 0
+    private var selectedWallpaper = 0
     var isFavorites = false
-    var byLikes = false
+    private var byLikes = false
 
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,20 +52,20 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         imagePreviewView.frame = CGRect(x: 0, y: view.frame.size.height, width: view.frame.size.width, height: view.frame.size.height)
 
         // Back BarButton
-        let backButt = UIButton(type: .custom)
-        backButt.adjustsImageWhenHighlighted = false
-        backButt.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        backButt.addTarget(self, action: #selector(backButton), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButt)
-        backButt.setTitle("BACK", for: UIControlState.normal)
-        backButt.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
-        backButt.setTitleColor(UIColor.white, for: UIControlState.normal)
+        let backButton = UIButton(type: .custom)
+        backButton.adjustsImageWhenHighlighted = false
+        backButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        backButton.setTitle("BACK", for: UIControlState.normal)
+        backButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
+        backButton.setTitleColor(UIColor.white, for: UIControlState.normal)
 
         // SortBy BarButton
         let sortByButton = UIButton(type: .custom)
         sortByButton.adjustsImageWhenHighlighted = false
         sortByButton.frame = CGRect(x: 0, y: 0, width: 58, height: 44)
-        sortByButton.addTarget(self, action: #selector(sortByButt), for: .touchUpInside)
+        sortByButton.addTarget(self, action: #selector(sortByButtonPressed), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sortByButton)
         sortByButton.setTitle("SORT BY", for: UIControlState.normal)
         sortByButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
@@ -73,9 +73,9 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
 
         // Get Time
         let currentTime = Date()
-        let df = DateFormatter()
-        df.dateFormat = "h:mm"
-        timeLabel.text = df.string(from: currentTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm"
+        timeLabel.text = dateFormatter.string(from: currentTime)
 
         // Ini AdMob
         initAdMobBanner()
@@ -86,7 +86,7 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
 
     // Show Wallpapers
     func queryWallpapers() {
-        showHUD("Loading...")
+        showHUD(with: "Loading...")
 
         let query = PFQuery(className: WALLPAPERS_CLASS_NAME)
 
@@ -102,102 +102,52 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             query.order(byDescending: "createdAt")
         }
 
-
         query.whereKey(WALLPAPERS_IS_PENDING, equalTo: false)
 
-        query.findObjectsInBackground { (objects, error) in
+        query.findObjectsInBackground { [weak self] (objects, error) in
+            guard let self = self else {
+                return
+            }
+
             if error == nil {
                 self.wallsArray = objects!
                 self.hideHUD()
-                self.wallCollView.reloadData()
+                self.wallCollectionView.reloadData()
             } else {
-                self.simpleAlert(mess: "\(error!.localizedDescription)")
+                self.showSimpleAlert(with: "\(error!.localizedDescription)")
                 self.hideHUD()
             }
         }
     }
 
-    // CollView Delegates
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return wallsArray.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WallCell", for: indexPath) as! WallCell
-
-        var wallObj = PFObject(className: WALLPAPERS_CLASS_NAME)
-        wallObj = wallsArray[indexPath.row]
-
-        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFileObject
-        imageFile?.getDataInBackground(block: { (data, error) in
-            if error == nil {
-                if let imageData = data {
-                    cell.wallImage.image = UIImage(data: imageData)
-                }
-            }
-        })
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width / 3, height: view.frame.size.width / 2)
-    }
-
-    // Show Image Preview
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var wallObj = PFObject(className: WALLPAPERS_CLASS_NAME)
-        wallObj = wallsArray[indexPath.row]
-
-        // Likes
-        if wallObj[WALLPAPERS_LIKES] != nil {
-            let likes = wallObj[WALLPAPERS_LIKES] as! Int
-            self.likesLabelin.text = "♥️ \(likes) likes"
-        } else {
-            self.likesLabelin.text = ""
-        }
-
-        selectedWallpaper = indexPath.row
-
-        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFileObject
-        imageFile?.getDataInBackground(block: { (data, error) in
-            if error == nil {
-                if let imageData = data {
-                    self.imgPrev.image = UIImage(data: imageData)
-                    self.showImagePrevView()
-                }
-            }
-        })
-    }
-
     // Show/Hide Image Preview
-    func showImagePrevView() {
-        UIView.animate(withDuration: 0.2, delay: 0.2, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.imagePreviewView.frame.origin.y = 0
-        }, completion: { (finished: Bool) in
-            self.navigationController?.isNavigationBarHidden = true
+    private func showImagePreviewView() {
+        UIView.animate(withDuration: 0.2, delay: 0.2, options: UIViewAnimationOptions.curveEaseIn, animations: { [weak self] in
+            self?.imagePreviewView.frame.origin.y = 0
+        }, completion: { [weak self] (finished: Bool) in
+            self?.navigationController?.isNavigationBarHidden = true
         })
     }
 
-    func hideImagePrevView() {
-        imgPrev.image = nil
-        UIView.animate(withDuration: 0.2, delay: 0.1, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+    private func hideImagePreviewView() {
+        imagePreviewImageView.image = nil
+        UIView.animate(withDuration: 0.2, delay: 0.1, options: UIViewAnimationOptions.curveEaseInOut, animations: { [weak self] in
+            guard let self = self else {
+                return
+            }
             self.imagePreviewView.frame.origin.y = self.view.frame.size.height
-        }, completion: { (finished: Bool) in
-            self.navigationController?.isNavigationBarHidden = false
+        }, completion: { [weak self] (finished: Bool) in
+            self?.navigationController?.isNavigationBarHidden = false
         })
     }
 
     // Close Preview
-    @IBAction func closePreviewButt(_ sender: Any) {
-        hideImagePrevView()
+    @IBAction private func closePreviewButtonPressed(_ sender: Any) {
+        hideImagePreviewView()
     }
 
     // Sort By Button
-    @objc func sortByButt() {
+    @objc private func sortByButtonPressed() {
         let alert = UIAlertController(title: APP_NAME,
                                       message: "Sort Wallpapers by:",
                                       preferredStyle: .alert)
@@ -209,27 +159,28 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         })
 
 
-        let latests = UIAlertAction(title: "Latest Added", style: .default, handler: { (action) -> Void in
+        let  byLatest = UIAlertAction(title: "Latest Added", style: .default, handler: { (action) -> Void in
             self.byLikes = false
             self.queryWallpapers()
         })
 
         // Cancel Button
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
 
         alert.addAction(byLikes)
-        alert.addAction(latests)
-        alert.addAction(cancel)
+        alert.addAction( byLatest)
+        alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
 
     // Menu Button
-    @IBAction func optionsButt(_ sender: Any) {
+    @IBAction private func optionsButtonPressed(_ sender: Any) {
         var wallObj = PFObject(className: WALLPAPERS_CLASS_NAME)
         wallObj = wallsArray[selectedWallpaper]
 
         var favBy = [String]()
         var addFavActionTitle = ""
+
         if wallObj[WALLPAPERS_FAVORITED_BY] != nil {
             favBy = wallObj[WALLPAPERS_FAVORITED_BY] as! [String]
             if PFUser.current() != nil {
@@ -247,6 +198,7 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
 
         var likedBy = [String]()
         var likeActionTitle = ""
+
         if wallObj[WALLPAPERS_LIKED_BY] != nil {
             likedBy = wallObj[WALLPAPERS_LIKED_BY] as! [String]
             if PFUser.current() != nil {
@@ -267,22 +219,22 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                                       preferredStyle: .actionSheet)
 
         // Report Wallpaper
-        let report = UIAlertAction(title: "Report as Inappropriate", style: .default, handler: { (action) -> Void in
+        let reportAction = UIAlertAction(title: "Report as Inappropriate", style: .default, handler: { (action) -> Void in
 
-            self.showHUD("Please wait...")
+            self.showHUD(with: "Please wait...")
             wallObj[WALLPAPERS_IS_PENDING] = true
             wallObj[WALLPAPERS_REPORT_MESSAGE] = "Reported as Inappropriate"
-            wallObj.saveInBackground(block: { (succ, error) in
+            wallObj.saveInBackground(block: { [weak self] (succ, error) in
                 if error == nil {
-                    self.hideHUD()
-                    self.simpleAlert(mess: "Thanks for reporting this wallpaper. Our staff review this request.")
-                    _ = self.navigationController?.popViewController(animated: true)
+                    self?.hideHUD()
+                    self?.showSimpleAlert(with: "Thanks for reporting this wallpaper. Our staff review this request.")
+                    _ = self?.navigationController?.popViewController(animated: true)
                 }
             })
         })
 
         // Like Wallpaper
-        let like = UIAlertAction(title: likeActionTitle, style: .default, handler: { (action) -> Void in
+        let likeAction = UIAlertAction(title: likeActionTitle, style: .default, handler: { (action) -> Void in
 
             if PFUser.current() != nil {
 
@@ -290,9 +242,9 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                     likedBy.append(PFUser.current()!.objectId!)
                     wallObj.incrementKey(WALLPAPERS_LIKES, byAmount: 1)
                     wallObj[WALLPAPERS_LIKED_BY] = likedBy
-                    wallObj.saveInBackground(block: { (succ, error) in
+                    wallObj.saveInBackground(block: { [weak self] (succ, error) in
                         if error == nil {
-                            self.simpleAlert(mess: "You've liked this wallpaper. ")
+                            self?.showSimpleAlert(with: "You've liked this wallpaper. ")
                         }
                     })
 
@@ -303,9 +255,9 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                         likedBy = likedBy.filter { $0 != PFUser.current()!.objectId! }
 
                         wallObj[WALLPAPERS_LIKED_BY] = likedBy
-                        wallObj.saveInBackground(block: { (succ, error) in
+                        wallObj.saveInBackground(block: { [weak self] (succ, error) in
                             if error == nil {
-                                self.simpleAlert(mess: "You've unliked this wallpaper")
+                                self?.showSimpleAlert(with: "You've unliked this wallpaper")
                             }
                         })
 
@@ -313,9 +265,9 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                         likedBy.append(PFUser.current()!.objectId!)
                         wallObj.incrementKey(WALLPAPERS_LIKES, byAmount: 1)
                         wallObj[WALLPAPERS_LIKED_BY] = likedBy
-                        wallObj.saveInBackground(block: { (succ, error) in
+                        wallObj.saveInBackground(block: { [weak self] (succ, error) in
                             if error == nil {
-                                self.simpleAlert(mess: "You've liked this wallpaper")
+                                self?.showSimpleAlert(with: "You've liked this wallpaper")
                             }
                         })
                     }
@@ -326,31 +278,31 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                                               message: "Please Login to Like this Wallpaper. Want to Login now?",
                                               preferredStyle: .alert)
 
-                let ok = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
-                    let aVC = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
-                    self.present(aVC, animated: true, completion: nil)
+                let okAction = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
+                    let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
+                    self.present(loginViewController, animated: true, completion: nil)
                 })
 
                 // Cancel Button
-                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
 
-                alert.addAction(ok)
-                alert.addAction(cancel)
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             }
         })
 
         // Add To Favorites
-        let addFav = UIAlertAction(title: addFavActionTitle, style: .default, handler: { (action) -> Void in
+        let addToFavoriteAction = UIAlertAction(title: addFavActionTitle, style: .default, handler: { (action) -> Void in
             if PFUser.current() != nil {
 
                 if wallObj[WALLPAPERS_FAVORITED_BY] == nil {
                     favBy.append(PFUser.current()!.objectId!)
 
                     wallObj[WALLPAPERS_FAVORITED_BY] = favBy
-                    wallObj.saveInBackground(block: { (succ, error) in
+                    wallObj.saveInBackground(block: { [weak self] (succ, error) in
                         if error == nil {
-                            self.simpleAlert(mess: "Added to your Favorites")
+                            self?.showSimpleAlert(with: "Added to your Favorites")
                         }
                     })
 
@@ -360,9 +312,9 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                         favBy = favBy.filter { $0 != PFUser.current()!.objectId! }
 
                         wallObj[WALLPAPERS_FAVORITED_BY] = favBy
-                        wallObj.saveInBackground(block: { (succ, error) in
+                        wallObj.saveInBackground(block: { [weak self] (succ, error) in
                             if error == nil {
-                                self.simpleAlert(mess: "Removed from your Favorites")
+                                self?.showSimpleAlert(with: "Removed from your Favorites")
                             }
                         })
 
@@ -370,9 +322,9 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                         favBy.append(PFUser.current()!.objectId!)
 
                         wallObj[WALLPAPERS_FAVORITED_BY] = favBy
-                        wallObj.saveInBackground(block: { (succ, error) in
+                        wallObj.saveInBackground(block: { [weak self] (succ, error) in
                             if error == nil {
-                                self.simpleAlert(mess: "Added to your Favorites")
+                                self?.showSimpleAlert(with: "Added to your Favorites")
                             }
                         })
                     }
@@ -384,51 +336,51 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                                               preferredStyle: .alert)
 
 
-                let ok = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
-                    let aVC = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
-                    self.present(aVC, animated: true, completion: nil)
+                let okAction = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
+                    let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
+                    self.present(loginViewController, animated: true, completion: nil)
                 })
 
                 // Cancel Button
-                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
 
-                alert.addAction(ok)
-                alert.addAction(cancel)
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
                 self.present(alert, animated: true, completion: nil)
             }
 
         })
 
         // Remove From Favorites
-        let removeFav = UIAlertAction(title: "Remove from Favorites", style: .default, handler: { (action) -> Void in
+        let removeFromFavoriteAction = UIAlertAction(title: "Remove from Favorites", style: .default, handler: { (action) -> Void in
 
             var favBy = [String]()
             favBy = wallObj[WALLPAPERS_FAVORITED_BY] as! [String]
             favBy = favBy.filter { $0 != PFUser.current()!.objectId! }
 
             wallObj[WALLPAPERS_FAVORITED_BY] = favBy
-            wallObj.saveInBackground(block: { (succ, error) in
+            wallObj.saveInBackground(block: { [weak self] (succ, error) in
                 if error == nil {
-                    self.simpleAlert(mess: "Removed from your Favorites")
-                    self.hideImagePrevView()
-                    self.queryWallpapers()
+                    self?.showSimpleAlert(with: "Removed from your Favorites")
+                    self?.hideImagePreviewView()
+                    self?.queryWallpapers()
                 }
             })
         })
 
         // Cancel Button
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
 
-        alert.addAction(report)
-        alert.addAction(like)
+        alert.addAction(reportAction)
+        alert.addAction(likeAction)
 
         if isFavorites {
-            alert.addAction(removeFav)
+            alert.addAction(removeFromFavoriteAction)
         } else {
-            alert.addAction(addFav)
+            alert.addAction(addToFavoriteAction)
         }
 
-        alert.addAction(cancel)
+        alert.addAction(cancelAction)
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             let popOver = UIPopoverController(contentViewController: alert)
@@ -439,9 +391,9 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     }
 
     // Share Wallpaper
-    @IBAction func shareButt(_ sender: AnyObject) {
+    @IBAction private func shareButtonPressed(_ sender: AnyObject) {
         let message = "Hey, check out this wallpaper found on #\(APP_NAME)!"
-        let image = imgPrev.image!
+        let image = imagePreviewImageView.image!
 
         let shareItems: Array = [message, image] as [Any]
 
@@ -457,12 +409,12 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     }
 
     // Back Button
-    @objc func backButton() {
+    @objc private func backButtonPressed() {
         _ = navigationController?.popViewController(animated: true)
     }
 
     // AdMob Banner
-    func initAdMobBanner() {
+    private func initAdMobBanner() {
         adMobBannerView.adSize = GADAdSizeFromCGSize(CGSize(width: 320, height: 50))
         adMobBannerView.frame = CGRect(x: 0, y: self.view.frame.size.height, width: 320, height: 50)
         adMobBannerView.adUnitID = ADMOB_UNIT_ID
@@ -474,16 +426,8 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         adMobBannerView.load(request)
     }
 
-    // Hide the banner
-    func hideBanner(_ banner: UIView) {
-        UIView.beginAnimations("hideBanner", context: nil)
-        banner.frame = CGRect(x: 0, y: self.view.frame.size.height, width: banner.frame.size.width, height: banner.frame.size.height)
-        UIView.commitAnimations()
-        banner.isHidden = true
-    }
-
-    // Show the banner
-    func showBanner(_ banner: UIView) {
+    // Show banner
+    private func showBanner(_ banner: UIView) {
         var bottomOffset: CGFloat = 0
 
         // iPhone X
@@ -502,6 +446,83 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         banner.isHidden = false
     }
 
+    // Hide the banner
+    private func hideBanner(_ banner: UIView) {
+        UIView.beginAnimations("hideBanner", context: nil)
+        banner.frame = CGRect(x: 0, y: self.view.frame.size.height, width: banner.frame.size.width, height: banner.frame.size.height)
+        UIView.commitAnimations()
+        banner.isHidden = true
+    }
+
+}
+
+extension WallGrid: UICollectionViewDataSource {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return wallsArray.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WallCell", for: indexPath) as! WallCell
+
+        var wallObj = PFObject(className: WALLPAPERS_CLASS_NAME)
+        wallObj = wallsArray[indexPath.row]
+
+        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFileObject
+        imageFile?.getDataInBackground(block: { (data, error) in
+            guard error == nil,
+                let imageData = data else {
+                    return
+            }
+            cell.wallImage.image = UIImage(data: imageData)
+        })
+        return cell
+    }
+}
+
+extension WallGrid: UICollectionViewDelegate {
+
+    // Show Image Preview
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var wallObj = PFObject(className: WALLPAPERS_CLASS_NAME)
+        wallObj = wallsArray[indexPath.row]
+
+        // Likes
+        if wallObj[WALLPAPERS_LIKES] != nil {
+            let likes = wallObj[WALLPAPERS_LIKES] as! Int
+            self.likesLabel.text = "♥️ \(likes) likes"
+        } else {
+            self.likesLabel.text = ""
+        }
+
+        selectedWallpaper = indexPath.row
+
+        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFileObject
+        imageFile?.getDataInBackground(block: { [weak self] (data, error) in
+            guard let self = self,
+                error == nil,
+                let imageData = data else {
+                    return
+            }
+            self.imagePreviewImageView.image = UIImage(data: imageData)
+            self.showImagePreviewView()
+        })
+    }
+}
+
+extension WallGrid: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.size.width / 3, height: view.frame.size.width / 2)
+    }
+}
+
+extension WallGrid: GADBannerViewDelegate {
+
     // AdMob banner available
     func adViewDidReceiveAd(_ view: GADBannerView) {
         print("AdMob loaded!")
@@ -513,6 +534,4 @@ class WallGrid: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         print("AdMob Can't load ads right now, they'll be available later \n\(error)")
         hideBanner(adMobBannerView)
     }
-
 }
-

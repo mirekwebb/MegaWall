@@ -94,7 +94,7 @@
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="browseButt:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="iEU-Jl-9V4"/>
+                                            <action selector="browseButtonPressed:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="iEU-Jl-9V4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="blj-Lh-8xN">
@@ -105,7 +105,7 @@
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="favoritesButt:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="2WO-E1-Ydu"/>
+                                            <action selector="favoritesButtonPressed:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="2WO-E1-Ydu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8UA-YA-0h3">
@@ -116,7 +116,7 @@
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="accountButt:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="ZKh-98-Pp6"/>
+                                            <action selector="accountButtonPressed:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="ZKh-98-Pp6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d0U-Qp-uAj">
@@ -127,7 +127,7 @@
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="submitButt:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="F5O-lj-2v8"/>
+                                            <action selector="submitButtonPressed:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="F5O-lj-2v8"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jxp-4B-wWC">
@@ -138,7 +138,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="touButt:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="8aj-Ul-cC3"/>
+                                            <action selector="termsOfUseButtonPressed:" destination="8Ye-o9-BL4" eventType="touchUpInside" id="8aj-Ul-cC3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -151,13 +151,13 @@
                     <connections>
                         <outlet property="containerView" destination="4fk-yx-x9M" id="ZwB-1s-sxp"/>
                         <outlet property="logoImage" destination="5sV-X9-reH" id="80s-gI-kVI"/>
-                        <outlet property="touOutlet" destination="jxp-4B-wWC" id="ny8-9X-6Wb"/>
+                        <outlet property="termsOfUseButton" destination="jxp-4B-wWC" id="ny8-9X-6Wb"/>
                         <outletCollection property="buttons" destination="DqD-Hd-fG6" collectionClass="NSMutableArray" id="Yw2-cT-vx2"/>
                         <outletCollection property="buttons" destination="d0U-Qp-uAj" collectionClass="NSMutableArray" id="XMs-hR-uGh"/>
-                        <outletCollection property="homebuttonsViews" destination="mtf-YM-YrL" collectionClass="NSMutableArray" id="cld-SX-lTZ"/>
-                        <outletCollection property="homebuttonsViews" destination="bgR-mD-LRv" collectionClass="NSMutableArray" id="VXd-ty-sVN"/>
-                        <outletCollection property="homebuttonsViews" destination="oQ8-i6-Jfw" collectionClass="NSMutableArray" id="CbD-mL-DLc"/>
-                        <outletCollection property="homebuttonsViews" destination="bJX-Sf-CFl" collectionClass="NSMutableArray" id="OHc-jO-mtN"/>
+                        <outletCollection property="homeButtonsViews" destination="mtf-YM-YrL" collectionClass="NSMutableArray" id="cld-SX-lTZ"/>
+                        <outletCollection property="homeButtonsViews" destination="bgR-mD-LRv" collectionClass="NSMutableArray" id="VXd-ty-sVN"/>
+                        <outletCollection property="homeButtonsViews" destination="oQ8-i6-Jfw" collectionClass="NSMutableArray" id="CbD-mL-DLc"/>
+                        <outletCollection property="homeButtonsViews" destination="bJX-Sf-CFl" collectionClass="NSMutableArray" id="OHc-jO-mtN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNQ-zQ-yC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -221,7 +221,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SpX-kz-b9D" userLabel="catNameLabel">
-                                                            <rect key="frame" x="60" y="12" width="217.5" height="21"/>
+                                                            <rect key="frame" x="60" y="12" width="217" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -351,7 +351,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="updateProfileButt:" destination="Qwv-po-hT9" eventType="touchUpInside" id="mEm-LN-CHu"/>
+                                    <action selector="updateProfileButtonPressed:" destination="Qwv-po-hT9" eventType="touchUpInside" id="mEm-LN-CHu"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type your username" textAlignment="center" minimumFontSize="12" clearButtonMode="whileEditing" id="POV-Cv-lTS">
@@ -369,8 +369,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="emailTxt" destination="163-nO-O8H" id="F38-er-frY"/>
-                        <outlet property="usernametxt" destination="POV-Cv-lTS" id="q4t-2g-xwN"/>
+                        <outlet property="emailTextField" destination="163-nO-O8H" id="F38-er-frY"/>
+                        <outlet property="usernameTextField" destination="POV-Cv-lTS" id="q4t-2g-xwN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6x5-i3-4aD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -410,7 +410,7 @@
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismissButt:" destination="P8H-nC-INW" eventType="touchUpInside" id="Yhe-5N-3XP"/>
+                                    <action selector="dismissButtonPressed:" destination="P8H-nC-INW" eventType="touchUpInside" id="Yhe-5N-3XP"/>
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" id="VjF-RT-uYe">
@@ -512,12 +512,12 @@
                         <barButtonItem key="rightBarButtonItem" title="REFRESH" id="5gK-MS-5Wn">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="refreshButt:" destination="wXH-1m-t08" id="LVR-OW-u7L"/>
+                                <action selector="refreshButtonPressed:" destination="wXH-1m-t08" id="LVR-OW-u7L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="catTableView" destination="YsY-MX-deq" id="u1x-pH-Man"/>
+                        <outlet property="categoriesTableView" destination="YsY-MX-deq" id="u1x-pH-Man"/>
                         <outlet property="rightBarButtonItem" destination="5gK-MS-5Wn" id="5aF-Jr-dnP"/>
                         <outlet property="searchBar" destination="DXo-LR-Ttj" id="iaC-oN-b3R"/>
                     </connections>
@@ -605,7 +605,7 @@
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="optionsButt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jzp-j3-5FR"/>
+                                            <action selector="optionsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jzp-j3-5FR"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="q3R-kq-E6m" userLabel="shareButt">
@@ -616,7 +616,7 @@
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="shareButt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fVC-Fy-1Js"/>
+                                            <action selector="shareButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fVC-Fy-1Js"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BYv-Kw-qQR">
@@ -633,7 +633,7 @@
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="closePreviewButt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TiQ-aJ-eHf"/>
+                                            <action selector="closePreviewButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TiQ-aJ-eHf"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -643,11 +643,11 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="imagePreviewImageView" destination="GhS-gH-WnO" id="EUm-OS-o1W"/>
                         <outlet property="imagePreviewView" destination="E3h-Rg-bBb" id="nke-cK-w3H"/>
-                        <outlet property="imgPrev" destination="GhS-gH-WnO" id="EUm-OS-o1W"/>
-                        <outlet property="likesLabelin" destination="BYv-Kw-qQR" id="Jr9-li-Otc"/>
+                        <outlet property="likesLabel" destination="BYv-Kw-qQR" id="Jr9-li-Otc"/>
                         <outlet property="timeLabel" destination="3dU-38-lbL" id="Ywf-9h-7HD"/>
-                        <outlet property="wallCollView" destination="ZZb-ZF-vMH" id="eVK-UD-lwi"/>
+                        <outlet property="wallCollectionView" destination="ZZb-ZF-vMH" id="eVK-UD-lwi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -761,7 +761,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="loginButt:" destination="MZY-BI-cXh" eventType="touchUpInside" id="2QH-Wo-675"/>
+                                            <action selector="loginButtonPressed:" destination="MZY-BI-cXh" eventType="touchUpInside" id="2QH-Wo-675"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LPl-Be-e9b">
@@ -772,7 +772,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="forgotPasswButt:" destination="MZY-BI-cXh" eventType="touchUpInside" id="6Jw-OI-JlH"/>
+                                            <action selector="forgotPasswordButtonPressed:" destination="MZY-BI-cXh" eventType="touchUpInside" id="6Jw-OI-JlH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dj1-Sv-6W3">
@@ -784,7 +784,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="signupButt:" destination="MZY-BI-cXh" eventType="touchUpInside" id="Wse-fZ-9yT"/>
+                                            <action selector="signupButtonPressed:" destination="MZY-BI-cXh" eventType="touchUpInside" id="Wse-fZ-9yT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WvI-wU-MkD">
@@ -811,7 +811,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismissButt:" destination="MZY-BI-cXh" eventType="touchUpInside" id="qcH-ry-wkq"/>
+                                    <action selector="dismissButtonPressed:" destination="MZY-BI-cXh" eventType="touchUpInside" id="qcH-ry-wkq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -821,8 +821,8 @@
                     <connections>
                         <outlet property="containerScrollView" destination="1Xb-ew-xqH" id="v8A-P5-lSO"/>
                         <outlet property="loginOutlet" destination="LMp-of-ybT" id="Mjc-dg-5Xn"/>
-                        <outlet property="passwordTxt" destination="D4P-UH-8qh" id="joc-dx-zw0"/>
-                        <outlet property="usernameTxt" destination="Rsk-fm-Thb" id="2AT-lF-YKI"/>
+                        <outlet property="passwordTextField" destination="D4P-UH-8qh" id="joc-dx-zw0"/>
+                        <outlet property="usernameTextField" destination="Rsk-fm-Thb" id="2AT-lF-YKI"/>
                         <outletCollection property="loginViews" destination="qNW-Oh-Up5" collectionClass="NSMutableArray" id="KrP-O8-ntj"/>
                         <outletCollection property="loginViews" destination="SpG-8V-i3Y" collectionClass="NSMutableArray" id="s7P-Ih-3YK"/>
                         <outletCollection property="loginButtons" destination="LPl-Be-e9b" collectionClass="NSMutableArray" id="Tuh-DF-H1Q"/>
@@ -870,7 +870,7 @@
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <state key="normal" title="SIGN UP"/>
                                         <connections>
-                                            <action selector="signupButt:" destination="6Xy-c3-f7M" eventType="touchUpInside" id="zfc-r7-Xg9"/>
+                                            <action selector="signupButtonPressed:" destination="6Xy-c3-f7M" eventType="touchUpInside" id="zfc-r7-Xg9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zat-Nl-3SH">
@@ -880,7 +880,7 @@
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                         <state key="normal" title="By Registering I Agree the Terms and Conditions"/>
                                         <connections>
-                                            <action selector="touButt:" destination="6Xy-c3-f7M" eventType="touchUpInside" id="8Mx-cB-Oel"/>
+                                            <action selector="termsOfUseButtonPressed:" destination="6Xy-c3-f7M" eventType="touchUpInside" id="8Mx-cB-Oel"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" id="AeH-Ui-cMW">
@@ -966,7 +966,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismissButt:" destination="6Xy-c3-f7M" eventType="touchUpInside" id="4j6-ef-urV"/>
+                                    <action selector="dismissButtonPressed:" destination="6Xy-c3-f7M" eventType="touchUpInside" id="4j6-ef-urV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -974,14 +974,14 @@
                     </view>
                     <connections>
                         <outlet property="containerScrollView" destination="lBm-cU-Xm7" id="KkV-hR-GzG"/>
-                        <outlet property="emailTxt" destination="jcn-VT-K6O" id="yIN-K0-W3U"/>
-                        <outlet property="passwordTxt" destination="8Kh-7E-i1o" id="mJO-NX-afF"/>
+                        <outlet property="emailTextField" destination="jcn-VT-K6O" id="yIN-K0-W3U"/>
+                        <outlet property="passwordTextField" destination="8Kh-7E-i1o" id="mJO-NX-afF"/>
                         <outlet property="signUpOutlet" destination="HPX-K1-EAy" id="0Ze-xR-k66"/>
-                        <outlet property="touOutlet" destination="zat-Nl-3SH" id="acA-jB-Irb"/>
-                        <outlet property="usernameTxt" destination="RCZ-EW-QqY" id="r4G-vk-VUi"/>
-                        <outletCollection property="signpViews" destination="AeH-Ui-cMW" collectionClass="NSMutableArray" id="jr1-Ai-7L0"/>
-                        <outletCollection property="signpViews" destination="QiS-S9-eWE" collectionClass="NSMutableArray" id="2aX-hN-AXF"/>
-                        <outletCollection property="signpViews" destination="y8m-Qf-d9F" collectionClass="NSMutableArray" id="ceB-jk-FLP"/>
+                        <outlet property="termsOfUseButton" destination="zat-Nl-3SH" id="acA-jB-Irb"/>
+                        <outlet property="usernameTextField" destination="RCZ-EW-QqY" id="r4G-vk-VUi"/>
+                        <outletCollection property="signupViews" destination="AeH-Ui-cMW" collectionClass="NSMutableArray" id="jr1-Ai-7L0"/>
+                        <outletCollection property="signupViews" destination="QiS-S9-eWE" collectionClass="NSMutableArray" id="2aX-hN-AXF"/>
+                        <outletCollection property="signupViews" destination="y8m-Qf-d9F" collectionClass="NSMutableArray" id="ceB-jk-FLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mou-Dt-0LM" userLabel="First Responder" sceneMemberID="firstResponder"/>
