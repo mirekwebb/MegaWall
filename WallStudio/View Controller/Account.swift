@@ -52,7 +52,6 @@ class Account: UIViewController {
         emailTextField.layer.cornerRadius = 5
     }
 
-    // Update Profile Button
     @IBAction private func updateProfileButtonPressed(_ sender: Any) {
         guard usernameTextField.text != "", emailTextField.text != "" else {
             self.showSimpleAlert(with: "Please insert a Username and a valid Email address")
@@ -79,13 +78,12 @@ class Account: UIViewController {
         })
     }
 
-    // Logout Button
     @objc private func logoutButtonPressed() {
         let alert = UIAlertController(title: APP_NAME,
                                       message: "Are you sure you want to logout?",
                                       preferredStyle: .alert)
 
-        let ok = UIAlertAction(title: "Logout", style: .default, handler: { (action) -> Void in
+        let okAction = UIAlertAction(title: "Logout", style: .default, handler: { (action) -> Void in
             self.showHUD(with: "Logging Out...")
 
             PFUser.logOutInBackground(block: { (error) in
@@ -98,13 +96,12 @@ class Account: UIViewController {
             })
         })
 
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
 
-        alert.addAction(ok); alert.addAction(cancel)
+        alert.addAction(okAction); alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
 
-    // Back Button
     @objc func backButtonPressed() {
         _ = navigationController?.popViewController(animated: true)
     }

@@ -263,7 +263,7 @@
                                             <color key="titleShadowColor" red="0.1824207165" green="0.2145885287" blue="0.25577965559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="chooseImageButt:" destination="a6A-kV-rhW" eventType="touchUpInside" id="3Xd-VG-fV1"/>
+                                            <action selector="chooseImageButtonPressed:" destination="a6A-kV-rhW" eventType="touchUpInside" id="3Xd-VG-fV1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="HQW-IS-0ba" userLabel="submitButt">
@@ -275,7 +275,7 @@
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="submitButt:" destination="a6A-kV-rhW" eventType="touchUpInside" id="8a6-gz-atQ"/>
+                                            <action selector="submitButtonPressed:" destination="a6A-kV-rhW" eventType="touchUpInside" id="8a6-gz-atQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -286,7 +286,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="667"/>
                     <connections>
-                        <outlet property="catTableView" destination="ijV-xi-CeU" id="h2u-y3-HrV"/>
+                        <outlet property="categoriesTableView" destination="ijV-xi-CeU" id="h2u-y3-HrV"/>
                         <outlet property="containerScrollView" destination="jZe-NY-f34" id="1ue-5h-kug"/>
                         <outlet property="submitOutlet" destination="HQW-IS-0ba" id="eKe-Rk-ist"/>
                         <outlet property="wallImage" destination="6NF-61-sXN" id="Tw2-qW-j62"/>
@@ -795,7 +795,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="facebookButt:" destination="MZY-BI-cXh" eventType="touchUpInside" id="W5D-tZ-Mio"/>
+                                            <action selector="facebookButtonPressed:" destination="MZY-BI-cXh" eventType="touchUpInside" id="W5D-tZ-Mio"/>
                                         </connections>
                                     </button>
                                 </subviews>

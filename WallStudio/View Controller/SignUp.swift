@@ -42,7 +42,6 @@ class SignUp: UIViewController {
         termsOfUseButton.layer.cornerRadius = 6
     }
 
-    // Dismiss Keyboard
     @IBAction private func tapToDismissKeyboard(_ sender: UITapGestureRecognizer) {
         dismissKeyboard()
     }
@@ -53,7 +52,6 @@ class SignUp: UIViewController {
         emailTextField.resignFirstResponder()
     }
 
-    // SignUp Button
     @IBAction func signupButtonPressed(_ sender: AnyObject) {
         dismissKeyboard()
 
@@ -82,17 +80,17 @@ class SignUp: UIViewController {
         }
     }
 
-    // Dismiss Button
     @IBAction private func dismissButtonPressed(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
 
-    // Terms & Condition Button
     @IBAction private func termsOfUseButtonPressed(_ sender: AnyObject) {
         let termsOfUseVC = storyboard?.instantiateViewController(withIdentifier: "TermsOfUse") as! TermsOfUse
         present(termsOfUseVC, animated: true, completion: nil)
     }
 }
+
+// MARK: UITextFieldDelegate
 
 extension SignUp: UITextFieldDelegate {
 

@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-//import ParseFacebookUtilsV4
 
 class Login: UIViewController, UIAlertViewDelegate {
 
@@ -71,13 +70,16 @@ class Login: UIViewController, UIAlertViewDelegate {
     }
 
     // Facebook Login Button
-    @IBAction private func facebookButt(_ sender: Any) {
+    @IBAction private func facebookButtonPressed(_ sender: Any) {
 
         // Set permissions required from the facebook user account
         let permissions = ["public_profile", "email"]
         showHUD(with: "Please wait...")
 
-        PFFacebookUtils.logInInBackground(withReadPermissions: permissions) { (user, error) in
+        PFFacebookUtils.logInInBackground(withReadPermissions: permissions) { [weak self] (user, error) in
+            guard let self = self else {
+                return
+            }
             if user == nil {
                 self.showSimpleAlert(with: "Facebook login cancelled")
 
@@ -128,14 +130,12 @@ class Login: UIViewController, UIAlertViewDelegate {
         connection.start()
     }
 
-    // SignUp Button
     @IBAction private func signupButtonPressed(_ sender: AnyObject) {
         let signupViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUp") as! SignUp
         signupViewController.modalTransitionStyle = .crossDissolve
         present(signupViewController, animated: true, completion: nil)
     }
 
-    // Dismiss Keyboard
     @IBAction private func tapToDismissKeyboard(_ sender: UITapGestureRecognizer) {
         dismissKeyboard()
     }
@@ -145,7 +145,6 @@ class Login: UIViewController, UIAlertViewDelegate {
         passwordTextField.resignFirstResponder()
     }
 
-    // Forgot Password?
     @IBAction private func forgotPasswordButtonPressed(_ sender: AnyObject) {
         let alert = UIAlertController(title: APP_NAME,
                                       message: "Type your email address you used to register.",
@@ -180,6 +179,8 @@ class Login: UIViewController, UIAlertViewDelegate {
     }
 
 }
+
+// MARK: UITextFieldDelegate
 
 extension Login: UITextFieldDelegate {
 

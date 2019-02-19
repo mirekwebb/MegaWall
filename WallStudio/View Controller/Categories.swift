@@ -155,6 +155,8 @@ class Categories: UIViewController {
 
 }
 
+// MARK: UITableViewDataSource
+
 extension Categories: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -189,6 +191,8 @@ extension Categories: UITableViewDataSource {
 
 }
 
+// MARK: UITableViewDelegate
+
 extension Categories: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -207,12 +211,16 @@ extension Categories: UITableViewDelegate {
     }
 }
 
+// MARK: UISearchBarDelegate
+
 extension Categories: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
     }
 }
+
+// MARK: GADBannerViewDelegate
 
 extension Categories: GADBannerViewDelegate {
 

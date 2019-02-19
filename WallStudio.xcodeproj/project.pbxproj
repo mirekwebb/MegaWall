@@ -172,12 +172,7 @@
 			children = (
 				7292A8C41B6F73A0006BB1B9 /* AppDelegate.swift */,
 				7292A8C81B6F73A1006BB1B9 /* Main.storyboard */,
-				72F9E06D1ECC39D900E26DC2 /* Login */,
-				72627E251B6FD8E300089695 /* Home.swift */,
-				7292A8ED1B6FA34F006BB1B9 /* Categories.swift */,
-				7292A8C61B6F73A1006BB1B9 /* WallGrid.swift */,
-				72627E2E1B6FE1F300089695 /* Submit.swift */,
-				1391862D1F1CC24F0011EFC1 /* Account.swift */,
+				D81F1E91221C46F300B6E104 /* View Controller */,
 				D8B8B3FF221B2B4200C27166 /* Extensions */,
 				D8B8B3F2221B29FF00C27166 /* Resources */,
 				7292A8CB1B6F73A1006BB1B9 /* Images.xcassets */,
@@ -188,14 +183,19 @@
 			path = WallStudio;
 			sourceTree = "<group>";
 		};
-		72F9E06D1ECC39D900E26DC2 /* Login */ = {
+		D81F1E91221C46F300B6E104 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				72F9E0691ECC39AA00E26DC2 /* Login.swift */,
 				72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */,
 				725C277E1B70A36000168806 /* TermsOfUse.swift */,
+				72627E251B6FD8E300089695 /* Home.swift */,
+				7292A8ED1B6FA34F006BB1B9 /* Categories.swift */,
+				7292A8C61B6F73A1006BB1B9 /* WallGrid.swift */,
+				72627E2E1B6FE1F300089695 /* Submit.swift */,
+				1391862D1F1CC24F0011EFC1 /* Account.swift */,
 			);
-			name = Login;
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		D8B8B3F2221B29FF00C27166 /* Resources */ = {

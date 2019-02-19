@@ -10,16 +10,16 @@ import UIKit
 import Parse
 import MessageUI
 
-class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate {
+class SubmitWallpaper: UIViewController, UIAlertViewDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet var containerScrollView: UIScrollView!
-    @IBOutlet var catTableView: UITableView!
-    @IBOutlet var wallImage: UIImageView!
-    @IBOutlet var submitOutlet: UIButton!
+    @IBOutlet private var containerScrollView: UIScrollView!
+    @IBOutlet private var categoriesTableView: UITableView!
+    @IBOutlet private var wallImage: UIImageView!
+    @IBOutlet private var submitOutlet: UIButton!
 
-    var categoriesArray = [PFObject]()
-    var catName = ""
-    var imageURL = URL(string: "")
+    private var categoriesArray = [PFObject]()
+    private var categorieName = ""
+    private var imageURL = URL(string: "")
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
@@ -29,19 +29,19 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
 
         self.title = "Upload Wallpaper".uppercased()
-        catName = ""
+        categorieName = ""
 
         // Back BarButton
-        let backButt = UIButton(type: .custom)
-        backButt.adjustsImageWhenHighlighted = false
-        backButt.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        backButt.addTarget(self, action: #selector(backButton), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButt)
-        backButt.setTitle("BACK", for: UIControlState.normal)
-        backButt.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
-        backButt.setTitleColor(UIColor.white, for: UIControlState.normal)
+        let backButton = UIButton(type: .custom)
+        backButton.adjustsImageWhenHighlighted = false
+        backButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        backButton.setTitle("BACK", for: UIControlState.normal)
+        backButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
+        backButton.setTitleColor(UIColor.white, for: UIControlState.normal)
 
-        catTableView.layer.cornerRadius = 5
+        categoriesTableView.layer.cornerRadius = 5
         submitOutlet.layer.cornerRadius = 5
 
         containerScrollView.contentSize = CGSize(width: containerScrollView.frame.size.width, height: submitOutlet.frame.origin.y + 280)
@@ -53,11 +53,14 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
         showHUD(with: "Sync Data...")
 
         let query = PFQuery(className: CATEGORIES_CLASS_NAME)
-        query.findObjectsInBackground { (objects, error) in
+        query.findObjectsInBackground { [weak self] (objects, error) in
+            guard let self = self else {
+                return
+            }
             if error == nil {
                 self.categoriesArray = objects!
                 self.hideHUD()
-                self.catTableView.reloadData()
+                self.categoriesTableView.reloadData()
             } else {
                 self.showSimpleAlert(with: "\(error!.localizedDescription)")
                 self.hideHUD()
@@ -65,56 +68,15 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
 
-    // Tableview Delegates
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoriesArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as! CatCell
-
-        var catClass = PFObject(className: CATEGORIES_CLASS_NAME)
-        catClass = categoriesArray[indexPath.row]
-
-        let imageFile = catClass[CATEGORIES_THUMB] as? PFFileObject
-        imageFile?.getDataInBackground(block: { (data, error) in
-            if error == nil {
-                if let imageData = data {
-                    cell.catImage.image = UIImage(data: imageData)
-                }
-            }
-        })
-
-        cell.catImage.layer.cornerRadius = 10
-        cell.catNameLabel.text = "  \(catClass[CATEGORIES_NAME]!)"
-
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var catClass = PFObject(className: CATEGORIES_CLASS_NAME)
-        catClass = categoriesArray[indexPath.row]
-
-        catName = "\(catClass[CATEGORIES_NAME]!)"
-    }
-
     // Choose Image
-    @IBAction func chooseImageButt(_ sender: AnyObject) {
+    @IBAction func chooseImageButtonPressed(_ sender: AnyObject) {
 
         let alert = UIAlertController(title: APP_NAME,
                                       message: "Select source",
                                       preferredStyle: .alert)
 
 
-        let camera = UIAlertAction(title: "Take a picture", style: .default, handler: { (action) -> Void in
+        let cameraAction = UIAlertAction(title: "Take a picture", style: .default, handler: { (action) -> Void in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
@@ -125,7 +87,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
         })
 
 
-        let library = UIAlertAction(title: "Pick from Library", style: .default, handler: { (action) -> Void in
+        let libraryAction = UIAlertAction(title: "Pick from Library", style: .default, handler: { (action) -> Void in
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
@@ -135,26 +97,17 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         })
 
-        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in })
 
-        alert.addAction(camera)
-        alert.addAction(library)
-        alert.addAction(cancel)
+        alert.addAction(cameraAction)
+        alert.addAction(libraryAction)
+        alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
 
-
-    // ImagePicker
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            wallImage.image = image
-        }
-        dismiss(animated: true, completion: nil)
-    }
-
     // Submit
-    @IBAction func submitButt(_ sender: AnyObject) {
-        if catName == "" || wallImage.image == nil {
+    @IBAction func submitButtonPressed(_ sender: AnyObject) {
+        if categorieName == "" || wallImage.image == nil {
             self.showSimpleAlert(with: "Please select a Category and Upload a Wallpaper")
             hideHUD()
 
@@ -162,7 +115,7 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
             showHUD(with: "Please wait...")
 
             let wallClass = PFObject(className: WALLPAPERS_CLASS_NAME)
-            wallClass[WALLPAPERS_CATEGORY] = catName
+            wallClass[WALLPAPERS_CATEGORY] = categorieName
             wallClass[WALLPAPERS_IS_PENDING] = true
 
             if wallImage.image != nil {
@@ -171,7 +124,10 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
                 wallClass[WALLPAPERS_IMAGE] = imageFile
             }
 
-            wallClass.saveInBackground(block: { (succ, error) in
+            wallClass.saveInBackground(block: { [weak self] (succ, error) in
+                guard let self = self else {
+                    return
+                }
                 if error == nil {
                     self.openMailController()
                     self.hideHUD()
@@ -205,7 +161,80 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
 
-    // Email delegate
+    // Back Button
+    @objc private func backButtonPressed(_ sender: UIButton) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+
+}
+
+// MARK: UITableViewDataSource
+
+extension SubmitWallpaper: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoriesArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as! CatCell
+
+        var categorieClass = PFObject(className: CATEGORIES_CLASS_NAME)
+        categorieClass = categoriesArray[indexPath.row]
+
+        let imageFile = categorieClass[CATEGORIES_THUMB] as? PFFileObject
+        imageFile?.getDataInBackground(block: { (data, error) in
+            guard error == nil,
+                let imageData = data else {
+                    return
+            }
+            cell.catImage.image = UIImage(data: imageData)
+        })
+
+        cell.catImage.layer.cornerRadius = 10
+        cell.catNameLabel.text = "  \(categorieClass[CATEGORIES_NAME]!)"
+
+        return cell
+    }
+}
+
+// MARK: UITableViewDelegate
+
+extension SubmitWallpaper: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var categorieClass = PFObject(className: CATEGORIES_CLASS_NAME)
+        categorieClass = categoriesArray[indexPath.row]
+
+        categorieName = "\(categorieClass[CATEGORIES_NAME]!)"
+    }
+
+}
+
+// MARK: UIImagePickerControllerDelegate
+
+extension SubmitWallpaper: UIImagePickerControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            wallImage.image = image
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: MFMailComposeViewControllerDelegate
+
+extension SubmitWallpaper: MFMailComposeViewControllerDelegate {
+
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         var outputMessage = ""
         switch result.rawValue {
@@ -221,11 +250,6 @@ class SubmitWallpaper: UIViewController, UITableViewDelegate, UITableViewDataSou
 
         showSimpleAlert(with: outputMessage)
         dismiss(animated: false, completion: nil)
-    }
-
-    // Back Button
-    @objc func backButton(_ sender: UIButton) {
-        _ = navigationController?.popViewController(animated: true)
     }
 
 }

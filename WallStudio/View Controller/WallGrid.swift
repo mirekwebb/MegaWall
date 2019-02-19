@@ -456,6 +456,8 @@ class WallGrid: UIViewController, MFMailComposeViewControllerDelegate {
 
 }
 
+// MARK: UICollectionViewDataSource
+
 extension WallGrid: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -483,6 +485,8 @@ extension WallGrid: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: UICollectionViewDelegate
 
 extension WallGrid: UICollectionViewDelegate {
 
@@ -514,12 +518,16 @@ extension WallGrid: UICollectionViewDelegate {
     }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
+
 extension WallGrid: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width / 3, height: view.frame.size.width / 2)
     }
 }
+
+// MARK: GADBannerViewDelegate
 
 extension WallGrid: GADBannerViewDelegate {
 
