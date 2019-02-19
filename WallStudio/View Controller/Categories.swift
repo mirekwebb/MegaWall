@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleMobileAds
 import AudioToolbox
 import Parse
 
@@ -23,9 +22,6 @@ class Categories: UIViewController {
     @IBOutlet private weak var rightBarButtonItem: UIBarButtonItem!
 
     private var categoriesArray = [PFObject]()
-
-    // AdMob Banner View
-    private var adMobBannerView = GADBannerView()
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
@@ -49,9 +45,6 @@ class Categories: UIViewController {
         if let font: UIFont = UIFont(name: "Montserrat-Regular", size: 12) {
             rightBarButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: font], for: UIControlState.normal)
         }
-
-        // Initialize AdMob
-        initAdMobBanner()
 
         // Query
         queryCategories()
@@ -110,47 +103,6 @@ class Categories: UIViewController {
         searchBar.showsCancelButton = false
 
         queryCategories()
-    }
-
-    // AdMob Banners
-    private func initAdMobBanner() {
-        adMobBannerView.adSize = GADAdSizeFromCGSize(CGSize(width: 320, height: 50))
-        adMobBannerView.frame = CGRect(x: 0, y: self.view.frame.size.height, width: 320, height: 50)
-        adMobBannerView.adUnitID = ADMOB_UNIT_ID
-        adMobBannerView.rootViewController = self
-        adMobBannerView.delegate = self
-        view.addSubview(adMobBannerView)
-
-        let request = GADRequest()
-        adMobBannerView.load(request)
-    }
-
-    // Show the banner
-    private func showBanner(_ banner: UIView) {
-        var bottomOffset: CGFloat = 0
-
-        // iPhone X
-        // TODO: Add support for XSMax
-        if UIScreen.main.bounds.size.height == 812 {
-            bottomOffset = 20
-        } else {
-            bottomOffset = 0
-        }
-
-        UIView.beginAnimations("showBanner", context: nil)
-        banner.frame = CGRect(x: view.frame.size.width / 2 - banner.frame.size.width / 2,
-                              y: view.frame.size.height - banner.frame.size.height - bottomOffset,
-                              width: banner.frame.size.width, height: banner.frame.size.height)
-        UIView.commitAnimations()
-        banner.isHidden = false
-    }
-
-    // Hide the banner
-    private func hideBanner(_ banner: UIView) {
-        UIView.beginAnimations("hideBanner", context: nil)
-        banner.frame = CGRect(x: 0, y: self.view.frame.size.height, width: banner.frame.size.width, height: banner.frame.size.height)
-        UIView.commitAnimations()
-        banner.isHidden = true
     }
 
 }
@@ -217,22 +169,5 @@ extension Categories: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
-    }
-}
-
-// MARK: GADBannerViewDelegate
-
-extension Categories: GADBannerViewDelegate {
-
-    // AdMob banner available
-    func adViewDidReceiveAd(_ view: GADBannerView) {
-        print("AdMob loaded!")
-        showBanner(adMobBannerView)
-    }
-
-    // NO AdMob banner available
-    func adView(_ view: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        print("AdMob Can't load ads right now, they'll be available later \n\(error)")
-        hideBanner(adMobBannerView)
     }
 }

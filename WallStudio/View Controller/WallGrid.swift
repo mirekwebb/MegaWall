@@ -8,7 +8,6 @@
 
 import UIKit
 import MessageUI
-import GoogleMobileAds
 import AudioToolbox
 import Parse
 
@@ -24,9 +23,6 @@ class WallGrid: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet private var imagePreviewImageView: UIImageView!
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private weak var likesLabel: UILabel!
-
-    // AdMob Banners
-    private var adMobBannerView = GADBannerView()
 
     private var wallsArray = [PFObject]()
     var categoryName = String()
@@ -76,9 +72,6 @@ class WallGrid: UIViewController, MFMailComposeViewControllerDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm"
         timeLabel.text = dateFormatter.string(from: currentTime)
-
-        // Ini AdMob
-        initAdMobBanner()
 
         // Query
         queryWallpapers()
@@ -413,47 +406,6 @@ class WallGrid: UIViewController, MFMailComposeViewControllerDelegate {
         _ = navigationController?.popViewController(animated: true)
     }
 
-    // AdMob Banner
-    private func initAdMobBanner() {
-        adMobBannerView.adSize = GADAdSizeFromCGSize(CGSize(width: 320, height: 50))
-        adMobBannerView.frame = CGRect(x: 0, y: self.view.frame.size.height, width: 320, height: 50)
-        adMobBannerView.adUnitID = ADMOB_UNIT_ID
-        adMobBannerView.rootViewController = self
-        adMobBannerView.delegate = self
-        view.addSubview(adMobBannerView)
-
-        let request = GADRequest()
-        adMobBannerView.load(request)
-    }
-
-    // Show banner
-    private func showBanner(_ banner: UIView) {
-        var bottomOffset: CGFloat = 0
-
-        // iPhone X
-        // TODO: Add support for XSMax
-        if UIScreen.main.bounds.size.height == 812 {
-            bottomOffset = 20
-        } else {
-            bottomOffset = 0
-        }
-
-        UIView.beginAnimations("showBanner", context: nil)
-        banner.frame = CGRect(x: view.frame.size.width / 2 - banner.frame.size.width / 2,
-                              y: view.frame.size.height - banner.frame.size.height - bottomOffset,
-                              width: banner.frame.size.width, height: banner.frame.size.height)
-        UIView.commitAnimations()
-        banner.isHidden = false
-    }
-
-    // Hide the banner
-    private func hideBanner(_ banner: UIView) {
-        UIView.beginAnimations("hideBanner", context: nil)
-        banner.frame = CGRect(x: 0, y: self.view.frame.size.height, width: banner.frame.size.width, height: banner.frame.size.height)
-        UIView.commitAnimations()
-        banner.isHidden = true
-    }
-
 }
 
 // MARK: UICollectionViewDataSource
@@ -524,22 +476,5 @@ extension WallGrid: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width / 3, height: view.frame.size.width / 2)
-    }
-}
-
-// MARK: GADBannerViewDelegate
-
-extension WallGrid: GADBannerViewDelegate {
-
-    // AdMob banner available
-    func adViewDidReceiveAd(_ view: GADBannerView) {
-        print("AdMob loaded!")
-        showBanner(adMobBannerView)
-    }
-
-    // NO AdMob banner available
-    func adView(_ view: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        print("AdMob Can't load ads right now, they'll be available later \n\(error)")
-        hideBanner(adMobBannerView)
     }
 }

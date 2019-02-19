@@ -7,6 +7,5 @@ target 'WallStudio' do
 
   # Pods for WallStudio
     pod 'Parse'
-    pod 'GoogleMobileAds'
     pod 'Parse/FacebookUtils'
 end
