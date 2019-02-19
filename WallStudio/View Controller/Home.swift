@@ -36,11 +36,7 @@ class Home: UIViewController {
 
         containerView.center = view.center
 
-        // NOTE: REMOVE THIS LINE FROM HERE ---------------------------------------------------- */
-
-        //createCategoriesAndWallpapersClasses()
-
-        // TO HERE
+        createCategoriesAndWallpapersClasses()
     }
 
     // Browse Button
@@ -130,14 +126,14 @@ class Home: UIViewController {
             }
 
             // Create Wallpapers
-            let wallClass = PFObject(className: WALLPAPERS_CLASS_NAME)
-            wallClass[WALLPAPERS_CATEGORY] = "MODIFY"
-            wallClass[WALLPAPERS_IS_PENDING] = false
+            let wallpaperClass = PFObject(className: WALLPAPERS_CLASS_NAME)
+            wallpaperClass[WALLPAPERS_CATEGORY] = "MODIFY"
+            wallpaperClass[WALLPAPERS_IS_PENDING] = false
             let imageData = UIImageJPEGRepresentation(UIImage(named: "bkg")!, 0.1)
             let imageFile = PFFileObject(name: "image.jpg", data: imageData!)
-            wallClass[WALLPAPERS_IMAGE] = imageFile
+            wallpaperClass[WALLPAPERS_IMAGE] = imageFile
 
-            wallClass.saveInBackground(block: { [weak self] (succ, error) in
+            wallpaperClass.saveInBackground(block: { [weak self] (succ, error) in
                 if error == nil {
                     self?.showSimpleAlert(with: "Congrats!...your app is setup correctly. Now add your own Data in your Dashboard.")
                     self?.hideHUD()

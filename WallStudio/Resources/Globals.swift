@@ -8,6 +8,7 @@
 
 let APP_NAME = "WallStudio" // Your App Name
 let ADMOB_UNIT_ID = "ca-app-pub-9733347540588953/7805958028" // Your AdMob ID
+
 let SUBMIT_EMAIL = "submit@example.com" // Email for submission wallpapers
 
 // Your Parse Keys
