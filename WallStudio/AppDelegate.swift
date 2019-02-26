@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        let homeViewController = HomeViewController()
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+        navigationController.navigationBar.barTintColor = .black
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+
         // Parse
         let configuration = ParseClientConfiguration {
             $0.applicationId = PARSE_APP_ID

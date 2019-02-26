@@ -30,7 +30,7 @@ class Categories: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Browse Categories".uppercased()
+        self.title = "Browse".uppercased()
 
         // Initialize a Back BarButton Item
         let backButton = UIButton(type: .custom)
@@ -39,10 +39,10 @@ class Categories: UIViewController {
         backButton.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         backButton.setTitle("BACK", for: UIControlState.normal)
-        backButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 12)
+        backButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 14)
         backButton.setTitleColor(UIColor.white, for: UIControlState.normal)
 
-        if let font: UIFont = UIFont(name: "Montserrat-Regular", size: 12) {
+        if let font: UIFont = UIFont(name: "Montserrat-Regular", size: 14) {
             rightBarButtonItem.setTitleTextAttributes([NSAttributedStringKey.font: font], for: UIControlState.normal)
         }
 
