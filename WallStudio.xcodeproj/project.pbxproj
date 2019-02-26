@@ -38,6 +38,8 @@
 		7292A9061B6FA3D0006BB1B9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7292A9051B6FA3D0006BB1B9 /* SystemConfiguration.framework */; };
 		72F9E06B1ECC39AA00E26DC2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E0691ECC39AA00E26DC2 /* Login.swift */; };
 		72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */; };
+		D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */; };
+		D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD622259A3C000A5D2C /* Kannada MN.ttc */; };
 		D8B8B3ED221B081E00C27166 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3EC221B081E00C27166 /* Podfile */; };
 		D8B8B3F9221B2A4A00C27166 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3F5221B2A4A00C27166 /* Montserrat-Thin.ttf */; };
 		D8B8B3FA221B2A4A00C27166 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3F6221B2A4A00C27166 /* Montserrat-Regular.ttf */; };
@@ -84,6 +86,8 @@
 		72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		853C1F6353D0080351EACED5 /* Pods_WallStudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallStudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3A46991F248F2200D13C5F /* WallStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WallStudio.entitlements; sourceTree = "<group>"; };
+		D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D885ABD622259A3C000A5D2C /* Kannada MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kannada MN.ttc"; sourceTree = "<group>"; };
 		D8B8B3EC221B081E00C27166 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D8B8B3F5221B2A4A00C27166 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		D8B8B3F6221B2A4A00C27166 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				7292A8C41B6F73A0006BB1B9 /* AppDelegate.swift */,
+				D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */,
 				7292A8C81B6F73A1006BB1B9 /* Main.storyboard */,
 				D81F1E91221C46F300B6E104 /* View Controller */,
 				D8B8B3FF221B2B4200C27166 /* Extensions */,
@@ -211,6 +216,7 @@
 		D8B8B3F4221B2A1E00C27166 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				D885ABD622259A3C000A5D2C /* Kannada MN.ttc */,
 				D8B8B3F7221B2A4A00C27166 /* Montserrat-Light.ttf */,
 				D8B8B3F8221B2A4A00C27166 /* Montserrat-Medium.ttf */,
 				D8B8B3F6221B2A4A00C27166 /* Montserrat-Regular.ttf */,
@@ -320,9 +326,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */,
 				D8B8B3FB221B2A4A00C27166 /* Montserrat-Light.ttf in Resources */,
 				D8B8B3FA221B2A4A00C27166 /* Montserrat-Regular.ttf in Resources */,
 				D8B8B3F9221B2A4A00C27166 /* Montserrat-Thin.ttf in Resources */,
+				D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */,
 				D8B8B3ED221B081E00C27166 /* Podfile in Resources */,
 				7292A8CA1B6F73A1006BB1B9 /* Main.storyboard in Resources */,
 				725C27811B70A39400168806 /* terms.html in Resources */,
@@ -521,7 +529,6 @@
 			baseConfigurationReference = 51FF37873255679FA3BAD10B /* Pods-WallStudio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = WallStudio/WallStudio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -548,7 +555,6 @@
 			baseConfigurationReference = 34D285D5B8610140E87B57B0 /* Pods-WallStudio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = WallStudio/WallStudio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
