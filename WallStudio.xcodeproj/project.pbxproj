@@ -43,6 +43,11 @@
 		D885ABDA22259C87000A5D2C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885ABD822259C87000A5D2C /* HomeViewController.swift */; };
 		D885ABDB22259C87000A5D2C /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD922259C87000A5D2C /* HomeViewController.xib */; };
 		D885ABDF2225A4A0000A5D2C /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885ABDE2225A4A0000A5D2C /* DefaultButton.swift */; };
+		D885ABE32226E47B000A5D2C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885ABE12226E47B000A5D2C /* CategoriesViewController.swift */; };
+		D885ABE42226E47B000A5D2C /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D885ABE22226E47B000A5D2C /* CategoriesViewController.xib */; };
+		D885ABE82226F1ED000A5D2C /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885ABE62226F1ED000A5D2C /* CategoriesTableViewCell.swift */; };
+		D885ABE92226F1ED000A5D2C /* CategoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D885ABE72226F1ED000A5D2C /* CategoriesTableViewCell.xib */; };
+		D885ABED2226F8FF000A5D2C /* CategoriesTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885ABEC2226F8FF000A5D2C /* CategoriesTableCellViewModel.swift */; };
 		D8B8B3ED221B081E00C27166 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3EC221B081E00C27166 /* Podfile */; };
 		D8B8B3F9221B2A4A00C27166 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3F5221B2A4A00C27166 /* Montserrat-Thin.ttf */; };
 		D8B8B3FA221B2A4A00C27166 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8B8B3F6221B2A4A00C27166 /* Montserrat-Regular.ttf */; };
@@ -94,6 +99,11 @@
 		D885ABD822259C87000A5D2C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D885ABD922259C87000A5D2C /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		D885ABDE2225A4A0000A5D2C /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
+		D885ABE12226E47B000A5D2C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		D885ABE22226E47B000A5D2C /* CategoriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesViewController.xib; sourceTree = "<group>"; };
+		D885ABE62226F1ED000A5D2C /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		D885ABE72226F1ED000A5D2C /* CategoriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesTableViewCell.xib; sourceTree = "<group>"; };
+		D885ABEC2226F8FF000A5D2C /* CategoriesTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableCellViewModel.swift; sourceTree = "<group>"; };
 		D8B8B3EC221B081E00C27166 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D8B8B3F5221B2A4A00C27166 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		D8B8B3F6221B2A4A00C27166 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -199,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				D885ABDC22259C8E000A5D2C /* Home */,
+				D885ABE02226E455000A5D2C /* Categories */,
 				72F9E0691ECC39AA00E26DC2 /* Login.swift */,
 				72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */,
 				725C277E1B70A36000168806 /* TermsOfUse.swift */,
@@ -226,6 +237,26 @@
 				D885ABDE2225A4A0000A5D2C /* DefaultButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D885ABE02226E455000A5D2C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D885ABE12226E47B000A5D2C /* CategoriesViewController.swift */,
+				D885ABE22226E47B000A5D2C /* CategoriesViewController.xib */,
+				D885ABE52226F1CD000A5D2C /* Cell */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		D885ABE52226F1CD000A5D2C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D885ABEC2226F8FF000A5D2C /* CategoriesTableCellViewModel.swift */,
+				D885ABE62226F1ED000A5D2C /* CategoriesTableViewCell.swift */,
+				D885ABE72226F1ED000A5D2C /* CategoriesTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D8B8B3F2221B29FF00C27166 /* Resources */ = {
@@ -352,7 +383,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */,
+				D885ABE92226F1ED000A5D2C /* CategoriesTableViewCell.xib in Resources */,
 				D8B8B3FB221B2A4A00C27166 /* Montserrat-Light.ttf in Resources */,
+				D885ABE42226E47B000A5D2C /* CategoriesViewController.xib in Resources */,
 				D8B8B3FA221B2A4A00C27166 /* Montserrat-Regular.ttf in Resources */,
 				D8B8B3F9221B2A4A00C27166 /* Montserrat-Thin.ttf in Resources */,
 				D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */,
@@ -420,6 +453,7 @@
 				1391862E1F1CC24F0011EFC1 /* Account.swift in Sources */,
 				7292A8C71B6F73A1006BB1B9 /* WallGrid.swift in Sources */,
 				D885ABDF2225A4A0000A5D2C /* DefaultButton.swift in Sources */,
+				D885ABED2226F8FF000A5D2C /* CategoriesTableCellViewModel.swift in Sources */,
 				7292A8EE1B6FA34F006BB1B9 /* Categories.swift in Sources */,
 				72627E2F1B6FE1F300089695 /* Submit.swift in Sources */,
 				725C277F1B70A36000168806 /* TermsOfUse.swift in Sources */,
@@ -429,7 +463,9 @@
 				72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */,
 				D8B8B401221B2B7900C27166 /* UIViewController + Extensions.swift in Sources */,
 				72F9E06B1ECC39AA00E26DC2 /* Login.swift in Sources */,
+				D885ABE32226E47B000A5D2C /* CategoriesViewController.swift in Sources */,
 				D885ABDA22259C87000A5D2C /* HomeViewController.swift in Sources */,
+				D885ABE82226F1ED000A5D2C /* CategoriesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

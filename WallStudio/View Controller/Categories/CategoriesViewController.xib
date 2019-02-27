@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoriesViewController" customModule="WallStudio" customModuleProvider="target">
+            <connections>
+                <outlet property="categoriesTableView" destination="NPr-xt-5Et" id="y9F-qz-QCr"/>
+                <outlet property="searchBar" destination="63K-mu-Q55" id="K5l-go-cZd"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hCM-FD-NDa">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bir-FE-vlN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rmZ-SD-Qua">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+                <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search categories here…" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63K-mu-Q55">
+                    <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="barTintColor" red="0.89813512559999997" green="0.38961365279999999" blue="0.35510063780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="pAb-pp-o57"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NPr-xt-5Et">
+                    <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="iZZ-uw-f4j"/>
+                        <outlet property="delegate" destination="-1" id="Ef4-PW-EuA"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hCM-FD-NDa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="41o-Ne-okB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NPr-xt-5Et" secondAttribute="trailing" id="6Yb-Qs-2mg"/>
+                <constraint firstItem="Bir-FE-vlN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6sK-aL-aHO"/>
+                <constraint firstItem="63K-mu-Q55" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="EZs-OY-3xb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hCM-FD-NDa" secondAttribute="trailing" id="Fgo-tJ-z2r"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bir-FE-vlN" secondAttribute="trailing" id="I0A-TY-dVA"/>
+                <constraint firstItem="NPr-xt-5Et" firstAttribute="top" secondItem="63K-mu-Q55" secondAttribute="bottom" id="T8k-5m-HOt"/>
+                <constraint firstAttribute="bottom" secondItem="hCM-FD-NDa" secondAttribute="bottom" id="TY6-ug-9nG"/>
+                <constraint firstItem="63K-mu-Q55" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YNF-BR-jpO"/>
+                <constraint firstItem="NPr-xt-5Et" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZHT-7f-UAb"/>
+                <constraint firstAttribute="bottom" secondItem="NPr-xt-5Et" secondAttribute="bottom" id="oc6-Qf-UE9"/>
+                <constraint firstItem="63K-mu-Q55" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pZI-sM-oMN"/>
+                <constraint firstItem="hCM-FD-NDa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vTF-fm-oO9"/>
+                <constraint firstAttribute="bottom" secondItem="Bir-FE-vlN" secondAttribute="bottom" id="wTg-Hi-u47"/>
+                <constraint firstItem="Bir-FE-vlN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xZF-Cg-eXA"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="375" height="667"/>
+    </resources>
+</document>

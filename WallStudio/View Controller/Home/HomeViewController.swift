@@ -58,8 +58,7 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func browseCatalogButtonPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let categoriesViewController = storyboard.instantiateViewController(withIdentifier: "Categories") as! Categories
+        let categoriesViewController = CategoriesViewController()
         navigationController?.pushViewController(categoriesViewController, animated: true)
     }
 
