@@ -27,38 +27,46 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoMegawall" translatesAutoresizingMaskIntoConstraints="NO" id="ogc-es-Beq">
-                                <rect key="frame" x="145.5" y="240" width="123" height="123"/>
+                                <rect key="frame" x="145.5" y="298.5" width="123" height="123"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="123" id="ZvI-fF-9NV"/>
                                     <constraint firstAttribute="width" constant="123" id="fd3-R0-4ZP"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MegaWall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ft-c2-UOB">
-                                <rect key="frame" x="16" y="380" width="382" height="49.5"/>
+                                <rect key="frame" x="16" y="438.5" width="382" height="49.5"/>
                                 <fontDescription key="fontDescription" name="KannadaMN-Bold" family="Kannada MN" pointSize="42"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anime wallpapers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNf-H1-kih">
-                                <rect key="frame" x="16" y="430.5" width="382" height="26"/>
+                                <rect key="frame" x="16" y="489" width="382" height="26"/>
                                 <fontDescription key="fontDescription" name="KannadaMN-Bold" family="Kannada MN" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="in4-C0-OlD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="298.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0wN-nZ-qq6" firstAttribute="leading" secondItem="5m9-fg-pGy" secondAttribute="leading" id="03N-xE-d9W"/>
+                            <constraint firstItem="in4-C0-OlD" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1:3" id="64G-a9-lao"/>
                             <constraint firstItem="3Ft-c2-UOB" firstAttribute="leading" secondItem="5m9-fg-pGy" secondAttribute="leading" constant="16" id="DFF-PK-MFv"/>
                             <constraint firstItem="ogc-es-Beq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="L4M-eE-noq"/>
-                            <constraint firstItem="ogc-es-Beq" firstAttribute="top" secondItem="5m9-fg-pGy" secondAttribute="top" constant="196" id="N5o-9F-rqh"/>
+                            <constraint firstItem="ogc-es-Beq" firstAttribute="top" secondItem="in4-C0-OlD" secondAttribute="bottom" id="NPd-bS-yBX"/>
                             <constraint firstItem="3Ft-c2-UOB" firstAttribute="top" secondItem="ogc-es-Beq" secondAttribute="bottom" constant="17" id="OJx-ZN-oev"/>
+                            <constraint firstItem="in4-C0-OlD" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Pf7-gJ-TE5"/>
                             <constraint firstItem="5m9-fg-pGy" firstAttribute="trailing" secondItem="jNf-H1-kih" secondAttribute="trailing" constant="16" id="RBp-46-ugu"/>
                             <constraint firstItem="5m9-fg-pGy" firstAttribute="trailing" secondItem="3Ft-c2-UOB" secondAttribute="trailing" constant="16" id="RYy-tJ-G2A"/>
                             <constraint firstItem="jNf-H1-kih" firstAttribute="leading" secondItem="5m9-fg-pGy" secondAttribute="leading" constant="16" id="USh-Qm-Jx3"/>
                             <constraint firstItem="0wN-nZ-qq6" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XJJ-UA-cxn"/>
+                            <constraint firstItem="5m9-fg-pGy" firstAttribute="trailing" secondItem="in4-C0-OlD" secondAttribute="trailing" id="aUt-SW-A9t"/>
                             <constraint firstItem="0wN-nZ-qq6" firstAttribute="trailing" secondItem="5m9-fg-pGy" secondAttribute="trailing" id="fKn-DA-fZI"/>
                             <constraint firstItem="jNf-H1-kih" firstAttribute="top" secondItem="3Ft-c2-UOB" secondAttribute="bottom" constant="1" id="g77-ls-z0Z"/>
+                            <constraint firstItem="in4-C0-OlD" firstAttribute="leading" secondItem="5m9-fg-pGy" secondAttribute="leading" id="kFA-N3-HIF"/>
                             <constraint firstAttribute="bottom" secondItem="0wN-nZ-qq6" secondAttribute="bottom" id="mZc-H7-oi7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5m9-fg-pGy"/>
@@ -66,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
         </scene>
     </scenes>
     <resources>
