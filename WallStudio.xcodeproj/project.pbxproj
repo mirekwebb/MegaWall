@@ -38,6 +38,7 @@
 		7292A9061B6FA3D0006BB1B9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7292A9051B6FA3D0006BB1B9 /* SystemConfiguration.framework */; };
 		72F9E06B1ECC39AA00E26DC2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E0691ECC39AA00E26DC2 /* Login.swift */; };
 		72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */; };
+		D8159178222A79EC006BAE74 /* UIDevice + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8159177222A79EC006BAE74 /* UIDevice + Extensions.swift */; };
 		D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */; };
 		D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD622259A3C000A5D2C /* Kannada MN.ttc */; };
 		D885ABDA22259C87000A5D2C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885ABD822259C87000A5D2C /* HomeViewController.swift */; };
@@ -94,6 +95,7 @@
 		72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		853C1F6353D0080351EACED5 /* Pods_WallStudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallStudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3A46991F248F2200D13C5F /* WallStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WallStudio.entitlements; sourceTree = "<group>"; };
+		D8159177222A79EC006BAE74 /* UIDevice + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice + Extensions.swift"; sourceTree = "<group>"; };
 		D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D885ABD622259A3C000A5D2C /* Kannada MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kannada MN.ttc"; sourceTree = "<group>"; };
 		D885ABD822259C87000A5D2C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				D8B8B400221B2B7900C27166 /* UIViewController + Extensions.swift */,
+				D8159177222A79EC006BAE74 /* UIDevice + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				725C277F1B70A36000168806 /* TermsOfUse.swift in Sources */,
 				7292A8C51B6F73A0006BB1B9 /* AppDelegate.swift in Sources */,
 				D8B8B3FE221B2AC500C27166 /* Globals.swift in Sources */,
+				D8159178222A79EC006BAE74 /* UIDevice + Extensions.swift in Sources */,
 				72627E261B6FD8E300089695 /* Home.swift in Sources */,
 				72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */,
 				D8B8B401221B2B7900C27166 /* UIViewController + Extensions.swift in Sources */,

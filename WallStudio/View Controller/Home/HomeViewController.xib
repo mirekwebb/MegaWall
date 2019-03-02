@@ -17,6 +17,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="WallStudio" customModuleProvider="target">
             <connections>
+                <outlet property="buttonsStackView" destination="oXV-8Q-kgh" id="Lfj-6B-yTz"/>
+                <outlet property="buttonsStackViewTopConstraint" destination="BKk-x9-FSB" id="gLU-9g-hfk"/>
+                <outlet property="logoTopConstraint" destination="pIE-cP-cZN" id="1hM-by-Fia"/>
+                <outlet property="secondaryButtonsStackView" destination="HoT-p5-v38" id="cyB-hq-AUX"/>
+                <outlet property="titleTopConstraint" destination="PqH-Qs-ImP" id="57f-p0-Lfm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -49,52 +54,18 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH6-o4-nRd" customClass="DefaultButton" customModule="WallStudio" customModuleProvider="target">
-                    <rect key="frame" x="32" y="319.5" width="311" height="64"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="o9O-D0-sgz"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="KannadaMN-Bold" family="Kannada MN" pointSize="16"/>
-                    <state key="normal" title="BROWSE CATALOG" image="52X52Browse">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="8"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="browseCatalogButtonPressed:" destination="-1" eventType="touchUpInside" id="cOu-vW-dXN"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yu5-Fz-n9Z" customClass="DefaultButton" customModule="WallStudio" customModuleProvider="target">
-                    <rect key="frame" x="32" y="407.5" width="311" height="64"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="1yz-RD-wF9"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="KannadaMN-Bold" family="Kannada MN" pointSize="16"/>
-                    <state key="normal" title="MY FAVORITES" image="52X52Heart">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="8"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="myFavoritesButtonPressed:" destination="-1" eventType="touchUpInside" id="nAn-UD-oC0"/>
-                    </connections>
-                </button>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HoT-p5-v38">
-                    <rect key="frame" x="32" y="492.5" width="311" height="64"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="oXV-8Q-kgh">
+                    <rect key="frame" x="32" y="321.5" width="311" height="240"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqP-Ak-xsb" customClass="DefaultButton" customModule="WallStudio" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="145.5" height="64"/>
-                            <color key="backgroundColor" red="0.71754229068756104" green="0.70580428838729858" blue="0.7098047137260437" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <state key="normal" title="UPLOAD" image="52X52Plus">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BH6-o4-nRd" customClass="DefaultButton" customModule="WallStudio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="311" height="64"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="o9O-D0-sgz"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="KannadaMN-Bold" family="Kannada MN" pointSize="16"/>
+                            <state key="normal" title="BROWSE CATALOG" image="52X52Browse">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -102,53 +73,100 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="uploadButtonPressed:" destination="-1" eventType="touchUpInside" id="Jxf-Uw-m25"/>
+                                <action selector="browseCatalogButtonPressed:" destination="-1" eventType="touchUpInside" id="cOu-vW-dXN"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQr-VA-Iw4" customClass="DefaultButton" customModule="WallStudio" customModuleProvider="target">
-                            <rect key="frame" x="165.5" y="0.0" width="145.5" height="64"/>
-                            <color key="backgroundColor" red="0.72146362066268921" green="0.70573031902313232" blue="0.7137266993522644" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <state key="normal" title="PROFILE" image="52X52Profile"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yu5-Fz-n9Z" customClass="DefaultButton" customModule="WallStudio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="88" width="311" height="64"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="1yz-RD-wF9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="KannadaMN-Bold" family="Kannada MN" pointSize="16"/>
+                            <state key="normal" title="MY FAVORITES" image="52X52Heart">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="profileButtonPressed:" destination="-1" eventType="touchUpInside" id="fVe-0n-Z2r"/>
+                                <action selector="myFavoritesButtonPressed:" destination="-1" eventType="touchUpInside" id="nAn-UD-oC0"/>
                             </connections>
                         </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HoT-p5-v38">
+                            <rect key="frame" x="0.0" y="176" width="311" height="64"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqP-Ak-xsb" customClass="DefaultButton" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="145.5" height="64"/>
+                                    <color key="backgroundColor" red="0.71754229068756104" green="0.70580428838729858" blue="0.7098047137260437" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="i8z-W7-Ifi"/>
+                                    </constraints>
+                                    <state key="normal" title="UPLOAD" image="52X52Plus">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="uploadButtonPressed:" destination="-1" eventType="touchUpInside" id="Jxf-Uw-m25"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQr-VA-Iw4" customClass="DefaultButton" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="165.5" y="0.0" width="145.5" height="64"/>
+                                    <color key="backgroundColor" red="0.72146362066268921" green="0.70573031902313232" blue="0.7137266993522644" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="gNZ-eL-yZJ"/>
+                                    </constraints>
+                                    <state key="normal" title="PROFILE" image="52X52Profile"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="profileButtonPressed:" destination="-1" eventType="touchUpInside" id="fVe-0n-Z2r"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="rIi-gc-0WJ"/>
+                        <constraint firstAttribute="trailing" secondItem="HoT-p5-v38" secondAttribute="trailing" id="0gj-eH-7Qc"/>
+                        <constraint firstAttribute="trailing" secondItem="BH6-o4-nRd" secondAttribute="trailing" id="2aU-q0-os8"/>
+                        <constraint firstItem="BH6-o4-nRd" firstAttribute="leading" secondItem="oXV-8Q-kgh" secondAttribute="leading" id="GMY-Z1-xDU"/>
+                        <constraint firstItem="yu5-Fz-n9Z" firstAttribute="leading" secondItem="oXV-8Q-kgh" secondAttribute="leading" id="GsK-Tt-NEs"/>
+                        <constraint firstAttribute="trailing" secondItem="yu5-Fz-n9Z" secondAttribute="trailing" id="feN-tr-Lq0"/>
+                        <constraint firstItem="BH6-o4-nRd" firstAttribute="top" secondItem="oXV-8Q-kgh" secondAttribute="top" id="hJd-gN-wF2"/>
+                        <constraint firstAttribute="bottom" secondItem="HoT-p5-v38" secondAttribute="bottom" id="tuq-PZ-ubj"/>
+                        <constraint firstItem="HoT-p5-v38" firstAttribute="leading" secondItem="oXV-8Q-kgh" secondAttribute="leading" id="wVx-Y1-x8l"/>
                     </constraints>
                 </stackView>
             </subviews>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oXV-8Q-kgh" secondAttribute="trailing" constant="32" id="016-Dh-48N"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="196-Hp-Pw9" secondAttribute="trailing" constant="16" id="1hu-C6-dcM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yu5-Fz-n9Z" secondAttribute="trailing" constant="32" id="2wp-xW-MM9"/>
-                <constraint firstItem="BH6-o4-nRd" firstAttribute="top" secondItem="196-Hp-Pw9" secondAttribute="bottom" constant="60" id="327-Ma-rG4"/>
+                <constraint firstItem="oXV-8Q-kgh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="3Cc-n8-SOw"/>
                 <constraint firstItem="TlO-vd-SLb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9d8-cB-q5S"/>
+                <constraint firstItem="oXV-8Q-kgh" firstAttribute="top" secondItem="196-Hp-Pw9" secondAttribute="bottom" constant="62" id="BKk-x9-FSB"/>
                 <constraint firstItem="cvA-iK-q8n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EQr-8j-dEu"/>
-                <constraint firstItem="HoT-p5-v38" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="EZU-KL-ahX"/>
-                <constraint firstItem="HoT-p5-v38" firstAttribute="top" secondItem="yu5-Fz-n9Z" secondAttribute="bottom" constant="21" id="IFU-CW-d17"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cvA-iK-q8n" secondAttribute="trailing" id="LVV-Mx-FH3"/>
                 <constraint firstItem="196-Hp-Pw9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Nkm-pO-kar"/>
                 <constraint firstItem="196-Hp-Pw9" firstAttribute="top" secondItem="8OE-MQ-tav" secondAttribute="bottom" constant="12" id="PqH-Qs-ImP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HoT-p5-v38" secondAttribute="trailing" constant="32" id="Qsm-qz-FDG"/>
                 <constraint firstAttribute="bottom" secondItem="TlO-vd-SLb" secondAttribute="bottom" id="V5g-ac-fZf"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BH6-o4-nRd" secondAttribute="trailing" constant="32" id="VWy-7I-qNm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TlO-vd-SLb" secondAttribute="trailing" id="cLF-w8-e7j"/>
                 <constraint firstItem="cvA-iK-q8n" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ezq-Gl-h1Q"/>
                 <constraint firstItem="TlO-vd-SLb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="k7S-lb-6GE"/>
-                <constraint firstItem="BH6-o4-nRd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="l6A-dN-3V4"/>
-                <constraint firstItem="yu5-Fz-n9Z" firstAttribute="top" secondItem="BH6-o4-nRd" secondAttribute="bottom" constant="24" id="ndV-AX-sbR"/>
                 <constraint firstItem="8OE-MQ-tav" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="pIE-cP-cZN"/>
                 <constraint firstItem="8OE-MQ-tav" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vl1-Yq-KaZ"/>
-                <constraint firstItem="yu5-Fz-n9Z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="xD5-VI-cdt"/>
                 <constraint firstAttribute="bottom" secondItem="cvA-iK-q8n" secondAttribute="bottom" id="yr4-Qn-x8P"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>
     <resources>

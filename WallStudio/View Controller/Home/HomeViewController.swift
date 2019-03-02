@@ -11,15 +11,44 @@ import Parse
 
 class HomeViewController: UIViewController {
 
+    private enum Constants {
+        static let logoTopOffset: CGFloat = UIDevice.isSE ? 32 : 75
+        static let titleTopOffset: CGFloat = UIDevice.isSE ? 12 : 12
+        static let buttonsTopOffset: CGFloat = UIDevice.isSE ? 18 : 62
+        static let spacingBetweenButton: CGFloat = UIDevice.isSE ? 15 : 24
+    }
+
+    @IBOutlet private weak var logoTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var titleTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var buttonsStackViewTopConstraint: NSLayoutConstraint!
+
+    @IBOutlet private weak var buttonsStackView: UIStackView!
+    @IBOutlet private weak var secondaryButtonsStackView: UIStackView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupViews()
         createCategoriesAndWallpapersClasses()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+    }
+
+    private func setupViews() {
+        logoTopConstraint.constant = Constants.logoTopOffset
+        titleTopConstraint.constant = Constants.titleTopOffset
+        buttonsStackViewTopConstraint.constant = Constants.buttonsTopOffset
+        buttonsStackView.spacing = Constants.spacingBetweenButton
+
+        if UIDevice.isSE {
+            secondaryButtonsStackView.axis = .vertical
+            secondaryButtonsStackView.alignment = .fill
+            secondaryButtonsStackView.distribution = .equalSpacing
+            secondaryButtonsStackView.spacing = Constants.spacingBetweenButton
+        }
     }
 
     // Create Class - Config Database
