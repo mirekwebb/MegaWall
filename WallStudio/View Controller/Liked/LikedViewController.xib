@@ -1,13 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LikedViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LikedViewController" customModule="WallStudio" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="Zea-0r-pwd" id="t8D-Q1-eIX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,8 +20,52 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hHd-BZ-U5W">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9RH-ep-Ag5">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zye-ow-X92">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Zea-0r-pwd">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lc9-jY-k5f">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="eRI-KH-hZ0"/>
+                        <outlet property="delegate" destination="-1" id="9CY-HB-5xm"/>
+                    </connections>
+                </collectionView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9RH-ep-Ag5" secondAttribute="bottom" id="60T-La-Lgr"/>
+                <constraint firstItem="9RH-ep-Ag5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="68u-d0-9S2"/>
+                <constraint firstItem="Zea-0r-pwd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8Pm-Pu-ngH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9RH-ep-Ag5" secondAttribute="trailing" id="AtA-v5-Igo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hHd-BZ-U5W" secondAttribute="trailing" id="IiD-1D-TpJ"/>
+                <constraint firstItem="hHd-BZ-U5W" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Tu1-Mm-0Jz"/>
+                <constraint firstItem="Zea-0r-pwd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="V3q-LH-ita"/>
+                <constraint firstItem="hHd-BZ-U5W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="h9T-3a-6pq"/>
+                <constraint firstItem="9RH-ep-Ag5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jqj-Qg-ZgA"/>
+                <constraint firstAttribute="bottom" secondItem="Zea-0r-pwd" secondAttribute="bottom" id="wTk-Bq-nAC"/>
+                <constraint firstAttribute="bottom" secondItem="hHd-BZ-U5W" secondAttribute="bottom" id="xPx-gG-ZJV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zea-0r-pwd" secondAttribute="trailing" id="zyJ-uR-RMt"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="background" width="375" height="667"/>
+    </resources>
 </document>

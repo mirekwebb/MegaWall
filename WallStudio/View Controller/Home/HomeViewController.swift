@@ -92,12 +92,10 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func myFavoritesButtonPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         if PFUser.current() != nil {
-            let wallGridViewController = storyboard.instantiateViewController(withIdentifier: "WallGrid") as! WallGrid
-            wallGridViewController.isFavorites = true
-            navigationController?.pushViewController(wallGridViewController, animated: true)
+            let likedViewController = LikedViewController()
+            navigationController?.pushViewController(likedViewController, animated: true)
 
         } else {
             let alert = UIAlertController(title: APP_NAME,
@@ -106,6 +104,7 @@ class HomeViewController: UIViewController {
 
 
             let okAction = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! Login
                 self.present(loginViewController, animated: true, completion: nil)
             })
