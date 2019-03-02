@@ -39,6 +39,12 @@
 		72F9E06B1ECC39AA00E26DC2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E0691ECC39AA00E26DC2 /* Login.swift */; };
 		72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */; };
 		D8159178222A79EC006BAE74 /* UIDevice + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8159177222A79EC006BAE74 /* UIDevice + Extensions.swift */; };
+		D815917C222A8762006BAE74 /* CategorieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D815917A222A8762006BAE74 /* CategorieDetailViewController.swift */; };
+		D815917D222A8762006BAE74 /* CategorieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D815917B222A8762006BAE74 /* CategorieDetailViewController.xib */; };
+		D8159181222A8783006BAE74 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D815917F222A8783006BAE74 /* LikedViewController.swift */; };
+		D8159182222A8783006BAE74 /* LikedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8159180222A8783006BAE74 /* LikedViewController.xib */; };
+		D8159186222A8847006BAE74 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8159184222A8847006BAE74 /* GridCell.swift */; };
+		D8159187222A8847006BAE74 /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8159185222A8847006BAE74 /* GridCell.xib */; };
 		D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */; };
 		D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD622259A3C000A5D2C /* Kannada MN.ttc */; };
 		D885ABDA22259C87000A5D2C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885ABD822259C87000A5D2C /* HomeViewController.swift */; };
@@ -96,6 +102,12 @@
 		853C1F6353D0080351EACED5 /* Pods_WallStudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallStudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3A46991F248F2200D13C5F /* WallStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WallStudio.entitlements; sourceTree = "<group>"; };
 		D8159177222A79EC006BAE74 /* UIDevice + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice + Extensions.swift"; sourceTree = "<group>"; };
+		D815917A222A8762006BAE74 /* CategorieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieDetailViewController.swift; sourceTree = "<group>"; };
+		D815917B222A8762006BAE74 /* CategorieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorieDetailViewController.xib; sourceTree = "<group>"; };
+		D815917F222A8783006BAE74 /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
+		D8159180222A8783006BAE74 /* LikedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikedViewController.xib; sourceTree = "<group>"; };
+		D8159184222A8847006BAE74 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		D8159185222A8847006BAE74 /* GridCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridCell.xib; sourceTree = "<group>"; };
 		D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D885ABD622259A3C000A5D2C /* Kannada MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kannada MN.ttc"; sourceTree = "<group>"; };
 		D885ABD822259C87000A5D2C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -207,11 +219,40 @@
 			path = WallStudio;
 			sourceTree = "<group>";
 		};
+		D8159179222A8736006BAE74 /* Categorie Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D815917A222A8762006BAE74 /* CategorieDetailViewController.swift */,
+				D815917B222A8762006BAE74 /* CategorieDetailViewController.xib */,
+			);
+			path = "Categorie Detail";
+			sourceTree = "<group>";
+		};
+		D815917E222A8768006BAE74 /* Liked */ = {
+			isa = PBXGroup;
+			children = (
+				D815917F222A8783006BAE74 /* LikedViewController.swift */,
+				D8159180222A8783006BAE74 /* LikedViewController.xib */,
+			);
+			path = Liked;
+			sourceTree = "<group>";
+		};
+		D8159183222A87C2006BAE74 /* GridCell */ = {
+			isa = PBXGroup;
+			children = (
+				D8159184222A8847006BAE74 /* GridCell.swift */,
+				D8159185222A8847006BAE74 /* GridCell.xib */,
+			);
+			path = GridCell;
+			sourceTree = "<group>";
+		};
 		D81F1E91221C46F300B6E104 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D885ABDC22259C8E000A5D2C /* Home */,
 				D885ABE02226E455000A5D2C /* Categories */,
+				D8159179222A8736006BAE74 /* Categorie Detail */,
+				D815917E222A8768006BAE74 /* Liked */,
 				72F9E0691ECC39AA00E26DC2 /* Login.swift */,
 				72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */,
 				725C277E1B70A36000168806 /* TermsOfUse.swift */,
@@ -236,6 +277,7 @@
 		D885ABDD2225A47B000A5D2C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D8159183222A87C2006BAE74 /* GridCell */,
 				D885ABDE2225A4A0000A5D2C /* DefaultButton.swift */,
 			);
 			path = Components;
@@ -389,16 +431,19 @@
 				D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */,
 				D885ABE92226F1ED000A5D2C /* CategoriesTableViewCell.xib in Resources */,
 				D8B8B3FB221B2A4A00C27166 /* Montserrat-Light.ttf in Resources */,
+				D8159187222A8847006BAE74 /* GridCell.xib in Resources */,
 				D885ABE42226E47B000A5D2C /* CategoriesViewController.xib in Resources */,
 				D8B8B3FA221B2A4A00C27166 /* Montserrat-Regular.ttf in Resources */,
 				D8B8B3F9221B2A4A00C27166 /* Montserrat-Thin.ttf in Resources */,
 				D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */,
+				D815917D222A8762006BAE74 /* CategorieDetailViewController.xib in Resources */,
 				D8B8B3ED221B081E00C27166 /* Podfile in Resources */,
 				7292A8CA1B6F73A1006BB1B9 /* Main.storyboard in Resources */,
 				725C27811B70A39400168806 /* terms.html in Resources */,
 				D8B8B3FC221B2A4A00C27166 /* Montserrat-Medium.ttf in Resources */,
 				7292A8CC1B6F73A1006BB1B9 /* Images.xcassets in Resources */,
 				D885ABDB22259C87000A5D2C /* HomeViewController.xib in Resources */,
+				D8159182222A8783006BAE74 /* LikedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +516,9 @@
 				D885ABE32226E47B000A5D2C /* CategoriesViewController.swift in Sources */,
 				D885ABDA22259C87000A5D2C /* HomeViewController.swift in Sources */,
 				D885ABE82226F1ED000A5D2C /* CategoriesTableViewCell.swift in Sources */,
+				D815917C222A8762006BAE74 /* CategorieDetailViewController.swift in Sources */,
+				D8159181222A8783006BAE74 /* LikedViewController.swift in Sources */,
+				D8159186222A8847006BAE74 /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

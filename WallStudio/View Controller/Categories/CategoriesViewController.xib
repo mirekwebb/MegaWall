@@ -25,7 +25,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hCM-FD-NDa">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bir-FE-vlN">
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bir-FE-vlN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rmZ-SD-Qua">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -34,7 +34,7 @@
                     <blurEffect style="dark"/>
                 </visualEffectView>
                 <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search categories here…" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63K-mu-Q55">
-                    <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="barTintColor" red="0.89813512559999997" green="0.38961365279999999" blue="0.35510063780000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -44,7 +44,7 @@
                     </connections>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NPr-xt-5Et">
-                    <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                    <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <connections>
@@ -71,7 +71,7 @@
                 <constraint firstAttribute="bottom" secondItem="Bir-FE-vlN" secondAttribute="bottom" id="wTg-Hi-u47"/>
                 <constraint firstItem="Bir-FE-vlN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xZF-Cg-eXA"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+            <nil key="simulatedTopBarMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>

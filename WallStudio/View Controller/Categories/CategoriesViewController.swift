@@ -141,11 +141,13 @@ extension CategoriesViewController: UITableViewDelegate {
         var categoriesClass = PFObject(className: CATEGORIES_CLASS_NAME)
         categoriesClass = categoriesArray[indexPath.row]
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let wallGridViewController = storyboard.instantiateViewController(withIdentifier: "WallGrid") as! WallGrid
-        wallGridViewController.categoryName = "\(categoriesClass[CATEGORIES_NAME]!)"
-        wallGridViewController.isFavorites = false
-        navigationController?.pushViewController(wallGridViewController, animated: true)
+        let categorieDetailVC = CategorieDetailViewController()
+        categorieDetailVC.categoryName = "\(categoriesClass[CATEGORIES_NAME]!)"
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let wallGridViewController = storyboard.instantiateViewController(withIdentifier: "WallGrid") as! WallGrid
+//        wallGridViewController.categoryName = "\(categoriesClass[CATEGORIES_NAME]!)"
+//        wallGridViewController.isFavorites = false
+        navigationController?.pushViewController(categorieDetailVC, animated: true)
     }
 }
 
