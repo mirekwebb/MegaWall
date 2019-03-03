@@ -138,7 +138,7 @@ extension CategorieDetailViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as! GridCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellReuseIdentifier, for: indexPath) as! GridCell
 
         var wallObj = PFObject(className: WALLPAPERS_CLASS_NAME)
         wallObj = wallsArray[indexPath.row]
@@ -161,6 +161,10 @@ extension CategorieDetailViewController: UICollectionViewDelegate {
 
     // Show Image Preview
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let wallpaperDetailViewModel = WallpaperDetailViewModel(wallpapers: wallsArray, selectedWallpaper: wallsArray[indexPath.row])
+        let wallpaperDetailViewController = WallpaperDetailViewController(viewModel: wallpaperDetailViewModel)
+        wallpaperDetailViewController.modalPresentationStyle = .overCurrentContext
+        present(wallpaperDetailViewController, animated: true, completion: nil)
     }
 }
 

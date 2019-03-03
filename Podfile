@@ -8,4 +8,5 @@ target 'WallStudio' do
   # Pods for WallStudio
     pod 'Parse'
     pod 'Parse/FacebookUtils'
+    pod 'ReactiveSwift', '~> 3.0'
 end
