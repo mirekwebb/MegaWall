@@ -14,6 +14,7 @@ import Result
 
 protocol WallpaperDetailViewModelType {
     var wallpapers: [PFObject] { get }
+    var selectedWallpaperIndex: Int { get set }
     var selectedWallpaperImage: SignalProducer<UIImage, NoError> { get }
     var numberOfLikes: Int { get }
     var currentTime: String { get }
@@ -22,17 +23,20 @@ protocol WallpaperDetailViewModelType {
 
 class WallpaperDetailViewModel: WallpaperDetailViewModelType {
 
-    private let selectedWallpaper: PFObject
+    init(wallpapers: [PFObject], selectedWallpaperIndex: Int) {
+        self.wallpapers = wallpapers
+        self.selectedWallpaperIndex = selectedWallpaperIndex
+    }
+
     var wallpapers: [PFObject]
 
-    init(wallpapers: [PFObject], selectedWallpaper: PFObject) {
-        self.wallpapers = wallpapers
-        self.selectedWallpaper = selectedWallpaper
-    }
+    var selectedWallpaperIndex: Int
 
     var selectedWallpaperImage: SignalProducer<UIImage, NoError> {
         return SignalProducer { [weak self] observer, _ in
-            let imageFile = self?.selectedWallpaper[WALLPAPERS_IMAGE] as? PFFileObject
+            guard let self = self else { return }
+            let selectedWallpaper = self.wallpapers[self.selectedWallpaperIndex]
+            let imageFile = selectedWallpaper[WALLPAPERS_IMAGE] as? PFFileObject
             imageFile?.getDataInBackground(block: { (data, error) in
                 guard error == nil,
                     let imageData = data,
@@ -46,6 +50,7 @@ class WallpaperDetailViewModel: WallpaperDetailViewModelType {
     }
 
     var numberOfLikes: Int {
+        let selectedWallpaper = wallpapers[selectedWallpaperIndex]
         if selectedWallpaper[WALLPAPERS_LIKES] != nil {
             guard let likes = selectedWallpaper[WALLPAPERS_LIKES] as? Int else {
                 return 0

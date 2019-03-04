@@ -77,6 +77,9 @@
                                 <constraint firstAttribute="height" constant="30" id="vp9-bE-PYV"/>
                             </constraints>
                             <state key="normal" image="likeRed"/>
+                            <connections>
+                                <action selector="likeButtonPressed:" destination="-1" eventType="touchUpInside" id="K0l-hV-Dk1"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bah-fS-Aie">
                             <rect key="frame" x="37" y="8" width="41" height="14"/>
@@ -97,6 +100,9 @@
                         <constraint firstAttribute="width" constant="60" id="fGe-TD-OPz"/>
                     </constraints>
                     <state key="normal" image="download512"/>
+                    <connections>
+                        <action selector="downloadButtonPressed:" destination="-1" eventType="touchUpInside" id="sTp-XK-7DI"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c74-ha-kJb">
                     <rect key="frame" x="256.5" y="537" width="30" height="30"/>
@@ -105,6 +111,9 @@
                         <constraint firstAttribute="height" constant="30" id="cki-uk-PBW"/>
                     </constraints>
                     <state key="normal" image="previewIcon"/>
+                    <connections>
+                        <action selector="previewButtonPressed:" destination="-1" eventType="touchUpInside" id="ZQQ-50-zra"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02Y-Vr-7bW">
                     <rect key="frame" x="325.5" y="544" width="30" height="16"/>
@@ -113,6 +122,9 @@
                         <constraint firstAttribute="width" constant="30" id="TOf-SE-H1s"/>
                     </constraints>
                     <state key="normal" image="3Circles"/>
+                    <connections>
+                        <action selector="moreButtonPressed:" destination="-1" eventType="touchUpInside" id="pFP-G6-Ve8"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

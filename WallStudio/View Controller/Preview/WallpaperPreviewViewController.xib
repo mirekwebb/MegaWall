@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WallpaperPreviewViewController" customModule="WallStudio" customModuleProvider="target">
+            <connections>
+                <outlet property="topItemsStackView" destination="hcZ-50-1Qb" id="L1f-a7-fRv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wallpaperImageView" destination="lOy-3J-6Hh" id="XIN-yi-ocw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lOy-3J-6Hh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="hcZ-50-1Qb">
+                    <rect key="frame" x="28" y="60" width="319" height="186"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tGL-dR-9xC">
+                            <rect key="frame" x="0.0" y="0.0" width="319" height="80"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baR-T9-jPp" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="BqU-zv-a3x"/>
+                                        <constraint firstAttribute="width" constant="60" id="b0q-Xi-dsd"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="mail"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mail"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKb-xq-Qj0" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="86.5" y="0.0" width="60" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="HVN-8U-h2t"/>
+                                        <constraint firstAttribute="width" constant="60" id="xpA-H1-C5R"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="calendar"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Calendar"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZ5-H9-YP0" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="172.5" y="0.0" width="60" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="aaB-69-Tgt"/>
+                                        <constraint firstAttribute="height" constant="80" id="c0D-0r-ojA"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="facetime"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Facetime"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFy-6q-87t" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="259" y="0.0" width="60" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="DjI-pE-Hs6"/>
+                                        <constraint firstAttribute="width" constant="60" id="jRU-zJ-mAb"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="compass"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Compass"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hs9-YG-ITv">
+                            <rect key="frame" x="0.0" y="106" width="319" height="80"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wt0-U8-jax" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="cT7-s1-adF"/>
+                                        <constraint firstAttribute="width" constant="60" id="eog-6g-GoR"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="clock"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Clock"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEL-pG-aoz" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="86.5" y="0.0" width="60" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="WGq-gC-fNu"/>
+                                        <constraint firstAttribute="height" constant="80" id="rZ0-7c-nT4"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="appstore"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="App Store"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4d-DH-Myu" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="172.5" y="0.0" width="60" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="2oh-OJ-Q33"/>
+                                        <constraint firstAttribute="width" constant="60" id="5HQ-Lc-FGL"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="settings"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Settings"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wla-xx-gBv" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+                                    <rect key="frame" x="259" y="0.0" width="60" height="80"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="1Rw-PV-9Ld"/>
+                                        <constraint firstAttribute="width" constant="60" id="iym-5j-HrX"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="camera"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Camera"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77m-vs-Br1">
+                    <rect key="frame" x="0.0" y="593" width="375" height="74"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eiV-So-90l">
+                            <rect key="frame" x="28" y="7" width="319" height="60"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="6Je-Xk-6Vo">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="KBE-DF-vcQ"/>
+                                        <constraint firstAttribute="height" constant="60" id="VSL-zR-Fc2"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="14"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safari" translatesAutoresizingMaskIntoConstraints="NO" id="l1p-Es-bGB">
+                                    <rect key="frame" x="86.5" y="0.0" width="60" height="60"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="aX3-uM-8ws"/>
+                                        <constraint firstAttribute="width" constant="60" id="yw8-Xo-IOf"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="14"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="messages" translatesAutoresizingMaskIntoConstraints="NO" id="r5u-RV-a5E">
+                                    <rect key="frame" x="172.5" y="0.0" width="60" height="60"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="IA2-zL-Qw1"/>
+                                        <constraint firstAttribute="height" constant="60" id="mXa-bf-smf"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="14"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contacts" translatesAutoresizingMaskIntoConstraints="NO" id="dCf-jM-xHa">
+                                    <rect key="frame" x="259" y="0.0" width="60" height="60"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="beY-Ez-LHl"/>
+                                        <constraint firstAttribute="width" constant="60" id="rOK-f8-Hah"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="14"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="47V-o9-b7M"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="74" id="6Jl-vM-Kcl"/>
+                        <constraint firstAttribute="trailing" secondItem="eiV-So-90l" secondAttribute="trailing" constant="28" id="EqX-wH-rfr"/>
+                        <constraint firstItem="eiV-So-90l" firstAttribute="leading" secondItem="77m-vs-Br1" secondAttribute="leading" constant="28" id="Jea-ur-6jw"/>
+                        <constraint firstItem="6Je-Xk-6Vo" firstAttribute="centerY" secondItem="77m-vs-Br1" secondAttribute="centerY" id="QJU-d7-ZUW"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="lOy-3J-6Hh" secondAttribute="bottom" id="FI4-o4-gWJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="77m-vs-Br1" secondAttribute="bottom" id="GSB-YN-W0J"/>
+                <constraint firstItem="lOy-3J-6Hh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ooy-8d-15f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hcZ-50-1Qb" secondAttribute="trailing" constant="28" id="R2e-CO-PK2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="77m-vs-Br1" secondAttribute="trailing" id="Vzm-mZ-WfZ"/>
+                <constraint firstItem="77m-vs-Br1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WGM-5a-qc3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lOy-3J-6Hh" secondAttribute="trailing" id="ZwT-Le-6QG"/>
+                <constraint firstItem="hcZ-50-1Qb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="oY5-NW-qeG"/>
+                <constraint firstItem="hcZ-50-1Qb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="28" id="s7F-FS-rhF"/>
+                <constraint firstItem="lOy-3J-6Hh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="w2I-d2-eKx"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="appstore" width="60" height="60"/>
+        <image name="calendar" width="60" height="60"/>
+        <image name="camera" width="60" height="60"/>
+        <image name="clock" width="60" height="60"/>
+        <image name="compass" width="60" height="60"/>
+        <image name="contacts" width="60" height="60"/>
+        <image name="facetime" width="60" height="60"/>
+        <image name="mail" width="60" height="61"/>
+        <image name="messages" width="60" height="60"/>
+        <image name="phone" width="60" height="60"/>
+        <image name="safari" width="60" height="60"/>
+        <image name="settings" width="60" height="60"/>
+    </resources>
+</document>

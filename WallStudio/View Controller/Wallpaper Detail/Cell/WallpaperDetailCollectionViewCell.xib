@@ -22,19 +22,32 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CjY-fe-ckE">
                         <rect key="frame" x="0.0" y="0.0" width="40" height="70"/>
                     </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="okIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4Aq-Zw-yNu">
+                        <rect key="frame" x="10" y="25" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="oWc-gw-TSZ"/>
+                            <constraint firstAttribute="height" constant="20" id="slD-0o-9Uj"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="CjY-fe-ckE" secondAttribute="bottom" id="Eba-Xy-Z5j"/>
                 <constraint firstAttribute="trailing" secondItem="CjY-fe-ckE" secondAttribute="trailing" id="HGF-xC-F4q"/>
                 <constraint firstItem="CjY-fe-ckE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e0p-UV-eNQ"/>
+                <constraint firstItem="4Aq-Zw-yNu" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="fq8-uk-9lB"/>
+                <constraint firstItem="4Aq-Zw-yNu" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="onM-JE-lhY"/>
                 <constraint firstItem="CjY-fe-ckE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tkp-Uq-oTY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="selectedImageView" destination="4Aq-Zw-yNu" id="svM-fu-knk"/>
                 <outlet property="wallpaperImageView" destination="CjY-fe-ckE" id="sGD-1x-sHM"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="okIcon" width="18" height="14"/>
+    </resources>
 </document>

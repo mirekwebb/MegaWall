@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveSwift
+import Result
 import Parse
 
 class WallpaperDetailViewController: UIViewController {
@@ -23,6 +25,8 @@ class WallpaperDetailViewController: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
 
     var viewModel: WallpaperDetailViewModelType!
+
+    private var viewModelDisposable: Disposable?
 
     convenience init(viewModel: WallpaperDetailViewModelType) {
         self.init()
@@ -47,17 +51,60 @@ class WallpaperDetailViewController: UIViewController {
         bindWithViewModel()
     }
 
+    private var isInitialScrollDone: Bool = false
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        guard !isInitialScrollDone else {
+            return
+        }
+
+        let indexPathOfSelectedItem = IndexPath(row: viewModel.selectedWallpaperIndex, section: 0)
+        collectionView.scrollToItem(at: indexPathOfSelectedItem, at: .centeredHorizontally, animated: true)
+        isInitialScrollDone = true
+    }
+
     private func bindWithViewModel() {
-        //TODO: Make disposable
-        viewModel.selectedWallpaperImage.producer.startWithValues { [weak self] image in
+        viewModelDisposable = viewModel.selectedWallpaperImage.producer.startWithValues { [weak self] image in
             self?.detailImageImageView.image = image
         }
         timeLabel.text = viewModel.currentTime
         dateLabel.text = viewModel.currentDate
     }
 
+    @IBAction func likeButtonPressed(_ sender: Any) {
+    }
+
+    @IBAction func downloadButtonPressed(_ sender: Any) {
+    }
+
+    @IBAction func previewButtonPressed(_ sender: Any) {
+        guard let selectedImageIndex = collectionView.indexPathsForSelectedItems?.first else {
+            return
+        }
+        let selectedWallpaper = viewModel.wallpapers[selectedImageIndex.row]
+        let imageFile = selectedWallpaper[WALLPAPERS_IMAGE] as? PFFileObject
+        imageFile?.getDataInBackground(block: { (data, error) in
+            guard error == nil,
+                let imageData = data,
+                let image = UIImage(data: imageData) else {
+                    return
+            }
+            let previewViewController = WallpaperPreviewViewController(image: image)
+            previewViewController.modalPresentationStyle = .overCurrentContext
+            self.present(previewViewController, animated: true, completion: nil)
+        })
+    }
+
+    @IBAction func moreButtonPressed(_ sender: Any) {
+    }
+
     @IBAction func closeButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+
+    deinit {
+        viewModelDisposable?.dispose()
     }
 }
 
@@ -90,6 +137,18 @@ extension WallpaperDetailViewController: UICollectionViewDataSource {
 
 extension WallpaperDetailViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let wallpaperObject = viewModel.wallpapers[indexPath.row]
+        let imageFile = wallpaperObject[WALLPAPERS_IMAGE] as? PFFileObject
+        imageFile?.getDataInBackground(block: { [weak self] (data, error) in
+            guard error == nil,
+                let imageData = data,
+                let image = UIImage(data: imageData) else {
+                    return
+            }
+            self?.detailImageImageView.image = image
+        })
+    }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout

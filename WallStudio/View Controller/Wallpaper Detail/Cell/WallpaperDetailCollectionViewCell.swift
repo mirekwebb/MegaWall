@@ -11,9 +11,20 @@ import UIKit
 class WallpaperDetailCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var wallpaperImageView: UIImageView!
+    @IBOutlet private weak var selectedImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                selectedImageView.isHidden = false
+            } else {
+                selectedImageView.isHidden = true
+            }
+        }
     }
 
     func configure(with image: UIImage?) {

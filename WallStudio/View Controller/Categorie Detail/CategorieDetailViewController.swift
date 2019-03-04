@@ -161,7 +161,7 @@ extension CategorieDetailViewController: UICollectionViewDelegate {
 
     // Show Image Preview
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let wallpaperDetailViewModel = WallpaperDetailViewModel(wallpapers: wallsArray, selectedWallpaper: wallsArray[indexPath.row])
+        let wallpaperDetailViewModel = WallpaperDetailViewModel(wallpapers: wallsArray, selectedWallpaperIndex: indexPath.row)
         let wallpaperDetailViewController = WallpaperDetailViewController(viewModel: wallpaperDetailViewModel)
         wallpaperDetailViewController.modalPresentationStyle = .overCurrentContext
         present(wallpaperDetailViewController, animated: true, completion: nil)
