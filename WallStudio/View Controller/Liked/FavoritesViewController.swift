@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class LikedViewController: UIViewController {
+class FavoritesViewController: UIViewController {
 
     private enum Constants {
         static let cellNibName = "GridCell"
@@ -39,6 +39,8 @@ class LikedViewController: UIViewController {
 
     private func setupNavigationBar() {
         navigationController?.isNavigationBarHidden = false
+
+        title = "FAVORITES"
 
         let backButton = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(backButtonPressed))
         backButton.tintColor = .white
@@ -127,7 +129,7 @@ class LikedViewController: UIViewController {
 
 // MARK: UICollectionViewDataSource
 
-extension LikedViewController: UICollectionViewDataSource {
+extension FavoritesViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -157,7 +159,7 @@ extension LikedViewController: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 
-extension LikedViewController: UICollectionViewDelegate {
+extension FavoritesViewController: UICollectionViewDelegate {
 
     // Show Image Preview
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -170,7 +172,7 @@ extension LikedViewController: UICollectionViewDelegate {
 
 // MARK: UICollectionViewDelegateFlowLayout
 
-extension LikedViewController: UICollectionViewDelegateFlowLayout {
+extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width / 3, height: view.frame.size.width / 2)

@@ -94,7 +94,7 @@ class HomeViewController: UIViewController {
     @IBAction func myFavoritesButtonPressed(_ sender: Any) {
 
         if PFUser.current() != nil {
-            let likedViewController = LikedViewController()
+            let likedViewController = FavoritesViewController()
             navigationController?.pushViewController(likedViewController, animated: true)
 
         } else {

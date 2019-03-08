@@ -113,7 +113,7 @@ class WallpaperDetailViewController: UIViewController {
                     return
             }
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            self?.showSimpleAlert(with: "Image downloaded")
+            self?.showDownloadedMessage()
         }
     }
 
@@ -218,6 +218,12 @@ class WallpaperDetailViewController: UIViewController {
         } else {
             self.likesLabel.text = "\(self.viewModel.numberOfLikes) likes"
         }
+    }
+
+    private func showDownloadedMessage() {
+        let downloadedVC = DownloadedViewController()
+        downloadedVC.modalPresentationStyle = .overCurrentContext
+        self.present(downloadedVC, animated: true, completion: nil)
     }
 }
 

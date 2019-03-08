@@ -41,6 +41,8 @@ class CategorieDetailViewController: UIViewController {
     private func setupNavigationBar() {
         navigationController?.isNavigationBarHidden = false
 
+        title = categoryName.uppercased()
+
         let backButton = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(backButtonPressed))
         backButton.tintColor = .white
         navigationItem.leftBarButtonItem = backButton
