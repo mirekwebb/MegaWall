@@ -18,14 +18,17 @@ class WallpaperDetailViewController: UIViewController {
         static let cellReuseIdentifier = "WallpaperDetailCollectionViewCell"
     }
 
+    // Outlets
     @IBOutlet private weak var collectionView: UICollectionView!
-
     @IBOutlet private weak var detailImageImageView: UIImageView!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var likesStackView: UIStackView!
+    @IBOutlet private weak var likesLabel: UILabel!
 
     var viewModel: WallpaperDetailViewModelType!
 
+    private var wallpaperService: WallpaperServiceType = WallpaperService()
     private var viewModelDisposable: Disposable?
 
     convenience init(viewModel: WallpaperDetailViewModelType) {
@@ -70,30 +73,65 @@ class WallpaperDetailViewController: UIViewController {
         }
         timeLabel.text = viewModel.currentTime
         dateLabel.text = viewModel.currentDate
+        updateLikesLabel()
     }
 
     @IBAction func likeButtonPressed(_ sender: Any) {
+        guard let currentUserId = PFUser.current()?.objectId else {
+            showLoginAlert(with: "Please Login to Like this Wallpaper. Want to Login now?")
+            return
+        }
+
+        let wallpaper = viewModel.selectedWallpaper
+
+        let likedBy = wallpaperService.usersWhoLiked(wallpaper: wallpaper)
+
+        if likedBy.contains(currentUserId) {
+            wallpaperService.dislike(wallpaper: wallpaper, with: currentUserId) { [weak self] (success, error) in
+                if error == nil {
+                    self?.updateLikesLabel()
+                    self?.showSimpleAlert(with: "You've unliked this wallpaper")
+                }
+            }
+        } else {
+            wallpaperService.like(wallpaper: wallpaper, with: currentUserId) { [weak self] (success, error) in
+                if error == nil {
+                    self?.updateLikesLabel()
+                    self?.showSimpleAlert(with: "You've liked this wallpaper. ")
+                }
+            }
+        }
     }
 
     @IBAction func downloadButtonPressed(_ sender: Any) {
+        let selectedWallpaper = viewModel.selectedWallpaper
+
+        wallpaperService.getImage(for: selectedWallpaper) { [weak self] (image, error) in
+            guard error == nil,
+                let image = image else {
+                    self?.showSimpleAlert(with: "Ooops... Something went wrong")
+                    return
+            }
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            self?.showSimpleAlert(with: "Image downloaded")
+        }
     }
 
     @IBAction func previewButtonPressed(_ sender: Any) {
         guard let selectedImageIndex = collectionView.indexPathsForSelectedItems?.first else {
             return
         }
+
         let selectedWallpaper = viewModel.wallpapers[selectedImageIndex.row]
-        let imageFile = selectedWallpaper[WALLPAPERS_IMAGE] as? PFFileObject
-        imageFile?.getDataInBackground(block: { (data, error) in
+        wallpaperService.getImage(for: selectedWallpaper) { [weak self] (image, error) in
             guard error == nil,
-                let imageData = data,
-                let image = UIImage(data: imageData) else {
+                let image = image else {
                     return
             }
             let previewViewController = WallpaperPreviewViewController(image: image)
             previewViewController.modalPresentationStyle = .overCurrentContext
-            self.present(previewViewController, animated: true, completion: nil)
-        })
+            self?.present(previewViewController, animated: true, completion: nil)
+        }
     }
 
     @IBAction func moreButtonPressed(_ sender: Any) {
@@ -105,6 +143,14 @@ class WallpaperDetailViewController: UIViewController {
 
     deinit {
         viewModelDisposable?.dispose()
+    }
+
+    private func updateLikesLabel() {
+        if self.viewModel.numberOfLikes == 1 {
+            self.likesLabel.text = "\(self.viewModel.numberOfLikes) like"
+        } else {
+            self.likesLabel.text = "\(self.viewModel.numberOfLikes) likes"
+        }
     }
 }
 
@@ -122,14 +168,12 @@ extension WallpaperDetailViewController: UICollectionViewDataSource {
 
         let wallpaperObject = viewModel.wallpapers[indexPath.row]
 
-        let imageFile = wallpaperObject[WALLPAPERS_IMAGE] as? PFFileObject
-        imageFile?.getDataInBackground(block: { (data, error) in
-            guard error == nil,
-                let imageData = data else {
+        wallpaperService.getImage(for: wallpaperObject) { (image, error) in
+            guard error == nil else {
                     return
             }
-            cell.configure(with: UIImage(data: imageData))
-        })
+            cell.configure(with: image)
+        }
         return cell
     }
 
@@ -138,16 +182,14 @@ extension WallpaperDetailViewController: UICollectionViewDataSource {
 extension WallpaperDetailViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let wallpaperObject = viewModel.wallpapers[indexPath.row]
-        let imageFile = wallpaperObject[WALLPAPERS_IMAGE] as? PFFileObject
-        imageFile?.getDataInBackground(block: { [weak self] (data, error) in
+        let selectedWallpaper = viewModel.wallpapers[indexPath.row]
+        wallpaperService.getImage(for: selectedWallpaper) { [weak self] (image, error) in
             guard error == nil,
-                let imageData = data,
-                let image = UIImage(data: imageData) else {
+                let image = image else {
                     return
             }
             self?.detailImageImageView.image = image
-        })
+        }
     }
 }
 

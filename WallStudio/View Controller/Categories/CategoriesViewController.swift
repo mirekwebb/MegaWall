@@ -143,10 +143,6 @@ extension CategoriesViewController: UITableViewDelegate {
 
         let categorieDetailVC = CategorieDetailViewController()
         categorieDetailVC.categoryName = "\(categoriesClass[CATEGORIES_NAME]!)"
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let wallGridViewController = storyboard.instantiateViewController(withIdentifier: "WallGrid") as! WallGrid
-//        wallGridViewController.categoryName = "\(categoriesClass[CATEGORIES_NAME]!)"
-//        wallGridViewController.isFavorites = false
         navigationController?.pushViewController(categorieDetailVC, animated: true)
     }
 }

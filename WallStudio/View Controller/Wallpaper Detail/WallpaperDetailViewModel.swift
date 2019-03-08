@@ -14,6 +14,7 @@ import Result
 
 protocol WallpaperDetailViewModelType {
     var wallpapers: [PFObject] { get }
+    var selectedWallpaper: PFObject { get }
     var selectedWallpaperIndex: Int { get set }
     var selectedWallpaperImage: SignalProducer<UIImage, NoError> { get }
     var numberOfLikes: Int { get }
@@ -22,6 +23,9 @@ protocol WallpaperDetailViewModelType {
 }
 
 class WallpaperDetailViewModel: WallpaperDetailViewModelType {
+
+    private let wallpaperService: WallpaperServiceType = WallpaperService()
+
 
     init(wallpapers: [PFObject], selectedWallpaperIndex: Int) {
         self.wallpapers = wallpapers
@@ -32,15 +36,17 @@ class WallpaperDetailViewModel: WallpaperDetailViewModelType {
 
     var selectedWallpaperIndex: Int
 
+    var selectedWallpaper: PFObject {
+        return wallpapers[selectedWallpaperIndex]
+    }
+
     var selectedWallpaperImage: SignalProducer<UIImage, NoError> {
         return SignalProducer { [weak self] observer, _ in
             guard let self = self else { return }
             let selectedWallpaper = self.wallpapers[self.selectedWallpaperIndex]
-            let imageFile = selectedWallpaper[WALLPAPERS_IMAGE] as? PFFileObject
-            imageFile?.getDataInBackground(block: { (data, error) in
+            self.wallpaperService.getImage(for: selectedWallpaper, completion: { (image, error) in
                 guard error == nil,
-                    let imageData = data,
-                    let image = UIImage(data: imageData) else {
+                    let image = image else {
                         return
                 }
                 observer.send(value: image)
@@ -51,14 +57,7 @@ class WallpaperDetailViewModel: WallpaperDetailViewModelType {
 
     var numberOfLikes: Int {
         let selectedWallpaper = wallpapers[selectedWallpaperIndex]
-        if selectedWallpaper[WALLPAPERS_LIKES] != nil {
-            guard let likes = selectedWallpaper[WALLPAPERS_LIKES] as? Int else {
-                return 0
-            }
-            return likes
-        } else {
-            return 0
-        }
+        return wallpaperService.likes(for: selectedWallpaper)
     }
 
     var currentTime: String {

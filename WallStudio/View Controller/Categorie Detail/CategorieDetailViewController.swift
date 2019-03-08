@@ -22,6 +22,8 @@ class CategorieDetailViewController: UIViewController {
     private var selectedWallpaperIndex = 0
     var categoryName = String()
 
+    private var wallpaperService: WallpaperServiceType = WallpaperService()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -138,19 +140,18 @@ extension CategorieDetailViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellReuseIdentifier, for: indexPath) as! GridCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellReuseIdentifier, for: indexPath) as? GridCell else {
+            return UICollectionViewCell()
+        }
 
-        var wallObj = PFObject(className: WALLPAPERS_CLASS_NAME)
-        wallObj = wallsArray[indexPath.row]
+        let wallpaperObject = wallsArray[indexPath.row]
 
-        let imageFile = wallObj[WALLPAPERS_IMAGE] as? PFFileObject
-        imageFile?.getDataInBackground(block: { (data, error) in
-            guard error == nil,
-                let imageData = data else {
+        wallpaperService.getImage(for: wallpaperObject) { (image, error) in
+            guard error == nil else {
                     return
             }
-            cell.configure(with: UIImage(data: imageData))
-        })
+            cell.configure(with: image)
+        }
         return cell
     }
 }

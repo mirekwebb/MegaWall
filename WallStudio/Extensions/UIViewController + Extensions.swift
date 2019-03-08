@@ -59,4 +59,23 @@ extension UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+
+    func showLoginAlert(with message: String) {
+        let alert = UIAlertController(title: APP_NAME,
+                                      message: message,
+                                      preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! Login
+            self.present(loginViewController, animated: true, completion: nil)
+        })
+
+        // Cancel Button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 }

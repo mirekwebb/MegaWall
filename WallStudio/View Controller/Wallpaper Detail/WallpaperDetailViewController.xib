@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,8 @@
                 <outlet property="collectionView" destination="vS8-YX-Bs3" id="6GI-NU-kB3"/>
                 <outlet property="dateLabel" destination="02j-SI-E7b" id="QMj-QK-cYb"/>
                 <outlet property="detailImageImageView" destination="ub4-iB-e5W" id="ALy-0A-JoH"/>
+                <outlet property="likesLabel" destination="bah-fS-Aie" id="lqA-9T-vzF"/>
+                <outlet property="likesStackView" destination="hGH-Zf-eS3" id="GxT-gY-E4w"/>
                 <outlet property="timeLabel" destination="1l8-Rw-8kt" id="ibt-4H-DQT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
