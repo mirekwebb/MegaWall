@@ -63,7 +63,7 @@ class WallpaperDetailViewController: UIViewController {
         }
 
         let indexPathOfSelectedItem = IndexPath(row: viewModel.selectedWallpaperIndex, section: 0)
-        collectionView.scrollToItem(at: indexPathOfSelectedItem, at: .centeredHorizontally, animated: true)
+        collectionView.selectItem(at: indexPathOfSelectedItem, animated: true, scrollPosition: .centeredHorizontally)
         isInitialScrollDone = true
     }
 

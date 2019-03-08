@@ -54,7 +54,6 @@
 		D815919A222D7629006BAE74 /* WallpaperPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8159198222D7629006BAE74 /* WallpaperPreviewViewController.xib */; };
 		D815919C222D8384006BAE74 /* PreviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D815919B222D8384006BAE74 /* PreviewItemView.swift */; };
 		D815919E222D839C006BAE74 /* PreviewItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D815919D222D839C006BAE74 /* PreviewItemView.xib */; };
-		D863605F223266B3002894BD /* OptionsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D863605E223266B2002894BD /* OptionsAlert.swift */; };
 		D8636062223279BF002894BD /* WallpaperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8636061223279BF002894BD /* WallpaperService.swift */; };
 		D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */; };
 		D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD622259A3C000A5D2C /* Kannada MN.ttc */; };
@@ -128,7 +127,6 @@
 		D8159198222D7629006BAE74 /* WallpaperPreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallpaperPreviewViewController.xib; sourceTree = "<group>"; };
 		D815919B222D8384006BAE74 /* PreviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewItemView.swift; sourceTree = "<group>"; };
 		D815919D222D839C006BAE74 /* PreviewItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewItemView.xib; sourceTree = "<group>"; };
-		D863605E223266B2002894BD /* OptionsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsAlert.swift; sourceTree = "<group>"; };
 		D8636061223279BF002894BD /* WallpaperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperService.swift; sourceTree = "<group>"; };
 		D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D885ABD622259A3C000A5D2C /* Kannada MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kannada MN.ttc"; sourceTree = "<group>"; };
@@ -351,7 +349,6 @@
 				D815919F222D8FCF006BAE74 /* Preview Item */,
 				D8159183222A87C2006BAE74 /* GridCell */,
 				D885ABDE2225A4A0000A5D2C /* DefaultButton.swift */,
-				D863605E223266B2002894BD /* OptionsAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -606,7 +603,6 @@
 				D815917C222A8762006BAE74 /* CategorieDetailViewController.swift in Sources */,
 				D8159181222A8783006BAE74 /* LikedViewController.swift in Sources */,
 				D8159186222A8847006BAE74 /* GridCell.swift in Sources */,
-				D863605F223266B3002894BD /* OptionsAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
