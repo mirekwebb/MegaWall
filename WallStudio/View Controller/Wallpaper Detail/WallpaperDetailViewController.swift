@@ -134,7 +134,74 @@ class WallpaperDetailViewController: UIViewController {
         }
     }
 
-    @IBAction func moreButtonPressed(_ sender: Any) {
+    @IBAction func moreButtonPressed(_ sender: UIButton) {
+        let wallpaper = viewModel.selectedWallpaper
+        let favoriteBy = wallpaperService.usersWhoFavorite(wallpaper: wallpaper)
+
+        var favoriteActionTitle = ""
+
+        if favoriteBy.contains(PFUser.current()?.objectId ?? "") {
+            favoriteActionTitle = "Remove from Favorites"
+        } else {
+            favoriteActionTitle = "Add to Favorites"
+        }
+
+        // Add To Favorites
+        let addOrRemoveFavoriteAction = UIAlertAction(title: favoriteActionTitle, style: .default, handler: { [weak self] (action) -> Void in
+            guard let strongSelf = self,
+                let currentUserId = PFUser.current()?.objectId else {
+                    self?.showLoginAlert(with: "Please Login to Add to your Favorites. Want to Login now?")
+                    return
+            }
+
+            if favoriteBy.contains(currentUserId) {
+                strongSelf.wallpaperService.removeFromFavorits(wallpaper: wallpaper, with: currentUserId, completion: { (success, error) in
+                    if error == nil {
+                        strongSelf.showSimpleAlert(with: "Removed from your Favorites")
+                    }
+                })
+            } else {
+                strongSelf.wallpaperService.addToFavorites(wallpaper: wallpaper, with: currentUserId, completion: { (success, error) in
+                    if error == nil {
+                        strongSelf.showSimpleAlert(with: "Removed from your Favorites")
+                    }
+                })
+            }
+        })
+
+        // Report Wallpaper
+        let reportAction = UIAlertAction(title: "Report as Inappropriate", style: .default, handler: { [weak self] (action) -> Void in
+            guard let self = self else {
+                return
+            }
+            self.showHUD(with: "Please wait...")
+
+            self.wallpaperService.report(wallpaper: wallpaper, completion: { (success, error) in
+                if error == nil {
+                    self.hideHUD()
+                    self.showSimpleAlert(with: "Thanks for reporting this wallpaper. Our staff review this request.")
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
+            })
+        })
+
+        // Cancel Button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
+
+
+        let alert = UIAlertController(title: APP_NAME,
+                                      message: "Choose an Option",
+                                      preferredStyle: .actionSheet)
+        alert.addAction(reportAction)
+        alert.addAction(addOrRemoveFavoriteAction)
+        alert.addAction(cancelAction)
+
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let popOver = UIPopoverController(contentViewController: alert)
+            popOver.present(from: sender.frame, in: self.view, permittedArrowDirections: .down, animated: true)
+        } else {
+            present(alert, animated: true, completion: nil)
+        }
     }
 
     @IBAction func closeButtonPressed(_ sender: Any) {
@@ -170,7 +237,7 @@ extension WallpaperDetailViewController: UICollectionViewDataSource {
 
         wallpaperService.getImage(for: wallpaperObject) { (image, error) in
             guard error == nil else {
-                    return
+                return
             }
             cell.configure(with: image)
         }
@@ -188,6 +255,7 @@ extension WallpaperDetailViewController: UICollectionViewDelegate {
                 let image = image else {
                     return
             }
+            self?.viewModel.selectedWallpaperIndex = indexPath.row
             self?.detailImageImageView.image = image
         }
     }
