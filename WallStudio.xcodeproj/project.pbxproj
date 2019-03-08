@@ -39,6 +39,24 @@
 		72F9E06B1ECC39AA00E26DC2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E0691ECC39AA00E26DC2 /* Login.swift */; };
 		72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */; };
 		D8159178222A79EC006BAE74 /* UIDevice + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8159177222A79EC006BAE74 /* UIDevice + Extensions.swift */; };
+		D815917C222A8762006BAE74 /* CategorieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D815917A222A8762006BAE74 /* CategorieDetailViewController.swift */; };
+		D815917D222A8762006BAE74 /* CategorieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D815917B222A8762006BAE74 /* CategorieDetailViewController.xib */; };
+		D8159182222A8783006BAE74 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8159180222A8783006BAE74 /* FavoritesViewController.xib */; };
+		D8159186222A8847006BAE74 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8159184222A8847006BAE74 /* GridCell.swift */; };
+		D8159187222A8847006BAE74 /* GridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8159185222A8847006BAE74 /* GridCell.xib */; };
+		D815918B222BD4A9006BAE74 /* WallpaperDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8159189222BD4A9006BAE74 /* WallpaperDetailViewController.swift */; };
+		D815918C222BD4A9006BAE74 /* WallpaperDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D815918A222BD4A9006BAE74 /* WallpaperDetailViewController.xib */; };
+		D815918E222BD6B5006BAE74 /* WallpaperDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D815918D222BD6B5006BAE74 /* WallpaperDetailViewModel.swift */; };
+		D8159194222BE704006BAE74 /* WallpaperDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8159192222BE704006BAE74 /* WallpaperDetailCollectionViewCell.swift */; };
+		D8159195222BE704006BAE74 /* WallpaperDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8159193222BE704006BAE74 /* WallpaperDetailCollectionViewCell.xib */; };
+		D8159199222D7629006BAE74 /* WallpaperPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8159197222D7629006BAE74 /* WallpaperPreviewViewController.swift */; };
+		D815919A222D7629006BAE74 /* WallpaperPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8159198222D7629006BAE74 /* WallpaperPreviewViewController.xib */; };
+		D815919C222D8384006BAE74 /* PreviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D815919B222D8384006BAE74 /* PreviewItemView.swift */; };
+		D815919E222D839C006BAE74 /* PreviewItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D815919D222D839C006BAE74 /* PreviewItemView.xib */; };
+		D8636062223279BF002894BD /* WallpaperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8636061223279BF002894BD /* WallpaperService.swift */; };
+		D863606422329CFE002894BD /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D863606322329CFD002894BD /* FavoritesViewController.swift */; };
+		D863606822329EA9002894BD /* DownloadedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D863606622329EA9002894BD /* DownloadedViewController.swift */; };
+		D863606922329EA9002894BD /* DownloadedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D863606722329EA9002894BD /* DownloadedViewController.xib */; };
 		D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */; };
 		D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D885ABD622259A3C000A5D2C /* Kannada MN.ttc */; };
 		D885ABDA22259C87000A5D2C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885ABD822259C87000A5D2C /* HomeViewController.swift */; };
@@ -96,6 +114,24 @@
 		853C1F6353D0080351EACED5 /* Pods_WallStudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallStudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3A46991F248F2200D13C5F /* WallStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WallStudio.entitlements; sourceTree = "<group>"; };
 		D8159177222A79EC006BAE74 /* UIDevice + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice + Extensions.swift"; sourceTree = "<group>"; };
+		D815917A222A8762006BAE74 /* CategorieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieDetailViewController.swift; sourceTree = "<group>"; };
+		D815917B222A8762006BAE74 /* CategorieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategorieDetailViewController.xib; sourceTree = "<group>"; };
+		D8159180222A8783006BAE74 /* FavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		D8159184222A8847006BAE74 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		D8159185222A8847006BAE74 /* GridCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridCell.xib; sourceTree = "<group>"; };
+		D8159189222BD4A9006BAE74 /* WallpaperDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperDetailViewController.swift; sourceTree = "<group>"; };
+		D815918A222BD4A9006BAE74 /* WallpaperDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallpaperDetailViewController.xib; sourceTree = "<group>"; };
+		D815918D222BD6B5006BAE74 /* WallpaperDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperDetailViewModel.swift; sourceTree = "<group>"; };
+		D8159192222BE704006BAE74 /* WallpaperDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8159193222BE704006BAE74 /* WallpaperDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallpaperDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		D8159197222D7629006BAE74 /* WallpaperPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperPreviewViewController.swift; sourceTree = "<group>"; };
+		D8159198222D7629006BAE74 /* WallpaperPreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallpaperPreviewViewController.xib; sourceTree = "<group>"; };
+		D815919B222D8384006BAE74 /* PreviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewItemView.swift; sourceTree = "<group>"; };
+		D815919D222D839C006BAE74 /* PreviewItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewItemView.xib; sourceTree = "<group>"; };
+		D8636061223279BF002894BD /* WallpaperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperService.swift; sourceTree = "<group>"; };
+		D863606322329CFD002894BD /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		D863606622329EA9002894BD /* DownloadedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedViewController.swift; sourceTree = "<group>"; };
+		D863606722329EA9002894BD /* DownloadedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadedViewController.xib; sourceTree = "<group>"; };
 		D885ABD4222594D3000A5D2C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D885ABD622259A3C000A5D2C /* Kannada MN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kannada MN.ttc"; sourceTree = "<group>"; };
 		D885ABD822259C87000A5D2C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +233,7 @@
 				7292A8C81B6F73A1006BB1B9 /* Main.storyboard */,
 				D81F1E91221C46F300B6E104 /* View Controller */,
 				D885ABDD2225A47B000A5D2C /* Components */,
+				D8636060223279A9002894BD /* Services */,
 				D8B8B3FF221B2B4200C27166 /* Extensions */,
 				D8B8B3F2221B29FF00C27166 /* Resources */,
 				7292A8CB1B6F73A1006BB1B9 /* Images.xcassets */,
@@ -207,11 +244,81 @@
 			path = WallStudio;
 			sourceTree = "<group>";
 		};
+		D8159179222A8736006BAE74 /* Categorie Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D815917A222A8762006BAE74 /* CategorieDetailViewController.swift */,
+				D815917B222A8762006BAE74 /* CategorieDetailViewController.xib */,
+			);
+			path = "Categorie Detail";
+			sourceTree = "<group>";
+		};
+		D815917E222A8768006BAE74 /* Liked */ = {
+			isa = PBXGroup;
+			children = (
+				D863606322329CFD002894BD /* FavoritesViewController.swift */,
+				D8159180222A8783006BAE74 /* FavoritesViewController.xib */,
+			);
+			path = Liked;
+			sourceTree = "<group>";
+		};
+		D8159183222A87C2006BAE74 /* GridCell */ = {
+			isa = PBXGroup;
+			children = (
+				D8159184222A8847006BAE74 /* GridCell.swift */,
+				D8159185222A8847006BAE74 /* GridCell.xib */,
+			);
+			path = GridCell;
+			sourceTree = "<group>";
+		};
+		D8159188222BD482006BAE74 /* Wallpaper Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D815918D222BD6B5006BAE74 /* WallpaperDetailViewModel.swift */,
+				D8159189222BD4A9006BAE74 /* WallpaperDetailViewController.swift */,
+				D815918A222BD4A9006BAE74 /* WallpaperDetailViewController.xib */,
+				D8159191222BE6D7006BAE74 /* Cell */,
+				D863606522329E8C002894BD /* Downloaded Screen */,
+			);
+			path = "Wallpaper Detail";
+			sourceTree = "<group>";
+		};
+		D8159191222BE6D7006BAE74 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D8159192222BE704006BAE74 /* WallpaperDetailCollectionViewCell.swift */,
+				D8159193222BE704006BAE74 /* WallpaperDetailCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D8159196222D7601006BAE74 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				D8159197222D7629006BAE74 /* WallpaperPreviewViewController.swift */,
+				D8159198222D7629006BAE74 /* WallpaperPreviewViewController.xib */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		D815919F222D8FCF006BAE74 /* Preview Item */ = {
+			isa = PBXGroup;
+			children = (
+				D815919B222D8384006BAE74 /* PreviewItemView.swift */,
+				D815919D222D839C006BAE74 /* PreviewItemView.xib */,
+			);
+			path = "Preview Item";
+			sourceTree = "<group>";
+		};
 		D81F1E91221C46F300B6E104 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D885ABDC22259C8E000A5D2C /* Home */,
 				D885ABE02226E455000A5D2C /* Categories */,
+				D8159179222A8736006BAE74 /* Categorie Detail */,
+				D815917E222A8768006BAE74 /* Liked */,
+				D8159188222BD482006BAE74 /* Wallpaper Detail */,
+				D8159196222D7601006BAE74 /* Preview */,
 				72F9E0691ECC39AA00E26DC2 /* Login.swift */,
 				72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */,
 				725C277E1B70A36000168806 /* TermsOfUse.swift */,
@@ -222,6 +329,23 @@
 				1391862D1F1CC24F0011EFC1 /* Account.swift */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		D8636060223279A9002894BD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D8636061223279BF002894BD /* WallpaperService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D863606522329E8C002894BD /* Downloaded Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D863606622329EA9002894BD /* DownloadedViewController.swift */,
+				D863606722329EA9002894BD /* DownloadedViewController.xib */,
+			);
+			path = "Downloaded Screen";
 			sourceTree = "<group>";
 		};
 		D885ABDC22259C8E000A5D2C /* Home */ = {
@@ -236,6 +360,8 @@
 		D885ABDD2225A47B000A5D2C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D815919F222D8FCF006BAE74 /* Preview Item */,
+				D8159183222A87C2006BAE74 /* GridCell */,
 				D885ABDE2225A4A0000A5D2C /* DefaultButton.swift */,
 			);
 			path = Components;
@@ -388,17 +514,25 @@
 			files = (
 				D885ABD5222594D3000A5D2C /* LaunchScreen.storyboard in Resources */,
 				D885ABE92226F1ED000A5D2C /* CategoriesTableViewCell.xib in Resources */,
+				D815919A222D7629006BAE74 /* WallpaperPreviewViewController.xib in Resources */,
 				D8B8B3FB221B2A4A00C27166 /* Montserrat-Light.ttf in Resources */,
+				D8159187222A8847006BAE74 /* GridCell.xib in Resources */,
+				D8159195222BE704006BAE74 /* WallpaperDetailCollectionViewCell.xib in Resources */,
 				D885ABE42226E47B000A5D2C /* CategoriesViewController.xib in Resources */,
 				D8B8B3FA221B2A4A00C27166 /* Montserrat-Regular.ttf in Resources */,
 				D8B8B3F9221B2A4A00C27166 /* Montserrat-Thin.ttf in Resources */,
 				D885ABD722259A44000A5D2C /* Kannada MN.ttc in Resources */,
+				D815917D222A8762006BAE74 /* CategorieDetailViewController.xib in Resources */,
 				D8B8B3ED221B081E00C27166 /* Podfile in Resources */,
+				D863606922329EA9002894BD /* DownloadedViewController.xib in Resources */,
+				D815919E222D839C006BAE74 /* PreviewItemView.xib in Resources */,
 				7292A8CA1B6F73A1006BB1B9 /* Main.storyboard in Resources */,
 				725C27811B70A39400168806 /* terms.html in Resources */,
+				D815918C222BD4A9006BAE74 /* WallpaperDetailViewController.xib in Resources */,
 				D8B8B3FC221B2A4A00C27166 /* Montserrat-Medium.ttf in Resources */,
 				7292A8CC1B6F73A1006BB1B9 /* Images.xcassets in Resources */,
 				D885ABDB22259C87000A5D2C /* HomeViewController.xib in Resources */,
+				D8159182222A8783006BAE74 /* FavoritesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +550,8 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -423,6 +559,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -458,19 +596,29 @@
 				7292A8C71B6F73A1006BB1B9 /* WallGrid.swift in Sources */,
 				D885ABDF2225A4A0000A5D2C /* DefaultButton.swift in Sources */,
 				D885ABED2226F8FF000A5D2C /* CategoriesTableCellViewModel.swift in Sources */,
+				D815919C222D8384006BAE74 /* PreviewItemView.swift in Sources */,
 				7292A8EE1B6FA34F006BB1B9 /* Categories.swift in Sources */,
 				72627E2F1B6FE1F300089695 /* Submit.swift in Sources */,
+				D863606822329EA9002894BD /* DownloadedViewController.swift in Sources */,
 				725C277F1B70A36000168806 /* TermsOfUse.swift in Sources */,
 				7292A8C51B6F73A0006BB1B9 /* AppDelegate.swift in Sources */,
+				D815918E222BD6B5006BAE74 /* WallpaperDetailViewModel.swift in Sources */,
+				D863606422329CFE002894BD /* FavoritesViewController.swift in Sources */,
 				D8B8B3FE221B2AC500C27166 /* Globals.swift in Sources */,
 				D8159178222A79EC006BAE74 /* UIDevice + Extensions.swift in Sources */,
 				72627E261B6FD8E300089695 /* Home.swift in Sources */,
+				D815918B222BD4A9006BAE74 /* WallpaperDetailViewController.swift in Sources */,
 				72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */,
 				D8B8B401221B2B7900C27166 /* UIViewController + Extensions.swift in Sources */,
 				72F9E06B1ECC39AA00E26DC2 /* Login.swift in Sources */,
+				D8159199222D7629006BAE74 /* WallpaperPreviewViewController.swift in Sources */,
 				D885ABE32226E47B000A5D2C /* CategoriesViewController.swift in Sources */,
+				D8159194222BE704006BAE74 /* WallpaperDetailCollectionViewCell.swift in Sources */,
 				D885ABDA22259C87000A5D2C /* HomeViewController.swift in Sources */,
 				D885ABE82226F1ED000A5D2C /* CategoriesTableViewCell.swift in Sources */,
+				D8636062223279BF002894BD /* WallpaperService.swift in Sources */,
+				D815917C222A8762006BAE74 /* CategorieDetailViewController.swift in Sources */,
+				D8159186222A8847006BAE74 /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

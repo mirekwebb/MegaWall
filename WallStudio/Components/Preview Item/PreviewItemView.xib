@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreviewItemView" customModule="WallStudio" customModuleProvider="target">
+            <connections>
+                <outlet property="itemImageView" destination="QNU-KD-SZg" id="wF7-jF-QsQ"/>
+                <outlet property="itemLabel" destination="ktR-F2-0ur" id="ryX-00-twp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QNU-KD-SZg">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="RnX-yT-UFV"/>
+                        <constraint firstAttribute="height" constant="60" id="amL-Ek-JVA"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktR-F2-0ur">
+                    <rect key="frame" x="0.0" y="66" width="60" height="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="QNU-KD-SZg" secondAttribute="trailing" id="IES-Za-Y0h"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ktR-F2-0ur" secondAttribute="bottom" id="K6R-1S-pNY"/>
+                <constraint firstItem="ktR-F2-0ur" firstAttribute="top" secondItem="QNU-KD-SZg" secondAttribute="bottom" constant="6" id="NqS-UW-Dec"/>
+                <constraint firstItem="ktR-F2-0ur" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hj4-Cz-iU8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ktR-F2-0ur" secondAttribute="trailing" id="qzI-go-T6n"/>
+                <constraint firstItem="QNU-KD-SZg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="s0u-nk-Bs2"/>
+                <constraint firstItem="QNU-KD-SZg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="zYu-uK-D3o"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>
+        </view>
+    </objects>
+</document>

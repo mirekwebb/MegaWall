@@ -17,10 +17,14 @@ PODS:
     - Bolts (~> 1.9)
     - FBSDKLoginKit (~> 4.33)
     - Parse/Core
+  - ReactiveSwift (3.1.0):
+    - Result (~> 3.2)
+  - Result (3.2.4)
 
 DEPENDENCIES:
   - Parse
   - Parse/FacebookUtils
+  - ReactiveSwift (~> 3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -28,13 +32,17 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Parse
+    - ReactiveSwift
+    - Result
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
   FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+  ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
 
-PODFILE CHECKSUM: 4cf08fda0402bc116f76433194132068f8785edb
+PODFILE CHECKSUM: e43e24f86c9b201cf83355c05b0a8e0d2f1519b5
 
 COCOAPODS: 1.5.3
