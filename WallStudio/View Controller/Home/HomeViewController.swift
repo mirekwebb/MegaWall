@@ -118,8 +118,8 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func uploadButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if PFUser.current() != nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let subVC = storyboard.instantiateViewController(withIdentifier: "SubmitWallpaper") as! SubmitWallpaper
             navigationController?.pushViewController(subVC, animated: true)
 
@@ -130,7 +130,7 @@ class HomeViewController: UIViewController {
 
 
             let okAction = UIAlertAction(title: "Login", style: .default, handler: { (action) -> Void in
-                let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login") as! Login
+                let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! Login
                 self.present(loginViewController, animated: true, completion: nil)
             })
 
