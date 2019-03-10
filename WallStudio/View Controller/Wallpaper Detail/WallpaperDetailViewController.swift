@@ -11,6 +11,11 @@ import ReactiveSwift
 import Result
 import Parse
 
+protocol MoreActionsDelegate {
+    func addedToFavorites()
+    func removedFromFavorites()
+}
+
 class WallpaperDetailViewController: UIViewController {
 
     private enum Constants {
@@ -27,6 +32,7 @@ class WallpaperDetailViewController: UIViewController {
     @IBOutlet private weak var likesLabel: UILabel!
 
     var viewModel: WallpaperDetailViewModelType!
+    var moreActionsDelegate: MoreActionsDelegate?
 
     private var wallpaperService: WallpaperServiceType = WallpaperService()
     private var viewModelDisposable: Disposable?
@@ -157,13 +163,15 @@ class WallpaperDetailViewController: UIViewController {
             if favoriteBy.contains(currentUserId) {
                 strongSelf.wallpaperService.removeFromFavorits(wallpaper: wallpaper, with: currentUserId, completion: { (success, error) in
                     if error == nil {
+                        strongSelf.moreActionsDelegate?.removedFromFavorites()
                         strongSelf.showSimpleAlert(with: "Removed from your Favorites")
                     }
                 })
             } else {
                 strongSelf.wallpaperService.addToFavorites(wallpaper: wallpaper, with: currentUserId, completion: { (success, error) in
                     if error == nil {
-                        strongSelf.showSimpleAlert(with: "Removed from your Favorites")
+                        strongSelf.moreActionsDelegate?.addedToFavorites()
+                        strongSelf.showSimpleAlert(with: "Added to your Favorites")
                     }
                 })
             }
@@ -189,18 +197,18 @@ class WallpaperDetailViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in })
 
 
-        let alert = UIAlertController(title: APP_NAME,
+        let moreActionsAlert = UIAlertController(title: APP_NAME,
                                       message: "Choose an Option",
                                       preferredStyle: .actionSheet)
-        alert.addAction(reportAction)
-        alert.addAction(addOrRemoveFavoriteAction)
-        alert.addAction(cancelAction)
+        moreActionsAlert.addAction(reportAction)
+        moreActionsAlert.addAction(addOrRemoveFavoriteAction)
+        moreActionsAlert.addAction(cancelAction)
 
         if UIDevice.current.userInterfaceIdiom == .pad {
-            let popOver = UIPopoverController(contentViewController: alert)
+            let popOver = UIPopoverController(contentViewController: moreActionsAlert)
             popOver.present(from: sender.frame, in: self.view, permittedArrowDirections: .down, animated: true)
         } else {
-            present(alert, animated: true, completion: nil)
+            present(moreActionsAlert, animated: true, completion: nil)
         }
     }
 

@@ -165,6 +165,7 @@ extension FavoritesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let wallpaperDetailViewModel = WallpaperDetailViewModel(wallpapers: wallsArray, selectedWallpaperIndex: indexPath.row)
         let wallpaperDetailViewController = WallpaperDetailViewController(viewModel: wallpaperDetailViewModel)
+        wallpaperDetailViewController.moreActionsDelegate = self
         wallpaperDetailViewController.modalPresentationStyle = .overCurrentContext
         present(wallpaperDetailViewController, animated: true, completion: nil)
     }
@@ -176,5 +177,15 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width / 3, height: view.frame.size.width / 2)
+    }
+}
+
+extension FavoritesViewController: MoreActionsDelegate {
+    func addedToFavorites() {
+        queryWallpapers()
+    }
+
+    func removedFromFavorites() {
+        queryWallpapers()
     }
 }

@@ -119,7 +119,8 @@ class HomeViewController: UIViewController {
 
     @IBAction func uploadButtonPressed(_ sender: Any) {
         if PFUser.current() != nil {
-            let subVC = storyboard?.instantiateViewController(withIdentifier: "SubmitWallpaper") as! SubmitWallpaper
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let subVC = storyboard.instantiateViewController(withIdentifier: "SubmitWallpaper") as! SubmitWallpaper
             navigationController?.pushViewController(subVC, animated: true)
 
         } else {
