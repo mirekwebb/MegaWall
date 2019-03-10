@@ -21,13 +21,10 @@
 		725C278D1B70B93D00168806 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725C278C1B70B93D00168806 /* EventKit.framework */; };
 		725C278F1B70B94100168806 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725C278E1B70B94100168806 /* EventKitUI.framework */; };
 		725C27911B70B94500168806 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725C27901B70B94500168806 /* MessageUI.framework */; };
-		72627E261B6FD8E300089695 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72627E251B6FD8E300089695 /* Home.swift */; };
 		72627E2F1B6FE1F300089695 /* Submit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72627E2E1B6FE1F300089695 /* Submit.swift */; };
 		7292A8C51B6F73A0006BB1B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292A8C41B6F73A0006BB1B9 /* AppDelegate.swift */; };
-		7292A8C71B6F73A1006BB1B9 /* WallGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292A8C61B6F73A1006BB1B9 /* WallGrid.swift */; };
 		7292A8CA1B6F73A1006BB1B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7292A8C81B6F73A1006BB1B9 /* Main.storyboard */; };
 		7292A8CC1B6F73A1006BB1B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7292A8CB1B6F73A1006BB1B9 /* Images.xcassets */; };
-		7292A8EE1B6FA34F006BB1B9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7292A8ED1B6FA34F006BB1B9 /* Categories.swift */; };
 		7292A8F61B6FA3AD006BB1B9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7292A8F51B6FA3AD006BB1B9 /* AudioToolbox.framework */; };
 		7292A8F81B6FA3B1006BB1B9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7292A8F71B6FA3B1006BB1B9 /* CFNetwork.framework */; };
 		7292A8FA1B6FA3B4006BB1B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7292A8F91B6FA3B4006BB1B9 /* CoreGraphics.framework */; };
@@ -92,15 +89,12 @@
 		725C278C1B70B93D00168806 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		725C278E1B70B94100168806 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		725C27901B70B94500168806 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		72627E251B6FD8E300089695 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		72627E2E1B6FE1F300089695 /* Submit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Submit.swift; sourceTree = "<group>"; };
 		7292A8BF1B6F73A0006BB1B9 /* WallStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7292A8C31B6F73A0006BB1B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7292A8C41B6F73A0006BB1B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7292A8C61B6F73A1006BB1B9 /* WallGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallGrid.swift; sourceTree = "<group>"; };
 		7292A8C91B6F73A1006BB1B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7292A8CB1B6F73A1006BB1B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7292A8ED1B6FA34F006BB1B9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		7292A8F51B6FA3AD006BB1B9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7292A8F71B6FA3B1006BB1B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7292A8F91B6FA3B4006BB1B9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -322,9 +316,6 @@
 				72F9E0691ECC39AA00E26DC2 /* Login.swift */,
 				72F9E06A1ECC39AA00E26DC2 /* SignUp.swift */,
 				725C277E1B70A36000168806 /* TermsOfUse.swift */,
-				72627E251B6FD8E300089695 /* Home.swift */,
-				7292A8ED1B6FA34F006BB1B9 /* Categories.swift */,
-				7292A8C61B6F73A1006BB1B9 /* WallGrid.swift */,
 				72627E2E1B6FE1F300089695 /* Submit.swift */,
 				1391862D1F1CC24F0011EFC1 /* Account.swift */,
 			);
@@ -593,11 +584,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1391862E1F1CC24F0011EFC1 /* Account.swift in Sources */,
-				7292A8C71B6F73A1006BB1B9 /* WallGrid.swift in Sources */,
 				D885ABDF2225A4A0000A5D2C /* DefaultButton.swift in Sources */,
 				D885ABED2226F8FF000A5D2C /* CategoriesTableCellViewModel.swift in Sources */,
 				D815919C222D8384006BAE74 /* PreviewItemView.swift in Sources */,
-				7292A8EE1B6FA34F006BB1B9 /* Categories.swift in Sources */,
 				72627E2F1B6FE1F300089695 /* Submit.swift in Sources */,
 				D863606822329EA9002894BD /* DownloadedViewController.swift in Sources */,
 				725C277F1B70A36000168806 /* TermsOfUse.swift in Sources */,
@@ -606,7 +595,6 @@
 				D863606422329CFE002894BD /* FavoritesViewController.swift in Sources */,
 				D8B8B3FE221B2AC500C27166 /* Globals.swift in Sources */,
 				D8159178222A79EC006BAE74 /* UIDevice + Extensions.swift in Sources */,
-				72627E261B6FD8E300089695 /* Home.swift in Sources */,
 				D815918B222BD4A9006BAE74 /* WallpaperDetailViewController.swift in Sources */,
 				72F9E06C1ECC39AA00E26DC2 /* SignUp.swift in Sources */,
 				D8B8B401221B2B7900C27166 /* UIViewController + Extensions.swift in Sources */,

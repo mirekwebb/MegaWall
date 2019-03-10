@@ -24,14 +24,10 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hHd-BZ-U5W">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9RH-ep-Ag5">
+                <view alpha="0.68999999999999995" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqT-qm-9Bz">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zye-ow-X92">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <blurEffect style="dark"/>
-                </visualEffectView>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Zea-0r-pwd">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,17 +45,17 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="9RH-ep-Ag5" secondAttribute="bottom" id="60T-La-Lgr"/>
-                <constraint firstItem="9RH-ep-Ag5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="68u-d0-9S2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vqT-qm-9Bz" secondAttribute="trailing" id="0Dg-vY-rHF"/>
+                <constraint firstItem="vqT-qm-9Bz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6NJ-TA-Yfy"/>
                 <constraint firstItem="Zea-0r-pwd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8Pm-Pu-ngH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9RH-ep-Ag5" secondAttribute="trailing" id="AtA-v5-Igo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hHd-BZ-U5W" secondAttribute="trailing" id="IiD-1D-TpJ"/>
                 <constraint firstItem="hHd-BZ-U5W" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Tu1-Mm-0Jz"/>
                 <constraint firstItem="Zea-0r-pwd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="V3q-LH-ita"/>
+                <constraint firstAttribute="bottom" secondItem="vqT-qm-9Bz" secondAttribute="bottom" id="bGO-Ab-lRp"/>
                 <constraint firstItem="hHd-BZ-U5W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="h9T-3a-6pq"/>
-                <constraint firstItem="9RH-ep-Ag5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jqj-Qg-ZgA"/>
                 <constraint firstAttribute="bottom" secondItem="Zea-0r-pwd" secondAttribute="bottom" id="wTk-Bq-nAC"/>
                 <constraint firstAttribute="bottom" secondItem="hHd-BZ-U5W" secondAttribute="bottom" id="xPx-gG-ZJV"/>
+                <constraint firstItem="vqT-qm-9Bz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xxr-qi-RJ2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zea-0r-pwd" secondAttribute="trailing" id="zyJ-uR-RMt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

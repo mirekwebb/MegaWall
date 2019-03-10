@@ -10,6 +10,11 @@ import UIKit
 import Parse
 import MessageUI
 
+class CatCell: UITableViewCell {
+    @IBOutlet var catImage: UIImageView!
+    @IBOutlet var catNameLabel: UILabel!
+}
+
 class SubmitWallpaper: UIViewController, UIAlertViewDelegate, UINavigationControllerDelegate {
 
     @IBOutlet private var containerScrollView: UIScrollView!

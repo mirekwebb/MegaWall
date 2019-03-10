@@ -35,7 +35,7 @@
                         <constraint firstAttribute="width" constant="30" id="9N4-HT-unU"/>
                         <constraint firstAttribute="height" constant="30" id="yy1-Nb-PVh"/>
                     </constraints>
-                    <state key="normal" image="circleClose"/>
+                    <state key="normal" image="close"/>
                     <connections>
                         <action selector="closeButtonPressed:" destination="-1" eventType="touchUpInside" id="qXm-Ox-pey"/>
                     </connections>
@@ -101,7 +101,7 @@
                         <constraint firstAttribute="height" constant="60" id="Ujp-LQ-Rua"/>
                         <constraint firstAttribute="width" constant="60" id="fGe-TD-OPz"/>
                     </constraints>
-                    <state key="normal" image="download512"/>
+                    <state key="normal" image="download"/>
                     <connections>
                         <action selector="downloadButtonPressed:" destination="-1" eventType="touchUpInside" id="sTp-XK-7DI"/>
                     </connections>
@@ -123,7 +123,7 @@
                         <constraint firstAttribute="height" constant="16" id="Ljs-Ax-baf"/>
                         <constraint firstAttribute="width" constant="30" id="TOf-SE-H1s"/>
                     </constraints>
-                    <state key="normal" image="3Circles"/>
+                    <state key="normal" image="more_actions"/>
                     <connections>
                         <action selector="moreButtonPressed:" destination="-1" eventType="touchUpInside" id="pFP-G6-Ve8"/>
                     </connections>
@@ -160,10 +160,10 @@
         </view>
     </objects>
     <resources>
-        <image name="3Circles" width="37" height="15"/>
-        <image name="circleClose" width="30" height="30"/>
-        <image name="download512" width="66" height="66"/>
+        <image name="close" width="30" height="30"/>
+        <image name="download" width="66" height="66"/>
         <image name="likeRed" width="30" height="30"/>
+        <image name="more_actions" width="37" height="15"/>
         <image name="previewIcon" width="30" height="30"/>
     </resources>
 </document>

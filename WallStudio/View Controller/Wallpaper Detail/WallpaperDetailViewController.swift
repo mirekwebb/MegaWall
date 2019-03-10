@@ -204,12 +204,13 @@ class WallpaperDetailViewController: UIViewController {
         moreActionsAlert.addAction(addOrRemoveFavoriteAction)
         moreActionsAlert.addAction(cancelAction)
 
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            let popOver = UIPopoverController(contentViewController: moreActionsAlert)
-            popOver.present(from: sender.frame, in: self.view, permittedArrowDirections: .down, animated: true)
-        } else {
-            present(moreActionsAlert, animated: true, completion: nil)
+        if UIDevice.isIPAD {
+            moreActionsAlert.modalPresentationStyle = .popover
+            moreActionsAlert.popoverPresentationController?.sourceView = self.view
+            moreActionsAlert.popoverPresentationController?.sourceRect = sender.frame
         }
+
+        present(moreActionsAlert, animated: true, completion: nil)
     }
 
     @IBAction func closeButtonPressed(_ sender: Any) {

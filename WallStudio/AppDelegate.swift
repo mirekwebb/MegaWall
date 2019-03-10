@@ -35,9 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init Facebook
         PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
 
-        // Setup StatusBar
-        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
-
         // Setup Push Notifications
         let notificationTypes: UIUserNotificationType = [.alert, .badge, .sound]
         let settings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
@@ -74,13 +71,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let activityViewController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
             activityViewController.excludedActivityTypes = [.print, .postToWeibo, .copyToPasteboard, .addToReadingList, .postToVimeo]
 
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                let popOver = UIPopoverController(contentViewController: activityViewController)
-                popOver.present(from: .zero, in: (window!.rootViewController?.view)!, permittedArrowDirections: .any, animated: true)
-            } else {
-                window!.rootViewController?.present(activityViewController, animated: true, completion: nil)
+            if UIDevice.isIPAD {
+                activityViewController.modalPresentationStyle = .popover
+                activityViewController.popoverPresentationController?.sourceView = window?.rootViewController?.view
+                activityViewController.popoverPresentationController?.sourceRect = .zero
             }
-
+            window?.rootViewController?.present(activityViewController, animated: true, completion: nil)
         default:
             break
         }

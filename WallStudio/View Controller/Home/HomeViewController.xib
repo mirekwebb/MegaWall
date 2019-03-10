@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,14 +33,10 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="TlO-vd-SLb">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <visualEffectView opaque="NO" alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvA-iK-q8n">
+                <view alpha="0.42999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Coh-Ku-98X">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WJE-bT-Bk6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <blurEffect style="dark"/>
-                </visualEffectView>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoMegawall" translatesAutoresizingMaskIntoConstraints="NO" id="8OE-MQ-tav">
                     <rect key="frame" x="126" y="75" width="123" height="123"/>
                     <constraints>
@@ -64,7 +60,7 @@
                                 <constraint firstAttribute="height" constant="64" id="o9O-D0-sgz"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="KannadaMN-Bold" family="Kannada MN" pointSize="16"/>
-                            <state key="normal" title="BROWSE CATALOG" image="52X52Browse">
+                            <state key="normal" title="BROWSE CATALOG" image="button_browse">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -83,7 +79,7 @@
                                 <constraint firstAttribute="height" constant="64" id="1yz-RD-wF9"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="KannadaMN-Bold" family="Kannada MN" pointSize="16"/>
-                            <state key="normal" title="MY FAVORITES" image="52X52Heart">
+                            <state key="normal" title="MY FAVORITES" image="button_favorites">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -104,7 +100,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="i8z-W7-Ifi"/>
                                     </constraints>
-                                    <state key="normal" title="UPLOAD" image="52X52Plus">
+                                    <state key="normal" title="UPLOAD" image="button_upload">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -122,7 +118,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="gNZ-eL-yZJ"/>
                                     </constraints>
-                                    <state key="normal" title="PROFILE" image="52X52Profile"/>
+                                    <state key="normal" title="PROFILE" image="button_profile"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="8"/>
@@ -153,28 +149,28 @@
                 <constraint firstItem="oXV-8Q-kgh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="3Cc-n8-SOw"/>
                 <constraint firstItem="TlO-vd-SLb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9d8-cB-q5S"/>
                 <constraint firstItem="oXV-8Q-kgh" firstAttribute="top" secondItem="196-Hp-Pw9" secondAttribute="bottom" constant="62" id="BKk-x9-FSB"/>
-                <constraint firstItem="cvA-iK-q8n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EQr-8j-dEu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cvA-iK-q8n" secondAttribute="trailing" id="LVV-Mx-FH3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Coh-Ku-98X" secondAttribute="trailing" id="LYJ-Kg-H7V"/>
                 <constraint firstItem="196-Hp-Pw9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Nkm-pO-kar"/>
                 <constraint firstItem="196-Hp-Pw9" firstAttribute="top" secondItem="8OE-MQ-tav" secondAttribute="bottom" constant="12" id="PqH-Qs-ImP"/>
                 <constraint firstAttribute="bottom" secondItem="TlO-vd-SLb" secondAttribute="bottom" id="V5g-ac-fZf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TlO-vd-SLb" secondAttribute="trailing" id="cLF-w8-e7j"/>
-                <constraint firstItem="cvA-iK-q8n" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ezq-Gl-h1Q"/>
                 <constraint firstItem="TlO-vd-SLb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="k7S-lb-6GE"/>
+                <constraint firstItem="Coh-Ku-98X" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lRZ-3l-g61"/>
+                <constraint firstItem="Coh-Ku-98X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oO9-AJ-u5N"/>
+                <constraint firstAttribute="bottom" secondItem="Coh-Ku-98X" secondAttribute="bottom" id="opA-k2-ZQM"/>
                 <constraint firstItem="8OE-MQ-tav" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="pIE-cP-cZN"/>
                 <constraint firstItem="8OE-MQ-tav" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vl1-Yq-KaZ"/>
-                <constraint firstAttribute="bottom" secondItem="cvA-iK-q8n" secondAttribute="bottom" id="yr4-Qn-x8P"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>
     <resources>
-        <image name="52X52Browse" width="42" height="42"/>
-        <image name="52X52Heart" width="40" height="40"/>
-        <image name="52X52Plus" width="40" height="40"/>
-        <image name="52X52Profile" width="40" height="40"/>
         <image name="background" width="375" height="667"/>
+        <image name="button_browse" width="42" height="42"/>
+        <image name="button_favorites" width="40" height="40"/>
+        <image name="button_profile" width="40" height="40"/>
+        <image name="button_upload" width="40" height="40"/>
         <image name="logoMegawall" width="123" height="123"/>
     </resources>
 </document>
